@@ -15,7 +15,12 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+	XboxController driver, manip;
+	
     public void robotInit() {
+    	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
+    	manip = new XboxController(Constants.XBOX_MANIP_PORT);
+    	DriveTrain.getInstance();
 
     }
 
@@ -30,6 +35,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	DriveTrain.drive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
         
     }
     
