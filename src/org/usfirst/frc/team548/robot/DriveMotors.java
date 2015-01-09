@@ -32,4 +32,8 @@ public class DriveMotors {
 		leftMid.set(right);
 		leftBack.set(right);
 	}
+	
+	public static void driveCenter(double power) {
+		center.set(power);
+	}
 }

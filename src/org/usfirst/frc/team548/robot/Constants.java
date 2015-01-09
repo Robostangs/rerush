@@ -13,5 +13,6 @@ public class Constants {
 	public static final int DT_RIGHT_MID_TALON_POS = 4;
 	public static final int DT_RIGHT_FRONT_TALON_POS = 5;
 	public static final int DT_CENTER_TALON_POS = 6;
+	public static final double DT_HUMAN_DRIVE_THRESHOLD = 0.2;
 
 }

@@ -18,10 +18,18 @@ public class DriveTrain {
 	}
 
 	public static void humanDrive(double left, double right) {
-		if(Math.abs(left) < 0.2 && Math.abs(right) < 0.2) {
+		if(Math.abs(left) < Constants.DT_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
 			DriveMotors.drive(0, 0);
 		} else {
 			DriveMotors.drive(left, right);
+		}
+	}
+	
+	public static void humanDriveCenter(double power) {
+		if(Math.abs(power) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			DriveMotors.driveCenter(0);
+		} else {
+			DriveMotors.driveCenter(power);
 		}
 	}
 }
