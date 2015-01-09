@@ -7,7 +7,7 @@ public class DriveTrain {
 	private static DriveTrain instance = null; 
 	
 	private DriveTrain() {
-		DriveMotors.getInstance()
+		DriveMotors.getInstance();
 	}
 	
 	public static DriveTrain getInstance() {
