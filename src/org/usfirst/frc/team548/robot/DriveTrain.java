@@ -1,6 +1,5 @@
 package org.usfirst.frc.team548.robot;
 
-import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain {
 	

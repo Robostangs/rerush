@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Talon;
 public class DriveMotors {
 	
 	private static DriveMotors instance = null;
-	private static Talon rightFront, rightMid, rightBack, leftFront, leftMid, leftBack, center;
+	private static Talon rightFront, rightMid, rightBack, leftFront, leftMid, leftBack, centerBack, centerFront;
 	
 	private DriveMotors() {
     	rightFront = new Talon(Constants.DT_RIGHT_FRONT_TALON_POS);
@@ -14,7 +14,8 @@ public class DriveMotors {
     	leftFront = new Talon(Constants.DT_LEFT_FRONT_TALON_POS);
     	leftMid = new Talon(Constants.DT_LEFT_MID_TALON_POS);
     	leftBack = new Talon(Constants.DT_LEFT_BACK_TALON_POS);
-    	center = new Talon(Constants.DT_CENTER_TALON_POS);
+    	centerBack = new Talon(Constants.DT_CENTER_BACK_TALON_POS);
+    	centerFront = new Talon(Constants.DT_CENTER_FRONT_TALON_POS);
 	}
 
 	public static DriveMotors getInstance() {
@@ -35,7 +36,8 @@ public class DriveMotors {
 
 	
 	public static void driveCenter(double power) {
-		center.set(power);
+		centerBack.set(power);
+		centerFront.set(-power);
 	}
 
 }
