@@ -8,12 +8,12 @@ public class XboxController extends Joystick{
 		super(port);
 	}
 	
-	public void setLeftRumble(float rumble) {
-		setRumble(Joystick.RumbleType.kLeftRumble, rumble);
+	public void setLeftRumble(double rumble) {
+		setRumble(Joystick.RumbleType.kLeftRumble, (float)rumble);
 	}
 	
-	public void setRightRumble(float rumble) {
-		setRumble(Joystick.RumbleType.kRightRumble, rumble);
+	public void setRightRumble(double rumble) {
+		setRumble(Joystick.RumbleType.kRightRumble, (float)rumble);
 	}
 	
 	public double getLeftStickXAxis() {
