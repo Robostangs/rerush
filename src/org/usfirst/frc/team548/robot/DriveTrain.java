@@ -25,9 +25,11 @@ public class DriveTrain {
 	}
 	
 	public static void humanDriveCenter(double power) {
+		
 		if(Math.abs(power) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
 			DriveMotors.driveCenter(0);
 		} else {
+			
 			DriveMotors.driveCenter(power);
 		}
 	}
