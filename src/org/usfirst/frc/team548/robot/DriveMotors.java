@@ -35,5 +35,14 @@ public class DriveMotors {
 		centerBack.set(power);
 		centerFront.set(-power);
 	}
+	
+	public static void stopMotors() {
+		rightFront.set(0);
+		rightBack.set(0);
+		leftFront.set(0);
+		leftBack.set(0);
+		centerBack.set(0);
+		centerFront.set(0);
+	}
 
 }
