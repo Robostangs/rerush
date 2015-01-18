@@ -8,8 +8,8 @@ public class ElevatorMotors {
 	private static Talon leftMotor, rightMotor;
 	
 	private ElevatorMotors() {
-		Talon leftMotor = new Talon(Constants.ELEVATOR_LEFT_TALON_POS);
-		Talon rightsMotor = new Talon(Constants.ELEVATOR_RIGHT_TALON_POS);
+		leftMotor = new Talon(Constants.ELEVATOR_LEFT_TALON_POS);
+		rightMotor = new Talon(Constants.ELEVATOR_RIGHT_TALON_POS);
 	}
 	
 	public static ElevatorMotors getInstance() {

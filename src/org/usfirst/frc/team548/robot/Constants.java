@@ -1,7 +1,5 @@
 package org.usfirst.frc.team548.robot;
 
-import edu.wpi.first.wpilibj.Talon;
-
 public class Constants {
 	//Robot
 	public static final int XBOX_DRIVER_PORT = 0;
