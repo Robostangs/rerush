@@ -99,4 +99,8 @@ public class XboxController extends Joystick{
 	public int getDPad() {
 		return getPOV();
 	}
+	
+	public double getBothTriggerAxis() {
+		return (getRightTriggerAxis()-getLeftTriggerAxis());
+	}
 }

@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
     	DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-        
+    	DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
     }
     
     /**
