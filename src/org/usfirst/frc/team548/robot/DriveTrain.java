@@ -24,13 +24,13 @@ public class DriveTrain {
 		}
 	}
 	
-	public static void humanDriveCenter(double power) {
+	public static void humanDriveStrafe(double power) {
 		
 		if(Math.abs(power) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-			DriveMotors.driveCenter(0);
+			DriveMotors.driveStrafe(0);
 		} else {
 			
-			DriveMotors.driveCenter(power);
+			DriveMotors.driveStrafe(power);
 		}
 	}
 }

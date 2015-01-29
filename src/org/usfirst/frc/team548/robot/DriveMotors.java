@@ -30,7 +30,7 @@ public class DriveMotors {
 	}
 
 	
-	public static void driveCenter(double power) {
+	public static void driveStrafe(double power) {
 		centerStrafe.set(power);
 	}
 	
