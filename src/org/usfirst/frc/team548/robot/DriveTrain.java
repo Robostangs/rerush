@@ -8,11 +8,15 @@ public class DriveTrain {
 	
 	private static DriveTrain instance = null; 
 	private static Solenoid strafeSolenoid;
-	private static Encoder leftEncoder, rightEncoder;
+	private static Encoder leftEncoder, rightEncoder, strafeEncoder;
 	
 	private DriveTrain() {
 		DriveMotors.getInstance();
 		//strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
+		leftEncoder = new Encoder(Constants.DT_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
+		rightEncoder = new Encoder(Constants.DT_RIGHT_ENCODER_POS_1, Constants.DT_RIGHT_ENCODER_POS_2);
+		strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
+		resetEncoders();
 	}
 	
 	public static DriveTrain getInstance() {
@@ -46,5 +50,11 @@ public class DriveTrain {
 	
 	public static void setStrafeUp() {
 		strafeSolenoid.set(false);
+	}
+	
+	public static void resetEncoders() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+		strafeEncoder.reset();
 	}
 }

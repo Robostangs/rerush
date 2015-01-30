@@ -1,11 +1,15 @@
 package org.usfirst.frc.team548.robot;
 
+import edu.wpi.first.wpilibj.Solenoid;
+
 public class Arm {
 	
 	private static Arm instance = null;
+	private static Solenoid armSolenoid;
 	
 	private Arm() {
 		ArmMotors.getInstance();
+		armSolenoid = new Solenoid(Constants.ARM_SOL_POS);
 	}
 	
 	public static Arm getInstance() {
@@ -17,6 +21,10 @@ public class Arm {
 	
 	public static void moveArm(double power) {
 		ArmMotors.setPower(power);
+	}
+	
+	public static void armSolenoid(boolean value) {
+		armSolenoid.set(value);
 	}
 
 }
