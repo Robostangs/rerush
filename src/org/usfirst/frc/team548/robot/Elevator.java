@@ -35,11 +35,11 @@ public class Elevator {
 		rightEncoder.reset();
 	}
 	
-	public static void setContainerGraberThing(boolean value) {
+	public static void setContainerGrabberThing(boolean value) {
 		containerSolenoid.set(value);
 	}
 	
-	public static boolean getElevatprSwtich() {
+	public static boolean getElevatorSwitch() {
 		return limitSwitch.get();
 	}
 

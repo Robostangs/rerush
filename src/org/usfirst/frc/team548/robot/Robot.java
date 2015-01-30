@@ -21,6 +21,9 @@ public class Robot extends IterativeRobot {
     	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
     	manip = new XboxController(Constants.XBOX_MANIP_PORT);
     	DriveTrain.getInstance();
+//    	Elevator.getInstance();
+//    	Arm.getInstance();
+//    	Ingestor.getInstance();
 
     }
 
