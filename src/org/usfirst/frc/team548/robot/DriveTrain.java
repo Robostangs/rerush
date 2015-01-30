@@ -12,7 +12,7 @@ public class DriveTrain {
 	
 	private DriveTrain() {
 		DriveMotors.getInstance();
-		strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
+		//strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
 	}
 	
 	public static DriveTrain getInstance() {

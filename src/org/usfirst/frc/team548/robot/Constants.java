@@ -22,10 +22,17 @@ public class Constants {
 	
 	//Arm
 	public static final int ARM_TALON_POS = -1;
+	public static final int ARM_SOL_POS = 0;
 	
 	//Elevator
 	public static final int ELEVATOR_LEFT_TALON_POS = -1;
 	public static final int ELEVATOR_RIGHT_TALON_POS = -1;
+	public static final int ELEVATOR_LEFT_ENCODER_POS_1 = 0;
+	public static final int ELEVATOR_LEFT_ENCODER_POS_2 = 0;
+	public static final int ELEVATOR_RIGHT_ENCODER_POS_1 = 0;
+	public static final int ELEVATOR_RIGHT_ENCODER_POS_2 = 0;
+	public static final int ELEVATOR_CONTAINER_SOL_POS = 0;
+	public static final int ELEVATOR_LIMIT_SWITCH_POS = 0;
 	
 	//Ingestor
 	public static final int IN_LEFT_TALON_POS = 0;
