@@ -20,6 +20,8 @@ public class Constants {
 	public static final int DT_RIGHT_ENCODER_POS_2 = 0;
 	public static final int DT_STRAFE_ENCODER_POS_1 = 0;
 	public static final int DT_STRAFE_ENCODER_POS_2 = 0;
+	public static final int DT_GYRO_POS = 0;
+	public static final double DT_STRAFE_MOD = .1;
 	
 	//Arm
 	public static final int ARM_TALON_POS = -1;

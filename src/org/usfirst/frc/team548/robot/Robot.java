@@ -2,6 +2,7 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,8 +39,15 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-    	DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
+    	SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
+    	if(driver.getLeftBumper()) {
+    		DriveTrain.strafeStright(driver.getBothTriggerAxis());
+    	} else {
+    		DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+    		DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
+    		DriveTrain.resetGyro();
+    	}
+    	Ingestor.setIngestorMotors(manip.getRightStickXAxis(), manip.getRightStickYAxis());
     }
     
     /**
