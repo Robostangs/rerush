@@ -23,15 +23,15 @@ public class DriveMotors {
 	}
 	
 	public static void drive(double left, double right) {
-		rightFront.set(-left);
-		rightBack.set(-left);
-		leftFront.set(right);
-		leftBack.set(right);
+		rightFront.set(right);
+		rightBack.set(right);
+		leftFront.set(-left);
+		leftBack.set(-left);
 	}
 
 	
 	public static void driveStrafe(double power) {
-		centerStrafe.set(power);
+		centerStrafe.set(-power);
 	}
 	
 	public static void stopMotors() {

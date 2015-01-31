@@ -13,10 +13,10 @@ public class DriveTrain {
 	private DriveTrain() {
 		DriveMotors.getInstance();
 		//strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
-		leftEncoder = new Encoder(Constants.DT_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
-		rightEncoder = new Encoder(Constants.DT_RIGHT_ENCODER_POS_1, Constants.DT_RIGHT_ENCODER_POS_2);
-		strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
-		resetEncoders();
+		//leftEncoder = new Encoder(Constants.DT_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
+		//rightEncoder = new Encoder(Constants.DT_RIGHT_ENCODER_POS_1, Constants.DT_RIGHT_ENCODER_POS_2);
+		//strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
+		//resetEncoders();
 	}
 	
 	public static DriveTrain getInstance() {
@@ -36,7 +36,7 @@ public class DriveTrain {
 	
 	public static void humanDriveStrafe(double power) {
 		
-		if(Math.abs(power) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
 			
