@@ -1,15 +1,15 @@
 package org.usfirst.frc.team548.robot;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.CANTalon;
 
 public class ElevatorMotors {
 	
 	private static ElevatorMotors instance = null;
-	private static Talon leftMotor, rightMotor;
+	private static CANTalon leftMotor, rightMotor;
 	
 	private ElevatorMotors() {
-		leftMotor = new Talon(Constants.ELEVATOR_LEFT_TALON_POS);
-		rightMotor = new Talon(Constants.ELEVATOR_RIGHT_TALON_POS);
+		leftMotor = new CANTalon(Constants.ELEVATOR_LEFT_TALON_POS);
+		rightMotor = new CANTalon(Constants.ELEVATOR_RIGHT_TALON_POS);
 	}
 	
 	public static ElevatorMotors getInstance() {

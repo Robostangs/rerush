@@ -1,14 +1,14 @@
 package org.usfirst.frc.team548.robot;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.CANTalon;
 
 public class ArmMotors {
 	
 	private static ArmMotors instance = null;
-	private static Talon armCIM;
+	private static CANTalon armCIM;
 	
 	private ArmMotors() {
-		armCIM = new Talon(Constants.ARM_TALON_POS);
+		armCIM = new CANTalon(Constants.ARM_TALON_POS);
 	}
 	
 	public static ArmMotors getInstance() {
