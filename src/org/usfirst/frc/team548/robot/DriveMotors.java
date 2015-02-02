@@ -31,7 +31,7 @@ public class DriveMotors {
 
 	
 	public static void driveStrafe(double power) {
-		centerStrafe.set(power);
+		centerStrafe.set(-power);
 	}
 	
 	public static void stopMotors() {
