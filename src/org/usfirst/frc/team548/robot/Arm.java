@@ -8,7 +8,6 @@ public class Arm {
 	private static Solenoid armSolenoid;
 	
 	private Arm() {
-		ArmMotors.getInstance();
 		armSolenoid = new Solenoid(Constants.ARM_SOL_POS);
 	}
 	
@@ -20,7 +19,6 @@ public class Arm {
 	}
 	
 	public static void moveArm(double power) {
-		ArmMotors.setPower(power);
 	}
 	
 	public static void armSolenoid(boolean value) {
