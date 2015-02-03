@@ -42,4 +42,25 @@ public class DriveMotors {
 		centerStrafe.set(0);
 	}
 
+	public static double getLeftEncoderPosition() {
+		return leftBack.getEncPosition();
+	}
+	
+	public static double getRightEncoderPosition() {
+		return rightBack.getEncPosition();
+	}
+	
+	public static double getLeftEncoderVelocity() {
+		return leftBack.getEncVelocity();
+	}
+	
+	public static double getRightEncoderVelocity() {
+		return rightBack.getEncVelocity();
+	}
+	
+	public static void resetEncoders() {
+		rightBack.setPosition(0.0);
+		leftBack.setPosition(0.0);
+	}
+
 }

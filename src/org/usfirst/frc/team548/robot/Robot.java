@@ -39,15 +39,20 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
+    	//SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
+    	SmartDashboard.putNumber("Left Encoder Position", DriveMotors.getLeftEncoderPosition());
+    	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
+    	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
+    	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
     	if(driver.getLeftBumper()) {
-    		DriveTrain.strafeStright(driver.getBothTriggerAxis());
-    	} else {
+    		DriveMotors.resetEncoders();
+    		//DriveTrain.strafeStright(driver.getBothTriggerAxis());
+    	} // else {
     		DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
     		DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
-    		DriveTrain.resetGyro();
-    	}
-    	Ingestor.setIngestorMotors(manip.getRightStickXAxis(), manip.getRightStickYAxis());
+    		//DriveTrain.resetGyro();
+    	//}
+    	//Ingestor.setIngestorMotors(manip.getRightStickXAxis(), manip.getRightStickYAxis());
     }
     
     /**
