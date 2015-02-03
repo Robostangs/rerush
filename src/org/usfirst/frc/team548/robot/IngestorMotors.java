@@ -25,5 +25,10 @@ public class IngestorMotors {
 		rightMotor.set(power);
 	}
 	
+	public static void setLeftRight(double power) {
+		leftMotor.set(power);
+		rightMotor.set(power);
+	}
+	
 }
 
