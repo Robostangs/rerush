@@ -42,4 +42,8 @@ public class Constants {
 	public static final int IN_RIGHT_TALON_POS = 5;
 	public static final int IN_RIGHT_SOL_POS = 0;
 	public static final int IN_LEFT_SOL_POS = 0;
+	
+	//Pneumatics
+	public static final int COMPRESSOR_POS = 0;
+	public static final int DIGITAL_INPUT_PRESSURE_POS = 0;
 }
