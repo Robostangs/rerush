@@ -25,14 +25,5 @@ public class IngestorMotors {
 		rightMotor.set(power);
 	}
 	
-	public static void setIngestorMotors(double x, double y) {
-		if(x > .25 || x < -.25) {
-			leftMotor.set(x);
-			rightMotor.set(x);
-		} else {
-			setIngestorPower(y);
-		}
-		
-	}
 }
 
