@@ -20,14 +20,14 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	Autonomous.getInstance();
     	TeleOperated.getInstance();
+    	DriveMotors.getInstance();
     	DriveTrain.getInstance();
 //    	Arm.getInstance();
-//		DriveMotors.getInstance();
 //    	Elevator.getInstance();
 //		ElevatorMotors.getInstance();
 //    	Ingestor.getInstance();
-    	Ingestor.setIngestorOut();
-    	DriveTrain.setStrafeDown();
+//    	Ingestor.setIngestorOut();
+//    	DriveTrain.setStrafeDown();
     }
 
     /**

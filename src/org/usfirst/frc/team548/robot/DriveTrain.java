@@ -16,7 +16,6 @@ public class DriveTrain {
 		gyro = new Gyro(Constants.DT_GYRO_POS);
 		//strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
 		//strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
-		//resetEncoders();
 	}
 
 	public static DriveTrain getInstance() {
@@ -55,7 +54,6 @@ public class DriveTrain {
 		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
-
 			DriveMotors.driveStrafe(power);
 		}
 	}
@@ -65,7 +63,6 @@ public class DriveTrain {
 		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
-
 			DriveMotors.driveStrafe(power*Constants.DT_SLOW_STRAFE_MULTIPLIER);
 		}
 	}
@@ -75,7 +72,6 @@ public class DriveTrain {
 		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
-
 			DriveMotors.driveStrafe(power*Constants.DT_SUPER_SLOW_STRAFE_MULTIPLIER);
 		}
 	}
@@ -88,7 +84,7 @@ public class DriveTrain {
 		strafeSolenoid.set(false);
 	}
 
-	public static void strafeStright(double power) {
+	public static void strafeStraight(double power) {
 		if(!gyroInt) {
 			gyro.reset();
 			gyroAngle = getGyroAngle();

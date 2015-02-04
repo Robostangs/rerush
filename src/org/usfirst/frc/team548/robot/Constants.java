@@ -28,7 +28,6 @@ public class Constants {
 	public static final double DT_SUPER_SLOW_STRAFE_MULTIPLIER = .25;
 	
 	//Arm
-	public static final int ARM_TALON_POS = -1;
 	public static final int ARM_SOL_POS = 0;
 	
 	//Elevator

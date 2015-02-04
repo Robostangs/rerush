@@ -37,7 +37,7 @@ public class Ingestor {
 		rightMotor.set(power);
 	}
 	
-	public static void setLeftRight(double power) {
+	public static void setDirection(double power) {
 		leftMotor.set(power);
 		rightMotor.set(power);
 	}

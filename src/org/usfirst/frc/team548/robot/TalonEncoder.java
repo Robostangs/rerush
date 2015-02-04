@@ -1,7 +1,6 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 
 public class TalonEncoder {
 	private CANTalon talon;

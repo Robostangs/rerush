@@ -18,9 +18,6 @@ public class Arm {
 		return instance;
 	}
 	
-	public static void moveArm(double power) {
-	}
-	
 	public static void armSolenoid(boolean value) {
 		armSolenoid.set(value);
 	}

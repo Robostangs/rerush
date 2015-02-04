@@ -7,8 +7,7 @@ public class TeleOperated {
 	
 	private TeleOperated() {
     	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
-    	manip = new XboxController(Constants.XBOX_MANIP_PORT);
-		
+    	manip = new XboxController(Constants.XBOX_MANIP_PORT);	
 	}
 	
 	public static TeleOperated getInstance() {
@@ -39,7 +38,7 @@ public class TeleOperated {
 	
 	public static void runManip() {
 		if(Math.abs(manip.getLeftStickXAxis()) > 0.2) {
-			Ingestor.setLeftRight(manip.getLeftStickXAxis());
+			Ingestor.setDirection(manip.getLeftStickXAxis());
 		} else {
 			Ingestor.setIngestorPower(manip.getBothTriggerAxis());
 		}
