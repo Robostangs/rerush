@@ -29,9 +29,28 @@ public class TeleOperated {
 			DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 			DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
 		}
+		
+		if(driver.getAButton()) {
+			DriveTrain.setStrafeDown();
+		} else if(driver.getBButton()) {
+			DriveTrain.setStrafeUp();
+		}
 	}
 	
 	public static void runManip() {
+		if(Math.abs(manip.getLeftStickXAxis()) > 0.2) {
+			Ingestor.setLeftRight(manip.getLeftStickXAxis());
+		} else {
+			Ingestor.setIngestorPower(manip.getBothTriggerAxis());
+		}
+		
+		if(manip.getLeftBumper()) {
+			Ingestor.setIngestorIn();
+		} else if(manip.getRightBumper()) {
+			Ingestor.setIngestorOut();
+		}
+		
+		if(manip.getBButton());
 	}
 
 }
