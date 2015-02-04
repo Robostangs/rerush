@@ -49,5 +49,4 @@ public class Constants {
 	
 	//Pneumatics
 	public static final int COMPRESSOR_POS = 0;
-	public static final int DIGITAL_INPUT_PRESSURE_POS = 0;
 }

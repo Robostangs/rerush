@@ -1,8 +1,9 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.PIDOutput;
 
-public class ElevatorMotors {
+public class ElevatorMotors implements PIDOutput {
 	
 	private static ElevatorMotors instance = null;
 	private static CANTalon leftMotor, rightMotor;
@@ -22,6 +23,10 @@ public class ElevatorMotors {
 	public static void setPower(double power) {
 		leftMotor.set(power);
 		rightMotor.set(power);
+	}
+	
+	public void pidWrite(double power) {
+		setPower(power);
 	}
 
 }
