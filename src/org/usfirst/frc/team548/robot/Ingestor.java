@@ -16,7 +16,6 @@ public class Ingestor {
 	private Ingestor() {
 		leftSolenoid = new Solenoid(Constants.IN_LEFT_SOL_POS);
 		rightSolenoid = new Solenoid(Constants.IN_RIGHT_SOL_POS);
-		IngestorMotors.getInstance();
 	}
 	
 	public static void setIngestorOut() {

@@ -22,6 +22,10 @@ public class Constants {
 	public static final int DT_STRAFE_ENCODER_POS_2 = 0;
 	public static final int DT_GYRO_POS = 0;
 	public static final double DT_STRAFE_MOD = .1;
+	public static final double DT_SLOW_DRIVE_MULTIPLIER = .5;
+	public static final double DT_SUPER_SLOW_DRIVE_MULTIPLIER = .25;
+	public static final double DT_SLOW_STRAFE_MULTIPLIER = .5;
+	public static final double DT_SUPER_SLOW_STRAFE_MULTIPLIER = .25;
 	
 	//Arm
 	public static final int ARM_TALON_POS = -1;

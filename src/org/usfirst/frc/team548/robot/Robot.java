@@ -16,16 +16,17 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-	XboxController driver, manip;
 	
     public void robotInit() {
-    	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
-    	manip = new XboxController(Constants.XBOX_MANIP_PORT);
+    	Autonomous.getInstance();
+    	TeleOperated.getInstance();
     	DriveTrain.getInstance();
-//    	Elevator.getInstance();
 //    	Arm.getInstance();
+//		DriveMotors.getInstance();
+//    	Elevator.getInstance();
+//		ElevatorMotors.getInstance();
 //    	Ingestor.getInstance();
-
+//		IngestorMotors.getInstance();
     }
 
     /**
@@ -39,20 +40,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	TeleOperated.runDriver();
+    	TeleOperated.runManip();
     	//SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
     	SmartDashboard.putNumber("Left Encoder Position", DriveMotors.getLeftEncoderPosition());
     	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
     	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
-    	if(driver.getLeftBumper()) {
-    		DriveMotors.resetEncoders();
-    		//DriveTrain.strafeStright(driver.getBothTriggerAxis());
-    	} // else {
-    		DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-    		DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
-    		//DriveTrain.resetGyro();
-    	//}
-    	//Ingestor.setIngestorMotors(manip.getRightStickXAxis(), manip.getRightStickYAxis());
     }
     
     /**

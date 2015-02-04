@@ -12,7 +12,6 @@ public class Elevator {
 	private static Solenoid containerSolenoid;
 	
 	private Elevator() {
-		ElevatorMotors.getInstance();
 		leftEncoder = new Encoder(Constants.ELEVATOR_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
 		rightEncoder = new Encoder(Constants.ELEVATOR_RIGHT_ENCODER_POS_1, Constants.ELEVATOR_RIGHT_ENCODER_POS_2);
 		limitSwitch = new DigitalInput(Constants.ELEVATOR_LIMIT_SWITCH_POS);
