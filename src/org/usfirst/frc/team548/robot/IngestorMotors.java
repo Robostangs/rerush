@@ -29,6 +29,5 @@ public class IngestorMotors {
 		leftMotor.set(power);
 		rightMotor.set(power);
 	}
-	
 }
 
