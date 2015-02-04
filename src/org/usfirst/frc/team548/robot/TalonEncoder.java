@@ -20,7 +20,7 @@ public class TalonEncoder {
 		return (talon.getEncPosition() - resetPos);
 	}
 	
-	public double getVolicity() {
+	public double getVelocity() {
 		return talon.getEncVelocity();
 	}
 	

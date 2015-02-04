@@ -6,6 +6,7 @@ public class DriveMotors {
 	
 	private static DriveMotors instance = null;
 	private static CANTalon rightFront, rightBack, leftFront, leftBack, centerStrafe;
+	private static TalonEncoder rightEncoder, leftEncoder;
 	
 	private DriveMotors() {
     	rightFront = new CANTalon(Constants.DT_RIGHT_FRONT_TALON_POS);
@@ -13,6 +14,8 @@ public class DriveMotors {
     	leftFront = new CANTalon(Constants.DT_LEFT_FRONT_TALON_POS);
     	leftBack = new CANTalon(Constants.DT_LEFT_BACK_TALON_POS);
     	centerStrafe = new CANTalon(Constants.DT_CENTER_STRAFE_TALON_POS);
+    	rightEncoder = new TalonEncoder(rightBack);
+    	leftEncoder = new TalonEncoder(leftBack);
 	}
 
 	public static DriveMotors getInstance() {
@@ -43,24 +46,24 @@ public class DriveMotors {
 	}
 
 	public static double getLeftEncoderPosition() {
-		return leftBack.getEncPosition();
+		return leftEncoder.getPosition();
 	}
 	
 	public static double getRightEncoderPosition() {
-		return rightBack.getEncPosition();
+		return rightEncoder.getPosition();
 	}
 	
 	public static double getLeftEncoderVelocity() {
-		return leftBack.getEncVelocity();
+		return leftEncoder.getVelocity();
 	}
 	
 	public static double getRightEncoderVelocity() {
-		return rightBack.getEncVelocity();
+		return rightEncoder.getVelocity();
 	}
 	
 	public static void resetEncoders() {
-		rightBack.setPosition(0.0);
-		leftBack.setPosition(0.0);
+		rightEncoder.reset();
+		leftEncoder.reset();
 	}
 
 }
