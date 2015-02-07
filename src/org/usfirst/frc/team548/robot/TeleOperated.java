@@ -49,6 +49,12 @@ public class TeleOperated {
 			Ingestor.setIngestorOut();
 		}
 		
+		if(manip.getStartButton()) {
+			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+		} else if(manip.getBackButton()) {
+			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+		}
+		
 		if(manip.getBButton());
 	}
 

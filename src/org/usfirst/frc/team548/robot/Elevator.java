@@ -34,8 +34,12 @@ public class Elevator {
 		rightEncoder.reset();
 	}
 	
-	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreen(boolean value) {
-		containerSolenoid.set(value);
+	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen() {
+		containerSolenoid.set(true);
+	}
+	
+	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed() {
+		containerSolenoid.set(false);
 	}
 	
 	public static boolean getElevatorSwitch() {
