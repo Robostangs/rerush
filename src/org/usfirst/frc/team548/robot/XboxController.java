@@ -101,7 +101,7 @@ public class XboxController extends Joystick{
 	}
 	
 	public boolean isDPadTopHalf() {
-		if(getDPad() == 7 || getDPad() == 0 || getDPad() == 1) {
+		if(getDPad() == 315 || getDPad() == 0 || getDPad() == 45) {
 			return true;
 		} else {
 			return false;
@@ -109,7 +109,7 @@ public class XboxController extends Joystick{
 	}
 	
 	public boolean isDPadBottomHalf() {
-		if(getDPad() == 3 || getDPad() == 4 || getDPad() == 5) {
+		if(getDPad() == 135 || getDPad() == 180 || getDPad() == 225) {
 			return true;
 		} else {
 			return false;

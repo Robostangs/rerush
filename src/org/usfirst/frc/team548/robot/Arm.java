@@ -5,11 +5,10 @@ import edu.wpi.first.wpilibj.Solenoid;
 public class Arm {
 	
 	private static Arm instance = null;
-	private static Solenoid armSolenoidLeft, armSolenoidRight;
+	private static Solenoid armSolenoid;
 	
 	private Arm() {
-		armSolenoidLeft = new Solenoid(Constants.ARM_SOL_LEFT_POS);
-		armSolenoidRight = new Solenoid(Constants.ARM_SOL_RIGHT_POS);
+		armSolenoid = new Solenoid(Constants.ARM_SOL_POS);
 	}
 	
 	public static Arm getInstance() {
@@ -20,13 +19,11 @@ public class Arm {
 	}
 
 	public static void setArmForward() {
-		armSolenoidLeft.set(true);
-		armSolenoidRight.set(true);
+		armSolenoid.set(true);
 	}
 	
 	public static void setArmBack() {
-		armSolenoidLeft.set(false);
-		armSolenoidRight.set(false);
+		armSolenoid.set(false);
 	}
 	
 }

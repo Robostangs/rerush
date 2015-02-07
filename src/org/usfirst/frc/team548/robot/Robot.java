@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
     	TeleOperated.getInstance();
     	DriveMotors.getInstance();
     	DriveTrain.getInstance();
-//    	Arm.getInstance();
+    	Arm.getInstance();
 //    	Elevator.getInstance();
 //		ElevatorMotors.getInstance();
 //    	Ingestor.getInstance();

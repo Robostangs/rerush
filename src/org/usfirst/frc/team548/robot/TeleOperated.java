@@ -57,6 +57,13 @@ public class TeleOperated {
 		 } else {
 			 DriveTrain.humanDrive(0, 0);
 		 }
+		 
+		 if(driver.isDPadTopHalf()) {
+				Arm.setArmForward();
+		 } else if(driver.isDPadBottomHalf()) {
+				Arm.setArmBack();
+		 }
+		 System.out.println(driver.getDPad());
 //		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 //			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
 //		 }
