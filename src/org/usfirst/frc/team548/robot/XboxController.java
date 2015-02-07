@@ -41,43 +41,43 @@ public class XboxController extends Joystick{
 	}
 
 	public boolean getAButton() {
-		return getRawButton(0);
-	}
-
-	public boolean getBButton() {
 		return getRawButton(1);
 	}
 
-	public boolean getXButton() {
+	public boolean getBButton() {
 		return getRawButton(2);
 	}
 
-	public boolean getYButton() {
+	public boolean getXButton() {
 		return getRawButton(3);
 	}
 
-	public boolean getLeftBumper() {
+	public boolean getYButton() {
 		return getRawButton(4);
 	}
 
-	public boolean getRightBumper() {
+	public boolean getLeftBumper() {
 		return getRawButton(5);
 	}
 
-	public boolean getBackButton() {
+	public boolean getRightBumper() {
 		return getRawButton(6);
 	}
 
-	public boolean getStartButton() {
+	public boolean getBackButton() {
 		return getRawButton(7);
 	}
-	
-	public boolean getLeftJoystickButton() {
+
+	public boolean getStartButton() {
 		return getRawButton(8);
 	}
 	
-	public boolean getRightJoystickButton() {
+	public boolean getLeftJoystickButton() {
 		return getRawButton(9);
+	}
+	
+	public boolean getRightJoystickButton() {
+		return getRawButton(10);
 	}
 	
 	public boolean getRightTriggerButton() {
