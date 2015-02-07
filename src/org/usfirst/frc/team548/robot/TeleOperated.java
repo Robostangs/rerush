@@ -34,6 +34,27 @@ public class TeleOperated {
 		} else if(driver.getBButton()) {
 			DriveTrain.setStrafeUp();
 		}
+		
+		/* 2/7 driver and manip suggestions
+		 
+		 Strafe using x axis on joysticks and give driver ingesting abilities
+		 Strafe left: left joystick x value is less than the negative human drive threshold
+		 Strafe right: right joystick x value is greater than the human drive threshold
+		 Driver ingest: left trigger
+		 Driver exgest: right trigger
+		 
+		 
+		 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+		  	DriveTrain.humanDriveStrafe(driver.getLeftStickXAxis());
+		 } else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			 DriveTrain.humanDriveStrafe(driver.getRightStickXAxis());
+		 }
+		
+		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD) {
+			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
+		 }
+		 */
+		 
 	}
 	
 	public static void runManip() {
