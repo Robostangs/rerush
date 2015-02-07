@@ -77,11 +77,11 @@ public class DriveTrain {
 	}
 
 	public static void setStrafeDown() {
-		strafeSolenoid.set(true);
+		strafeSolenoid.set(false);
 	}
 
 	public static void setStrafeUp() {
-		strafeSolenoid.set(false);
+		strafeSolenoid.set(true);
 	}
 
 	public static void strafeStraight(double power) {
