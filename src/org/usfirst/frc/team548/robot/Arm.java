@@ -17,9 +17,13 @@ public class Arm {
 		}
 		return instance;
 	}
-	
-	public static void armSolenoid(boolean value) {
-		armSolenoid.set(value);
-	}
 
+	public static void setArmForward() {
+		armSolenoid.set(true);
+	}
+	
+	public static void setArmBack() {
+		armSolenoid.set(false);
+	}
+	
 }

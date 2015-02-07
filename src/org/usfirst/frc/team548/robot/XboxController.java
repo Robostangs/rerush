@@ -100,6 +100,22 @@ public class XboxController extends Joystick{
 		return getPOV();
 	}
 	
+	public boolean isDPadTopHalf() {
+		if(getDPad() == 7 || getDPad() == 0 || getDPad() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isDPadBottomHalf() {
+		if(getDPad() == 3 || getDPad() == 4 || getDPad() == 5) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public double getBothTriggerAxis() {
 		return (getRightTriggerAxis()-getLeftTriggerAxis());
 	}

@@ -55,6 +55,12 @@ public class TeleOperated {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 		}
 		
+		if(manip.isDPadTopHalf()) {
+			Arm.setArmForward();
+		} else if(manip.isDPadBottomHalf()) {
+			Arm.setArmBack();
+		}
+		
 		if(manip.getBButton());
 	}
 
