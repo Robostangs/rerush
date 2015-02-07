@@ -14,7 +14,7 @@ public class DriveTrain {
 
 	private DriveTrain() {
 		gyro = new Gyro(Constants.DT_GYRO_POS);
-		//strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
+		strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
 		//strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
 	}
 

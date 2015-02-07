@@ -29,11 +29,11 @@ public class TeleOperated {
 //			DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
 //		}
 		
-//		if(driver.getAButton()) {
-//			DriveTrain.setStrafeDown();
-//		} else if(driver.getBButton()) {
-//			DriveTrain.setStrafeUp();
-//		}
+		if(driver.getAButton()) {
+			DriveTrain.setStrafeDown();
+		} else if(driver.getBButton()) {
+			DriveTrain.setStrafeUp();
+		}
 		
 		/* 2/7 driver and manip suggestions
 		 
@@ -66,10 +66,10 @@ public class TeleOperated {
 	
 	public static void runManip() {
 //		if(Math.abs(manip.getLeftStickXAxis()) > 0.2) {
-			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorIn();
 //			Ingestor.setDirection(manip.getLeftStickXAxis());
 //		} else {
-			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorIn();
 //			Ingestor.setIngestorPower(manip.getBothTriggerAxis());
 //		}
 //		
