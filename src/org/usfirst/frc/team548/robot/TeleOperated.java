@@ -159,13 +159,13 @@ public class TeleOperated {
 		 * Manip arm solenoid controls
 		 * DPAD TOP HALF: arm forward
 		 * DPAD BOTTOM HALF: arm backwards 
-		 *
+		 */
 		if(manip.isDPadTopHalf()) {
 			Arm.setArmForward();
 		} else if(manip.isDPadBottomHalf()) {
 			Arm.setArmBack();
 		}
-		*/
+		
 		
 		/*
 		 * Manip elevator controls

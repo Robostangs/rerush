@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
     	DriveTrain.getInstance();
     	Arm.getInstance();
 //    	Elevator.getInstance();
-//		ElevatorMotors.getInstance();
+		ElevatorMotors.getInstance();
 //    	Ingestor.getInstance();
 //    	Ingestor.setIngestorOut();
 //    	DriveTrain.setStrafeDown();
