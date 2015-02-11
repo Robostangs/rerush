@@ -56,7 +56,7 @@ public class Elevator {
 	}
 	
 	public static void setElevatorPosition(double position) {
-		while(!isAtSetpoint(position)) {
+		while(!isAtSetpoint(position)) {// Use if maybe?...
 			if(position > getEncoderAverage()) {
 				moveElevator(Constants.ELEVATOR_SPEED);
 			} else if(position < getEncoderAverage()) {
@@ -68,29 +68,24 @@ public class Elevator {
 	}
 	
 	public static void setElevatorToLevel(int level) {
+		//you could also make a double array of level constants so you could call it like this Constants.ELEVATOR_LEVEL[What ever level you want]
 		if(level == 0) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_0_POS);
-			currentElevatorPos = 0;
-			resetEncoders();
+			resetEncoders();//Um idk if calling this is a good idea...
 		} else if(level == 1) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_1_POS);
-			currentElevatorPos = 1;
 		} else if(level == 2) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_2_POS);
-			currentElevatorPos = 2;
 		} else if(level == 3) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_3_POS);
-			currentElevatorPos = 3;
 		} else if(level == 4) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_4_POS);
-			currentElevatorPos = 4;
 		} else if(level == 5) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_5_POS);
-			currentElevatorPos = 5;
 		} else if(level == 6) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_6_POS);
-			currentElevatorPos = 6;
 		}
+		currentElevatorPos = level;
 	}
 	
 	public static boolean isAtSetpoint(double setpoint) {
