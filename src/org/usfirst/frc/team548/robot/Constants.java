@@ -39,6 +39,15 @@ public class Constants {
 	public static final int ELEVATOR_RIGHT_ENCODER_POS_2 = 0;
 	public static final int ELEVATOR_CONTAINER_SOL_POS = 0;
 	public static final int ELEVATOR_LIMIT_SWITCH_POS = 0;
+	public static final double ELEVATOR_SPEED = 0.5;
+	public static final double ELEVATOR_LEVEL_0_POS = 0;
+	public static final double ELEVATOR_LEVEL_1_POS = 0;
+	public static final double ELEVATOR_LEVEL_2_POS = 0;
+	public static final double ELEVATOR_LEVEL_3_POS = 0;
+	public static final double ELEVATOR_LEVEL_4_POS = 0;
+	public static final double ELEVATOR_LEVEL_5_POS = 0;
+	public static final double ELEVATOR_LEVEL_6_POS = 0;
+	
 	
 	//Ingestor
 	public static final int IN_LEFT_TALON_POS = 4;
