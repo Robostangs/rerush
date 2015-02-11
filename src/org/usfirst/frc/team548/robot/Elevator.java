@@ -8,14 +8,15 @@ public class Elevator {
 	
 	private static Elevator instance = null;
 	private static Encoder leftEncoder, rightEncoder;
-	private static DigitalInput limitSwitch;
+	private static DigitalInput topLimitSwitch, botLimitSwitch;
 	private static Solenoid containerSolenoid;
 	private static int currentElevatorPos;
 	
 	private Elevator() {
 		leftEncoder = new Encoder(Constants.ELEVATOR_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
 		rightEncoder = new Encoder(Constants.ELEVATOR_RIGHT_ENCODER_POS_1, Constants.ELEVATOR_RIGHT_ENCODER_POS_2);
-		limitSwitch = new DigitalInput(Constants.ELEVATOR_LIMIT_SWITCH_POS);
+		topLimitSwitch = new DigitalInput(Constants.ELEVATOR_TOP_LIMIT_SWITCH_POS);
+		botLimitSwitch = new DigitalInput(Constants.ELEVATOR_BOT_LIMIT_SWITCH_POS);
 		containerSolenoid = new Solenoid(Constants.ELEVATOR_CONTAINER_SOL_POS);
 	}
 	
@@ -27,6 +28,11 @@ public class Elevator {
 	}
 	
 	public static void moveElevator(double power) {
+		if(botLimitSwitch.get() && power < 0) {
+			power = 0;
+		} else if(topLimitSwitch.get() && power > 0) {
+			power = 0;
+		}
 		ElevatorMotors.setPower(power);
 	}
 	
@@ -51,19 +57,23 @@ public class Elevator {
 		return ((leftEncoder.getDistance() + rightEncoder.getDistance()) / 2);
 	}
 	
-	public static boolean getElevatorSwitch() {
-		return limitSwitch.get();
+	public static boolean getTopElevatorSwitch() {
+		return topLimitSwitch.get();
+	}
+	
+	public static boolean getBotElevatorSwitch() {
+		return botLimitSwitch.get();
 	}
 	
 	public static void setElevatorPosition(double position) {
-		while(!isAtSetpoint(position)) {// Use if maybe?...
+		if(!isAtSetpoint(position)) {		
 			if(position > getEncoderAverage()) {
 				moveElevator(Constants.ELEVATOR_SPEED);
 			} else if(position < getEncoderAverage()) {
 				moveElevator(-Constants.ELEVATOR_SPEED);
-			} else {
-				stopElevator();
-			}
+			} 
+		} else {
+			stopElevator();
 		}	
 	}
 	
@@ -71,7 +81,6 @@ public class Elevator {
 		//you could also make a double array of level constants so you could call it like this Constants.ELEVATOR_LEVEL[What ever level you want]
 		if(level == 0) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_0_POS);
-			resetEncoders();//Um idk if calling this is a good idea...
 		} else if(level == 1) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_1_POS);
 		} else if(level == 2) {
@@ -108,6 +117,15 @@ public class Elevator {
 			int newLevel = currentElevatorPos--;
 			setElevatorToLevel(newLevel);
 			currentElevatorPos = newLevel;
+		}
+	}
+	
+	public static void calibrateEncoder() {
+		if(!botLimitSwitch.get()) {
+			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
+		} else {
+			Elevator.stopElevator();
+			resetEncoders();
 		}
 	}
 

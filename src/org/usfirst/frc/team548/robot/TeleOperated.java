@@ -160,9 +160,9 @@ public class TeleOperated {
 		} else if (manip.getYButton()) {
 			Elevator.setElevatorToLevel(6);
 		} else {
-		*/ 
-			Elevator.moveElevator(manip.getLeftStickYAxis());
-		//}
+			Elevator.moveElevator(manip.getRightStickYAxis());
+		} */
+		ElevatorMotors.setPower(manip.getRightStickYAxis());
 		
 	}
 }

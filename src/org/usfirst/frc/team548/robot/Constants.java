@@ -11,16 +11,16 @@ public class Constants {
 	public static final int DT_RIGHT_BACK_TALON_POS = 9;
 	public static final int DT_RIGHT_FRONT_TALON_POS = 8;
 	public static final int DT_CENTER_STRAFE_TALON_POS = 7;
+	public static final int DT_STRAFE_SOL_POS = -1;
+	public static final int DT_LEFT_ENCODER_POS_1 = -1;
+	public static final int DT_LEFT_ENCODER_POS_2 = -1;
+	public static final int DT_RIGHT_ENCODER_POS_1 = -1;
+	public static final int DT_RIGHT_ENCODER_POS_2 = -1;
+	public static final int DT_STRAFE_ENCODER_POS_1 = -1;
+	public static final int DT_STRAFE_ENCODER_POS_2 = -1;
+	public static final int DT_GYRO_POS = -1;
 	public static final double DT_HUMAN_DRIVE_THRESHOLD = 0.2;
 	public static final double DT_HUMAN_STRAFE_THRESHOLD = 0.15;
-	public static final int DT_STRAFE_SOL_POS = 0;
-	public static final int DT_LEFT_ENCODER_POS_1 = 0;
-	public static final int DT_LEFT_ENCODER_POS_2 = 0;
-	public static final int DT_RIGHT_ENCODER_POS_1 = 0;
-	public static final int DT_RIGHT_ENCODER_POS_2 = 0;
-	public static final int DT_STRAFE_ENCODER_POS_1 = 0;
-	public static final int DT_STRAFE_ENCODER_POS_2 = 0;
-	public static final int DT_GYRO_POS = 0;
 	public static final double DT_STRAFE_MOD = .1;
 	public static final double DT_SLOW_DRIVE_MULTIPLIER = .5;
 	public static final double DT_SUPER_SLOW_DRIVE_MULTIPLIER = .25;
@@ -33,28 +33,30 @@ public class Constants {
 	//Elevator
 	public static final int ELEVATOR_LEFT_TALON_POS = 3;
 	public static final int ELEVATOR_RIGHT_TALON_POS = 6;
-	public static final int ELEVATOR_LEFT_ENCODER_POS_1 = 0;
-	public static final int ELEVATOR_LEFT_ENCODER_POS_2 = 0;
-	public static final int ELEVATOR_RIGHT_ENCODER_POS_1 = 0;
-	public static final int ELEVATOR_RIGHT_ENCODER_POS_2 = 0;
-	public static final int ELEVATOR_CONTAINER_SOL_POS = 0;
-	public static final int ELEVATOR_LIMIT_SWITCH_POS = 0;
+	public static final int ELEVATOR_LEFT_ENCODER_POS_1 = -1;
+	public static final int ELEVATOR_LEFT_ENCODER_POS_2 = -1;
+	public static final int ELEVATOR_RIGHT_ENCODER_POS_1 = -1;
+	public static final int ELEVATOR_RIGHT_ENCODER_POS_2 = -1;
+	public static final int ELEVATOR_CONTAINER_SOL_POS = -1;
+	public static final int ELEVATOR_TOP_LIMIT_SWITCH_POS = -1;
+	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = -1;
+	public static final double ELEVATOR_LEVEL_0_POS = -1;
+	public static final double ELEVATOR_LEVEL_1_POS = -1;
+	public static final double ELEVATOR_LEVEL_2_POS = -1;
+	public static final double ELEVATOR_LEVEL_3_POS = -1;
+	public static final double ELEVATOR_LEVEL_4_POS = -1;
+	public static final double ELEVATOR_LEVEL_5_POS = -1;
+	public static final double ELEVATOR_LEVEL_6_POS = -1;
 	public static final double ELEVATOR_SPEED = 0.5;
-	public static final double ELEVATOR_LEVEL_0_POS = 0;
-	public static final double ELEVATOR_LEVEL_1_POS = 0;
-	public static final double ELEVATOR_LEVEL_2_POS = 0;
-	public static final double ELEVATOR_LEVEL_3_POS = 0;
-	public static final double ELEVATOR_LEVEL_4_POS = 0;
-	public static final double ELEVATOR_LEVEL_5_POS = 0;
-	public static final double ELEVATOR_LEVEL_6_POS = 0;
+	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.5;
 	
 	
 	//Ingestor
 	public static final int IN_LEFT_TALON_POS = 4;
 	public static final int IN_RIGHT_TALON_POS = 5;
-	public static final int IN_RIGHT_SOL_POS = 0;
-	public static final int IN_LEFT_SOL_POS = 0;
+	public static final int IN_RIGHT_SOL_POS = -1;
+	public static final int IN_LEFT_SOL_POS = -1;
 	
 	//Pneumatics
-	public static final int COMPRESSOR_POS = 0;
+	public static final int COMPRESSOR_POS = -1;
 }
