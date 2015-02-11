@@ -149,6 +149,7 @@ public class TeleOperated {
 		 * B BUTTON: up one level
 		 * X BUTTON: bottom
 		 * Y BUTTON: top 
+		 * LEFT JOYSTICK: manual
 		 *
 		if(manip.getAButton()) {
 			Elevator.setElevatorDownOneLevel();
@@ -158,8 +159,10 @@ public class TeleOperated {
 			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
 			Elevator.setElevatorToLevel(6);
-		}
-		*/
+		} else {
+		*/ 
+			Elevator.moveElevator(manip.getLeftStickYAxis());
+		//}
 		
 	}
 }
