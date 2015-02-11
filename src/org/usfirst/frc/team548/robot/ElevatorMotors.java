@@ -22,7 +22,7 @@ public class ElevatorMotors implements PIDOutput {
 	
 	public static void setPower(double power) {
 		leftMotor.set(power);
-		rightMotor.set(power);
+		rightMotor.set(-power);
 	}
 	
 	public void pidWrite(double power) {

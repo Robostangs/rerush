@@ -48,26 +48,50 @@ public class TeleOperated {
 		 
 		
 		/*
-		 * Driving controls with outside x axis strafe
+		 * Outside x axis human strafe
+		 * LEFT BUMPER: Super slow human strafe
+		 * RIGHT BUMPER: Slow human strafe
 		 */
-		 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-		  	DriveTrain.humanDriveStrafe(-driver.getLeftStickXAxis());
-		 } else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-			 DriveTrain.humanDriveStrafe(-driver.getRightStickXAxis());
+		if(driver.getLeftBumper()) {
+			if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				DriveTrain.humanSuperSlowDriveStrafe(-driver.getLeftStickXAxis());
+			} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				DriveTrain.humanSuperSlowDriveStrafe(-driver.getRightStickXAxis());
+			} else {
+				DriveTrain.humanSuperSlowDriveStrafe(0);
+			}
+		 } else if(driver.getRightBumper()) {
+			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.humanSlowDriveStrafe(-driver.getLeftStickXAxis());
+				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.humanSlowDriveStrafe(-driver.getRightStickXAxis());
+				} else {
+					DriveTrain.humanSlowDriveStrafe(0);
+				}
 		 } else {
-			 DriveTrain.humanDriveStrafe(0);
+			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.humanDriveStrafe(-driver.getLeftStickXAxis());
+				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.humanDriveStrafe(-driver.getRightStickXAxis());
+				} else {
+					DriveTrain.humanDriveStrafe(0);
+				}
 		 }
 		 
 		 
 		 /*
-		  * Sketchy drive code (NEEDS TO BE CLEANED)
+		  * Human drive
+		  * LEFT BUMPER: Super slow human drive
+		  * RIGHT BUMPER: Slow human drive
 		  */
-		 if(Math.abs(driver.getLeftStickYAxis()) > Constants.DT_HUMAN_DRIVE_THRESHOLD || Math.abs(driver.getRightStickYAxis()) > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-			 DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-		 } else {
-			 DriveTrain.humanDrive(0, 0);
-		 }
 		 
+		 if(driver.getLeftBumper()) {
+				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+			} else if(driver.getRightBumper()) {
+				DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+			} else {
+				DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+			}
 		 
 		 /*
 		  * Driver arm solenoid controls
