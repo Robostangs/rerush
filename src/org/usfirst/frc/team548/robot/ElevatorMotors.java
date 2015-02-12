@@ -40,5 +40,17 @@ public class ElevatorMotors implements PIDOutput {
 		leftEncoder.reset();
 		rightEncoder.reset();
 	}
+	
+	public static double getLeftEncoder() {
+		return leftEncoder.getPosition();
+	}
+	
+	public static double getRightEncoder() {
+		return rightEncoder.getPosition();
+	}
+	
+	public static double getEncoderError() {
+		return (leftEncoder.getPosition() - rightEncoder.getPosition());
+	}
 
 }

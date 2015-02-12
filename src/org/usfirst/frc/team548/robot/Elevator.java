@@ -1,20 +1,16 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class Elevator {
 	
 	private static Elevator instance = null;
-	private static Encoder leftEncoder, rightEncoder;
 	private static DigitalInput topLimitSwitch, botLimitSwitch;
 	private static Solenoid containerSolenoid;
 	private static int currentElevatorPos;
 	
 	private Elevator() {
-		leftEncoder = new Encoder(Constants.ELEVATOR_LEFT_ENCODER_POS_1, Constants.DT_LEFT_ENCODER_POS_2);
-		rightEncoder = new Encoder(Constants.ELEVATOR_RIGHT_ENCODER_POS_1, Constants.ELEVATOR_RIGHT_ENCODER_POS_2);
 		topLimitSwitch = new DigitalInput(Constants.ELEVATOR_TOP_LIMIT_SWITCH_POS);
 		botLimitSwitch = new DigitalInput(Constants.ELEVATOR_BOT_LIMIT_SWITCH_POS);
 		containerSolenoid = new Solenoid(Constants.ELEVATOR_CONTAINER_SOL_POS);
@@ -69,7 +65,6 @@ public class Elevator {
 	}
 	
 	public static void setElevatorToLevel(int level) {
-		//you could also make a double array of level constants so you could call it like this Constants.ELEVATOR_LEVEL[What ever level you want]
 		if(level == 0) {
 			setElevatorPosition(Constants.ELEVATOR_LEVEL_0_POS);
 		} else if(level == 1) {
