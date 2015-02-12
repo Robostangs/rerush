@@ -40,21 +40,12 @@ public class Elevator {
 		ElevatorMotors.setPower(0);
 	}
 	
-	public static void resetEncoders() {
-		leftEncoder.reset();
-		rightEncoder.reset();
-	}
-	
 	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen() {
 		containerSolenoid.set(true);
 	}
 	
 	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed() {
 		containerSolenoid.set(false);
-	}
-	
-	public static double getEncoderAverage() {
-		return ((leftEncoder.getDistance() + rightEncoder.getDistance()) / 2);
 	}
 	
 	public static boolean getTopElevatorSwitch() {
@@ -67,9 +58,9 @@ public class Elevator {
 	
 	public static void setElevatorPosition(double position) {
 		if(!isAtSetpoint(position)) {		
-			if(position > getEncoderAverage()) {
+			if(position > ElevatorMotors.getEncoderAverage()) {
 				moveElevator(Constants.ELEVATOR_SPEED);
-			} else if(position < getEncoderAverage()) {
+			} else if(position < ElevatorMotors.getEncoderAverage()) {
 				moveElevator(-Constants.ELEVATOR_SPEED);
 			} 
 		} else {
@@ -98,7 +89,7 @@ public class Elevator {
 	}
 	
 	public static boolean isAtSetpoint(double setpoint) {
-		while(setpoint != getEncoderAverage()) {
+		while(setpoint != ElevatorMotors.getEncoderAverage()) {
 			return false;
 		}
 		return true;
@@ -125,7 +116,7 @@ public class Elevator {
 			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
 		} else {
 			Elevator.stopElevator();
-			resetEncoders();
+			ElevatorMotors.resetEncoders();
 		}
 	}
 

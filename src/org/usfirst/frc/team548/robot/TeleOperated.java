@@ -187,6 +187,10 @@ public class TeleOperated {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} */
 		ElevatorMotors.setPower(manip.getRightStickYAxis());
+		if(manip.getStartButton()) {
+			ElevatorMotors.resetEncoders();
+		}
+		
 		
 	}
 }
