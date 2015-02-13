@@ -53,6 +53,10 @@ public class DriveMotors {
 		return rightEncoder.getPosition();
 	}
 	
+	public static double getEncoderAverage() {
+		return ((leftEncoder.getPosition() + rightEncoder.getPosition())/2);
+	}
+	
 	public static double getLeftEncoderVelocity() {
 		return leftEncoder.getVelocity();
 	}

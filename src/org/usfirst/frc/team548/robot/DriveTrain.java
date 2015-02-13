@@ -108,6 +108,25 @@ public class DriveTrain {
 		gyro.reset();
 		gyroInt = false;
 	}
+	
+	public static boolean isAtDistance(double setpoint) {
+		while(setpoint != DriveMotors.getEncoderAverage()) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static void driveDistance(double position) {
+		if(!isAtDistance(position)) {		
+			if(position > DriveMotors.getEncoderAverage()) {
+				humanDrive(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+			} else if(position < ElevatorMotors.getEncoderAverage()) {
+				humanDrive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+			} 
+		} else {
+			DriveMotors.stopMotors();
+		}	
+	}
 
 
 }

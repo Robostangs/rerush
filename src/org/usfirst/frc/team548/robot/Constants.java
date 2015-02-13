@@ -5,6 +5,11 @@ public class Constants {
 	public static final int XBOX_DRIVER_PORT = 0;
 	public static final int XBOX_MANIP_PORT = 1;
 	
+	//Autonomouse
+	public static final double AUTON_DRIVE_DISTANCE_ROBOT_SET = -1;
+	public static final double AUTON_DISTANCE_TO_CONTAINER = -1;
+	public static final double AUTON_DISTANCE_FROM_CONTAINER = -1;
+	
 	//Drive Train
 	public static final int DT_LEFT_BACK_TALON_POS = 1;
 	public static final int DT_LEFT_FRONT_TALON_POS = 2;
@@ -26,6 +31,8 @@ public class Constants {
 	public static final double DT_SUPER_SLOW_DRIVE_MULTIPLIER = .25;
 	public static final double DT_SLOW_STRAFE_MULTIPLIER = .5;
 	public static final double DT_SUPER_SLOW_STRAFE_MULTIPLIER = .25;
+	public static final double DRIVE_DISTANCE_SPEED_LEFT = 0.5;
+	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.5;
 	
 	//Arm
 	public static final int ARM_SOL_POS = 1;
