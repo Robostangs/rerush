@@ -62,12 +62,12 @@ public class Autonomous {
 			DriveTrain.driveDistance(Constants.AUTON_DISTANCE_TO_CONTAINER);
 		} else {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			//RAISE CLAW UP A BIT HERE
+			Elevator.setElevatorUpOneLevel();
 			if(!DriveTrain.isAtDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4) {
 				DriveTrain.driveDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER);
 			} else {
 				DriveMotors.stopMotors();
-				//LOWER CLAW A BIT HERE
+				Elevator.setElevatorDownOneLevel();
 				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 			}
 		}
