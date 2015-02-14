@@ -11,8 +11,16 @@ public class Constants {
 	public static final double AUTON_2_DISTANCE_FROM_CONTAINER = -1;
 	public static final double AUTON_3_DISTANCE_TO_CONTAINER = -1;
 	public static final double AUTON_3_DISTANCE_TO_TOTE = -1;
-	public static final double AUTON_3_TURN_ANGLE = 0;
+	public static final double AUTON_3_TURN_ANGLE = -1;
 	public static final double AUTON_3_DISTANCE_TO_AUTO_ZONE = -1;
+	public static final double AUTON_4_DISTANCE_TO_FIRST_CONTAINER = -1;
+	public static final double AUTON_4_DISTANCE_TO_FIRST_TOTE = -1;
+	public static final double AUTON_4_FIRST_TURN_ANGLE = -1;
+	public static final double AUTON_4_DISTANCE_TO_SECOND_TOTE = -1;
+	public static final double AUTON_4_DISTANCE_TO_THIRD_TOTE = -1;
+	public static final double AUTON_4_DISTANCE_BACKING_UP = -1;
+	public static final double AUTON_4_SECOND_TURN_ANGLE = -1;
+	public static final double AUTON_4_DISTANCE_TO_AUTO_ZONE = -1;
 	
 	//Drive Train
 	public static final int DT_LEFT_BACK_TALON_POS = 1;
