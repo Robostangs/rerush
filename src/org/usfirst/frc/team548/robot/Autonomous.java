@@ -51,20 +51,21 @@ public class Autonomous {
 	
 	private static void driveToAutoZone() {
 		if(autoTimer.get() <= 7) {
-			DriveTrain.driveDistance(Constants.AUTON_DRIVE_DISTANCE_ROBOT_SET);
+			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
 		} else {
 			DriveMotors.stopMotors();
 		}
 	}
 	
 	private static void driveToAutoZoneWithContainer() {
-		if(!DriveTrain.isAtDistance(Constants.AUTON_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3) {
-			DriveTrain.driveDistance(Constants.AUTON_DISTANCE_TO_CONTAINER);
+		if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3) {
+			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
 		} else {
+			DriveMotors.stopMotors();
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 			Elevator.setElevatorUpOneLevel();
-			if(!DriveTrain.isAtDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4) {
-				DriveTrain.driveDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER);
+			if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4) {
+				DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER);
 			} else {
 				DriveMotors.stopMotors();
 				Elevator.setElevatorDownOneLevel();
@@ -74,6 +75,33 @@ public class Autonomous {
 	}
 	
 	private static void driveToAutoZoneWithToteAndContainer() {
+		if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_CONTAINER)) {
+			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
+		} else {
+			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+			Elevator.setElevatorUpOneLevel();
+			if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_TOTE)) {
+				DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_TOTE);
+				Ingestor.setIngestorIn();
+				Ingestor.setIngestorPower(1);
+			} else {
+				Ingestor.setIngestorPower(0);
+				DriveMotors.stopMotors();
+				Elevator.setElevatorUpOneLevel();
+				if(!DriveTrain.isAtTurn(Constants.AUTON_3_TURN_ANGLE)) {
+					DriveTrain.turn(Constants.AUTON_3_TURN_ANGLE);
+				} else {
+					DriveMotors.stopMotors();
+					if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE)) {
+						DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE);
+					} else {
+						DriveMotors.stopMotors();
+						Elevator.setElevatorToLevel(0);
+						Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+					}
+				}
+			}
+		}
 		
 	}
 	

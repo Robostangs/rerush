@@ -6,9 +6,13 @@ public class Constants {
 	public static final int XBOX_MANIP_PORT = 1;
 	
 	//Autonomouse
-	public static final double AUTON_DRIVE_DISTANCE_ROBOT_SET = -1;
-	public static final double AUTON_DISTANCE_TO_CONTAINER = -1;
-	public static final double AUTON_DISTANCE_FROM_CONTAINER = -1;
+	public static final double AUTON_1_DRIVE_DISTANCE_ROBOT_SET = -1;
+	public static final double AUTON_2_DISTANCE_TO_CONTAINER = -1;
+	public static final double AUTON_2_DISTANCE_FROM_CONTAINER = -1;
+	public static final double AUTON_3_DISTANCE_TO_CONTAINER = -1;
+	public static final double AUTON_3_DISTANCE_TO_TOTE = -1;
+	public static final double AUTON_3_TURN_ANGLE = 0;
+	public static final double AUTON_3_DISTANCE_TO_AUTO_ZONE = -1;
 	
 	//Drive Train
 	public static final int DT_LEFT_BACK_TALON_POS = 1;
