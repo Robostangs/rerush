@@ -7,15 +7,10 @@ public class Autonomous {
 	private static Autonomous instance;
 	private static int mode = 1;
 	private static Timer autoTimer;
-	private static boolean step1Done = false;
-	private static boolean step2Done = false;
-	private static boolean step3Done = false;
-	private static boolean step4Done = false;
-	private static boolean step5Done = false;
-	private static boolean step6Done = false;
-	private static boolean step7Done = false;
-	private static boolean step8Done = false;
-	
+	private static boolean step1Done = false, step2Done = false,
+			step3Done = false, step4Done = false, step5Done = false,
+			step6Done = false, step7Done = false, step8Done = false;
+
 	private Autonomous() {
 
 	}
