@@ -3,8 +3,6 @@ package org.usfirst.frc.team548.robot;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static boolean hasReachedContainer = false;
-	private static boolean done = false;
 	private static int mode = 1;
 	
 	private Autonomous() {
@@ -49,24 +47,21 @@ public class Autonomous {
 	}
 	
 	private static void driveToAutoZone() {
-		if(!done) {
 			DriveTrain.driveDistance(Constants.AUTON_DRIVE_DISTANCE_ROBOT_SET);
-			done = true;
-		}
 	}
 	
 	private static void driveToAutoZoneWithContainer() {
-		if(!done) {
-			if(!hasReachedContainer) {
-				if(DriveMotors.getEncoderAverage() != Constants.AUTON_DISTANCE_TO_CONTAINER) {
-					DriveTrain.driveDistance(Constants.AUTON_DISTANCE_TO_CONTAINER);
-				} else {
-					hasReachedContainer = true;
-				}
-			} else {
+		if(!DriveTrain.isAtDistance(Constants.AUTON_DISTANCE_TO_CONTAINER)) {
+			DriveTrain.driveDistance(Constants.AUTON_DISTANCE_TO_CONTAINER);
+		} else {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			DriveTrain.driveDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER);
-			done = true;
+			//RAISE CLAW UP A BIT HERE
+			if(!DriveTrain.isAtDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER)) {
+				DriveTrain.driveDistance(Constants.AUTON_DISTANCE_FROM_CONTAINER);
+			} else {
+				DriveMotors.stopMotors();
+				//LOWER CLAW A BIT HERE
+				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 			}
 		}
 	}

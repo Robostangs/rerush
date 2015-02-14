@@ -10,7 +10,8 @@ public class DriveTrain {
 	private static Solenoid strafeSolenoid;
 	private static Gyro gyro;
 	private static boolean gyroInt = false;
-	private static double gyroAngle = 0;
+	private static double gyroInitAngle = 0;
+	private static boolean encodersInit = false;
 
 	private DriveTrain() {
 		gyro = new Gyro(Constants.DT_GYRO_POS);
@@ -87,12 +88,12 @@ public class DriveTrain {
 	public static void strafeStraight(double power) {
 		if(!gyroInt) {
 			gyro.reset();
-			gyroAngle = getGyroAngle();
+			gyroInitAngle = getGyroAngle();
 			gyroInt = true;
 		} else {
-			if(gyroAngle < getGyroAngle()) {
+			if(gyroInitAngle < getGyroAngle()) {
 				DriveMotors.drive(Constants.DT_STRAFE_MOD*power, -Constants.DT_STRAFE_MOD*power);
-			}  else if(gyroAngle > getGyroAngle()) {
+			}  else if(gyroInitAngle > getGyroAngle()) {
 				DriveMotors.drive(-Constants.DT_STRAFE_MOD*power, Constants.DT_STRAFE_MOD*power);
 			} else {
 				DriveMotors.drive(0, 0);
@@ -110,22 +111,52 @@ public class DriveTrain {
 	}
 	
 	public static boolean isAtDistance(double setpoint) {
-		while(setpoint != DriveMotors.getEncoderAverage()) {
+		if(setpoint != DriveMotors.getEncoderAverage()) {
 			return false;
 		}
 		return true;
 	}
 	
 	public static void driveDistance(double position) {
+		if(!encodersInit) {
+			DriveMotors.resetEncoders();
+			encodersInit = true;
+		}
+		
 		if(!isAtDistance(position)) {		
 			if(position > DriveMotors.getEncoderAverage()) {
-				humanDrive(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} else if(position < ElevatorMotors.getEncoderAverage()) {
-				humanDrive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} 
 		} else {
 			DriveMotors.stopMotors();
 		}	
+	}
+	
+	public static void turn(double angle) {
+		if(!gyroInt) {
+			gyroInitAngle = gyro.getAngle();
+			gyroInt = true;
+		}
+		if(!isAtTurn(angle)) {
+			if(angle > gyro.getAngle()) {
+				DriveMotors.drive(Constants.DRIVE_TURN_SPEED_LEFT, -Constants.DRIVE_TURN_SPEED_RIGHT);
+			} else if(angle < gyro.getAngle()) {
+				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+			}
+		} else {
+			DriveMotors.stopMotors();
+		}
+	}
+	
+	public static boolean isAtTurn(double angle) {
+		if(angle != gyro.getAngle()) {
+			return false;
+		} else {
+			return true;
+		}
+		
 	}
 
 

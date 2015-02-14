@@ -33,6 +33,8 @@ public class Constants {
 	public static final double DT_SUPER_SLOW_STRAFE_MULTIPLIER = .25;
 	public static final double DRIVE_DISTANCE_SPEED_LEFT = 0.5;
 	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.5;
+	public static final double DRIVE_TURN_SPEED_LEFT = 0.3;
+	public static final double DRIVE_TURN_SPEED_RIGHT = 0.3;
 	
 	//Arm
 	public static final int ARM_SOL_POS = 1;
