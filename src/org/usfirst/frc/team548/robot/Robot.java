@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-
+    	Autonomous.run();
     }
 
     /**
@@ -58,4 +58,7 @@ public class Robot extends IterativeRobot {
     
     }
     
+    public void autonomousInit() {
+    	Autonomous.startTimer();
+    }
 }
