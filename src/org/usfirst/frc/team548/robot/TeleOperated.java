@@ -121,27 +121,25 @@ public class TeleOperated {
 		 * Manip ingestor wheel controls
 		 * LEFT JOYSTICK X AXIS: shift totes side to side
 		 * TRIGGERS: ingest and exgest
-		 *
+		 */
 		if(Math.abs(manip.getLeftStickXAxis()) > 0.2) {
-			Ingestor.setIngestorIn();
 			Ingestor.setDirection(manip.getLeftStickXAxis());
 		} else {
-			Ingestor.setIngestorIn();
 			Ingestor.setIngestorPower(manip.getBothTriggerAxis());
 		}
-		*/
+		
 		
 		/*
 		 * Manip ingestor attachment controls
 		 * LEFT BUMPER: in/closed
 		 * RIGHT BUMPER: out/open 
-		 *
+		 */
 		if(manip.getLeftBumper()) {
 			Ingestor.setIngestorIn();
 		} else if(manip.getRightBumper()) {
 			Ingestor.setIngestorOut();
 		}
-		*/
+		
 		
 		/*
 		 * Manip container grabber controls
@@ -161,9 +159,9 @@ public class TeleOperated {
 		 * DPAD BOTTOM HALF: arm backwards 
 		 */
 		if(manip.isDPadTopHalf()) {
-			Arm.setArmForward();
-		} else if(manip.isDPadBottomHalf()) {
 			Arm.setArmBack();
+		} else if(manip.isDPadBottomHalf()) {
+			Arm.setArmForward();
 		}
 		
 		
@@ -179,14 +177,20 @@ public class TeleOperated {
 			Elevator.setElevatorDownOneLevel();
 		} else if (manip.getBButton()) {
 			Elevator.setElevatorUpOneLevel();
-		} else if (manip.getXButton()) {
+		} else if (manip.g
+		etXButton()) {
 			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
 			Elevator.setElevatorToLevel(6);
 		} else {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} */
-		ElevatorMotors.setPower(manip.getRightStickYAxis());
+		if(Math.abs(manip.getRightStickYAxis()) > 0.2) {
+			ElevatorMotors.setPower((manip.getRightStickYAxis())/2);
+		} else {
+			ElevatorMotors.setPower(0);
+		}
+			
 		if(manip.getStartButton()) {
 			ElevatorMotors.resetEncoders();
 		}

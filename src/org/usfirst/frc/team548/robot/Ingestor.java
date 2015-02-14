@@ -1,11 +1,11 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Ingestor {
 	private static Ingestor instance = null;
-	private static Solenoid leftSolenoid, rightSolenoid;
+	private static DoubleSolenoid leftSolenoid, rightSolenoid;
 	private static CANTalon leftMotor, rightMotor;
 	
 	public static Ingestor getInstance() {
@@ -16,20 +16,20 @@ public class Ingestor {
 	}
 	
 	private Ingestor() {
-		leftSolenoid = new Solenoid(Constants.IN_LEFT_SOL_POS);
-		rightSolenoid = new Solenoid(Constants.IN_RIGHT_SOL_POS);
+		leftSolenoid = new DoubleSolenoid(Constants.IN_LEFT_SOL_POS_1, Constants.IN_LEFT_SOL_POS_2);
+		rightSolenoid = new DoubleSolenoid(Constants.IN_RIGHT_SOL_POS_1, Constants.IN_RIGHT_SOL_POS_2);
 		leftMotor = new CANTalon(Constants.IN_LEFT_TALON_POS);
 		rightMotor = new CANTalon(Constants.IN_RIGHT_TALON_POS);
 	}
 	
 	public static void setIngestorOut() {
-		leftSolenoid.set(true);
-		rightSolenoid.set(true);
+		leftSolenoid.set(DoubleSolenoid.Value.kForward);
+		rightSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public static void setIngestorIn() {
-		leftSolenoid.set(false);
-		rightSolenoid.set(false);
+		leftSolenoid.set(DoubleSolenoid.Value.kReverse);
+		rightSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 		
 	public static void setIngestorPower(double power) {

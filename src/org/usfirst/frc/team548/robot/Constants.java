@@ -28,7 +28,7 @@ public class Constants {
 	public static final int DT_RIGHT_BACK_TALON_POS = 9;
 	public static final int DT_RIGHT_FRONT_TALON_POS = 8;
 	public static final int DT_CENTER_STRAFE_TALON_POS = 7;
-	public static final int DT_STRAFE_SOL_POS = 0;
+	public static final int DT_STRAFE_SOL_POS = 3;
 	public static final int DT_LEFT_ENCODER_POS_1 = -1;
 	public static final int DT_LEFT_ENCODER_POS_2 = -1;
 	public static final int DT_RIGHT_ENCODER_POS_1 = -1;
@@ -75,8 +75,10 @@ public class Constants {
 	//Ingestor
 	public static final int IN_LEFT_TALON_POS = 4;
 	public static final int IN_RIGHT_TALON_POS = 5;
-	public static final int IN_RIGHT_SOL_POS = -1;
-	public static final int IN_LEFT_SOL_POS = -1;
+	public static final int IN_RIGHT_SOL_POS_1 = 4;
+	public static final int IN_RIGHT_SOL_POS_2 = 0;	
+	public static final int IN_LEFT_SOL_POS_1 = 5;
+	public static final int IN_LEFT_SOL_POS_2 = 1;
 	
 	//Pneumatics
 	public static final int COMPRESSOR_POS = -1;

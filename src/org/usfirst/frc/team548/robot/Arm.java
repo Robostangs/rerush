@@ -1,14 +1,14 @@
 package org.usfirst.frc.team548.robot;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Arm {
 	
 	private static Arm instance = null;
-	private static Solenoid armSolenoid;
+	private static DoubleSolenoid armSolenoid;
 	
 	private Arm() {
-		armSolenoid = new Solenoid(Constants.ARM_SOL_POS);
+		armSolenoid = new DoubleSolenoid(6, 7);
 	}
 	
 	public static Arm getInstance() {
@@ -19,11 +19,11 @@ public class Arm {
 	}
 
 	public static void setArmForward() {
-		armSolenoid.set(true);
+		armSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public static void setArmBack() {
-		armSolenoid.set(false);
+		armSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 }
