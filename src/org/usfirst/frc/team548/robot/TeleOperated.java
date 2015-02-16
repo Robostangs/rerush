@@ -45,37 +45,44 @@ public class TeleOperated {
 		} else if(driver.getBButton()) {
 			DriveTrain.setStrafeUp();
 		}
-		if (driver.getStartButton()) {
-			DriveMotors.resetEncoders();
-		}
 		
 		/*
 		 * Outside x axis human strafe
 		 * LEFT BUMPER: Super slow human strafe
 		 * RIGHT BUMPER: Slow human strafe
+		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED. OTHERWISE WHEEL GOES UP
 		 */
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				DriveTrain.setStrafeDown();
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getLeftStickXAxis());
 			} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				DriveTrain.setStrafeDown();
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getRightStickXAxis());
 			} else {
+				DriveTrain.setStrafeUp();
 				DriveTrain.humanSuperSlowDriveStrafe(0);
 			}
 		 } else if(driver.getRightBumper()) {
 			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				 DriveTrain.setStrafeDown();
 					DriveTrain.humanSlowDriveStrafe(-driver.getLeftStickXAxis());
 				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.setStrafeDown();
 					DriveTrain.humanSlowDriveStrafe(-driver.getRightStickXAxis());
 				} else {
+					DriveTrain.setStrafeUp();
 					DriveTrain.humanSlowDriveStrafe(0);
 				}
 		 } else {
 			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				 DriveTrain.setStrafeDown();
 					DriveTrain.humanDriveStrafe(-driver.getLeftStickXAxis());
 				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+					DriveTrain.setStrafeDown();
 					DriveTrain.humanDriveStrafe(-driver.getRightStickXAxis());
 				} else {
+					DriveTrain.setStrafeUp();
 					DriveTrain.humanDriveStrafe(0);
 				}
 		 }
@@ -115,8 +122,16 @@ public class TeleOperated {
 		 }
 		  */
 		 
-		 if(driver.getRightJoystickButton()) {
-			 DriveTrain.driveStraight(0.5, 0.5);
+//		 if(driver.getRightJoystickButton()) {
+//			 DriveTrain.driveStraight(0.5, 0.5);
+//		 }
+//		 
+//		 if(driver.getLeftJoystickButton()) {
+//			 DriveMotors.drive(-0.5, -0.5);
+//		 }
+		 
+		 if(driver.getStartButton()) {
+			 DriveMotors.resetEncoders();
 		 }
 		 
 	}
@@ -196,6 +211,12 @@ public class TeleOperated {
 		} else {
 			Elevator.moveElevator(0);
 		}
+		
+//		if(manip.getAButton()) {
+//			Elevator.setElevatorPositionUp(2000);
+//		} else {
+//			Elevator.moveElevator(0);
+//		}
 
 		
 		

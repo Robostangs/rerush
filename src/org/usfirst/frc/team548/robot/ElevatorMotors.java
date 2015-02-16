@@ -33,7 +33,7 @@ public class ElevatorMotors implements PIDOutput {
 	}
 
 	public static double getEncoderAverage() {
-		return ((leftEncoder.getPosition() + rightEncoder.getPosition()) / 2);
+		return ((-leftEncoder.getPosition() + rightEncoder.getPosition()) / 2);
 	}
 	
 	public static void resetEncoders() {

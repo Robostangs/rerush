@@ -2,6 +2,7 @@ package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class DriveTrain {
@@ -78,11 +79,11 @@ public class DriveTrain {
 	}
 
 	public static void setStrafeDown() {
-		strafeSolenoid.set(false);
+		strafeSolenoid.set(true);
 	}
 
 	public static void setStrafeUp() {
-		strafeSolenoid.set(true);
+		strafeSolenoid.set(false);
 	}
 
 	public static void strafeStraight(double power) {
@@ -122,16 +123,12 @@ public class DriveTrain {
 			DriveMotors.resetEncoders();
 			encodersInit = true;
 		}
-		
-		if(!isAtDistance(position)) {		
-			if(position > DriveMotors.getEncoderAverage()) {
-				driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
-			} else if(position < ElevatorMotors.getEncoderAverage()) {
-				driveStraight(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
-			} 
-		} else {
+			
+		if(position > DriveMotors.getEncoderAverage()) {
+			driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+		} else if(position <= DriveMotors.getEncoderAverage()) {
 			DriveMotors.stopMotors();
-		}	
+		} 
 	}
 	
 	public static void turn(double angle) {
@@ -162,13 +159,16 @@ public class DriveTrain {
 	public static void driveStraight(double left, double right) {
 		left = -left;
 		right = -right;
-		if(DriveMotors.getLeftEncoderPosition() > DriveMotors.getRightEncoderPosition()) {
+		if(Math.abs(DriveMotors.getLeftEncoderPosition()) > Math.abs(DriveMotors.getRightEncoderPosition())) {
 			DriveMotors.drive((left*Constants.DRIVE_STRAIGHT_SLOW_MOD), (right*Constants.DRIVE_STRAIGHT_FAST_MOD));
-		} else if(DriveMotors.getLeftEncoderPosition() < DriveMotors.getRightEncoderPosition()) {
+			SmartDashboard.putString("IDK", "left");
+		} else if(Math.abs(DriveMotors.getLeftEncoderPosition()) < Math.abs(DriveMotors.getRightEncoderPosition())) {
 			DriveMotors.drive((left*Constants.DRIVE_STRAIGHT_FAST_MOD), (right*Constants.DRIVE_STRAIGHT_SLOW_MOD));
+			SmartDashboard.putString("IDK", "right");
 		} else {
 			DriveMotors.drive(left, right);
 		}
+		SmartDashboard.putNumber("DDK", (DriveMotors.getLeftEncoderPosition()/Math.abs(DriveMotors.getRightEncoderPosition())));
 	}
 
 

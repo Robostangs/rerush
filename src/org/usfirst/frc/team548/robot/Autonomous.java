@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 2;
+	private static int mode = 1;
 	private static Timer autoTimer;
 	private static boolean step1Done = false, step2Done = false,
 			step3Done = false, step4Done = false, step5Done = false,
@@ -53,18 +53,12 @@ public class Autonomous {
 	}
 	
 	private static void driveToAutoZone() {
-//		if(autoTimer.get() <= 7) {
-//			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
-//		} else {
-//			DriveMotors.stopMotors();
-//		}
-		
-		if(autoTimer.get() <= 3) {
-			DriveMotors.drive(-.5, -.5);
+		if(autoTimer.get() <= 7) {
+			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
 		} else {
 			DriveMotors.stopMotors();
-			
 		}
+
 	}
 	
 	private static void driveToAutoZoneWithContainer() {
@@ -108,104 +102,104 @@ public class Autonomous {
 	}
 	
 	private static void driveToAutoZoneWithToteAndContainer() {
-		if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_CONTAINER) && !step1Done) {
-			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
-		} else {
-			step1Done = true;
-			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			Elevator.setElevatorUpOneLevel();
-			if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_TOTE) && !step2Done) {
-				DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_TOTE);
-				Ingestor.setIngestorIn();
-				Ingestor.setIngestorPower(1);
-			} else {
-				step2Done = true;
-				Ingestor.setIngestorPower(0);
-				DriveMotors.stopMotors();
-				Elevator.setElevatorUpOneLevel();
-				if(!DriveTrain.isAtTurn(Constants.AUTON_3_TURN_ANGLE) && !step3Done) {
-					DriveTrain.turn(Constants.AUTON_3_TURN_ANGLE);
-				} else {
-					step3Done = true;
-					DriveMotors.stopMotors();
-					if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE) && !step4Done) {
-						DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE);
-					} else {
-						step4Done = true;
-						DriveMotors.stopMotors();
-						Elevator.setElevatorToLevel(0);
-						Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-					}
-				}
-			}
-		}
-		
+//		if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_CONTAINER) && !step1Done) {
+//			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
+//		} else {
+//			step1Done = true;
+//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+//			Elevator.setElevatorUpOneLevel();
+//			if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_TOTE) && !step2Done) {
+//				DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_TOTE);
+//				Ingestor.setIngestorIn();
+//				Ingestor.setIngestorPower(1);
+//			} else {
+//				step2Done = true;
+//				Ingestor.setIngestorPower(0);
+//				DriveMotors.stopMotors();
+//				Elevator.setElevatorUpOneLevel();
+//				if(!DriveTrain.isAtTurn(Constants.AUTON_3_TURN_ANGLE) && !step3Done) {
+//					DriveTrain.turn(Constants.AUTON_3_TURN_ANGLE);
+//				} else {
+//					step3Done = true;
+//					DriveMotors.stopMotors();
+//					if(!DriveTrain.isAtDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE) && !step4Done) {
+//						DriveTrain.driveDistance(Constants.AUTON_3_DISTANCE_TO_AUTO_ZONE);
+//					} else {
+//						step4Done = true;
+//						DriveMotors.stopMotors();
+//						Elevator.setElevatorToLevel(0);
+//						Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+//					}
+//				}
+//			}
+//		}
+//		
 	}
-	
+//	
 	private static void thinkOfAGoodNameForThidMethodForAuto4() {
-		if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER) && !step1Done) {
-			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-			DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER);
-		} else {
-			step1Done = true;
-			DriveMotors.stopMotors();
-			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			Elevator.setElevatorUpOneLevel();
-			if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE) && !step2Done) {
-				Ingestor.setIngestorIn();
-				Ingestor.setIngestorPower(1);
-				DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE);
-			} else {
-				step2Done = true;
-				DriveMotors.stopMotors();
-				Ingestor.setIngestorPower(0);
-				Elevator.setElevatorUpOneLevel();
-				if(!DriveTrain.isAtTurn(Constants.AUTON_4_FIRST_TURN_ANGLE) && !step3Done) {
-					DriveTrain.turn(Constants.AUTON_4_FIRST_TURN_ANGLE);
-				} else {
-					step3Done = true;
-					if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE) && !step4Done) {
-						Ingestor.setIngestorIn();
-						Ingestor.setIngestorPower(1);
-						DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE);
-					} else {
-						step4Done = true;
-						DriveMotors.stopMotors();
-						Ingestor.setIngestorPower(0);
-						Elevator.setElevatorUpOneLevel();
-						if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE) && !step5Done) {
-							Ingestor.setIngestorIn();
-							Ingestor.setIngestorPower(1);
-							DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE);
-						} else {
-							step5Done = true;
-							DriveMotors.stopMotors();
-							Ingestor.setIngestorPower(0);
-							Elevator.setElevatorUpOneLevel();
-							if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_BACKING_UP) && !step6Done) {
-								DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_BACKING_UP);
-							} else {
-								step6Done = true;
-								DriveMotors.stopMotors();
-								if(!DriveTrain.isAtTurn(Constants.AUTON_4_SECOND_TURN_ANGLE) && !step7Done) {
-									DriveTrain.turn(Constants.AUTON_4_SECOND_TURN_ANGLE);
-								} else {
-									step7Done = true;
-									if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE) && !step8Done) {
-										DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE);
-									} else {
-										step8Done = true;
-										DriveMotors.stopMotors();
-										Elevator.setElevatorPosition(0);
-										Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+//		if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER) && !step1Done) {
+//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+//			DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER);
+//		} else {
+//			step1Done = true;
+//			DriveMotors.stopMotors();
+//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+//			Elevator.setElevatorUpOneLevel();
+//			if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE) && !step2Done) {
+//				Ingestor.setIngestorIn();
+//				Ingestor.setIngestorPower(1);
+//				DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE);
+//			} else {
+//				step2Done = true;
+//				DriveMotors.stopMotors();
+//				Ingestor.setIngestorPower(0);
+//				Elevator.setElevatorUpOneLevel();
+//				if(!DriveTrain.isAtTurn(Constants.AUTON_4_FIRST_TURN_ANGLE) && !step3Done) {
+//					DriveTrain.turn(Constants.AUTON_4_FIRST_TURN_ANGLE);
+//				} else {
+//					step3Done = true;
+//					if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE) && !step4Done) {
+//						Ingestor.setIngestorIn();
+//						Ingestor.setIngestorPower(1);
+//						DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE);
+//					} else {
+//						step4Done = true;
+//						DriveMotors.stopMotors();
+//						Ingestor.setIngestorPower(0);
+//						Elevator.setElevatorUpOneLevel();
+//						if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE) && !step5Done) {
+//							Ingestor.setIngestorIn();
+//							Ingestor.setIngestorPower(1);
+//							DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE);
+//						} else {
+//							step5Done = true;
+//							DriveMotors.stopMotors();
+//							Ingestor.setIngestorPower(0);
+//							Elevator.setElevatorUpOneLevel();
+//							if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_BACKING_UP) && !step6Done) {
+//								DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_BACKING_UP);
+//							} else {
+//								step6Done = true;
+//								DriveMotors.stopMotors();
+//								if(!DriveTrain.isAtTurn(Constants.AUTON_4_SECOND_TURN_ANGLE) && !step7Done) {
+//									DriveTrain.turn(Constants.AUTON_4_SECOND_TURN_ANGLE);
+//								} else {
+//									step7Done = true;
+//									if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE) && !step8Done) {
+//										DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE);
+//									} else {
+//										step8Done = true;
+//										DriveMotors.stopMotors();
+//										Elevator.setElevatorPosition(0);
+//										Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	private static void godTierAuto() {
