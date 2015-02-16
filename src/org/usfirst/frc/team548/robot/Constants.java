@@ -29,12 +29,6 @@ public class Constants {
 	public static final int DT_RIGHT_FRONT_TALON_POS = 8;
 	public static final int DT_CENTER_STRAFE_TALON_POS = 7;
 	public static final int DT_STRAFE_SOL_POS = 3;
-	public static final int DT_LEFT_ENCODER_POS_1 = -1;
-	public static final int DT_LEFT_ENCODER_POS_2 = -1;
-	public static final int DT_RIGHT_ENCODER_POS_1 = -1;
-	public static final int DT_RIGHT_ENCODER_POS_2 = -1;
-	public static final int DT_STRAFE_ENCODER_POS_1 = -1;
-	public static final int DT_STRAFE_ENCODER_POS_2 = -1;
 	public static final int DT_GYRO_POS = 0;
 	public static final double DT_HUMAN_DRIVE_THRESHOLD = 0.2;
 	public static final double DT_HUMAN_STRAFE_THRESHOLD = 0.15;
@@ -47,9 +41,12 @@ public class Constants {
 	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.5;
 	public static final double DRIVE_TURN_SPEED_LEFT = 0.3;
 	public static final double DRIVE_TURN_SPEED_RIGHT = 0.3;
+	public static final double DRIVE_STRAIGHT_SLOW_MOD = 0.9;
+	public static final double DRIVE_STRAIGHT_FAST_MOD = 1.1;
 	
 	//Arm
-	public static final int ARM_SOL_POS = 1;
+	public static final int ARM_SOL_POS_1 = 6;
+	public static final int ARM_SOL_POS_2 = 7;
 	
 	//Elevator
 	public static final int ELEVATOR_LEFT_TALON_POS = 3;
@@ -58,9 +55,9 @@ public class Constants {
 	public static final int ELEVATOR_LEFT_ENCODER_POS_2 = -1;
 	public static final int ELEVATOR_RIGHT_ENCODER_POS_1 = -1;
 	public static final int ELEVATOR_RIGHT_ENCODER_POS_2 = -1;
-	public static final int ELEVATOR_CONTAINER_SOL_POS = -1;
+	public static final int ELEVATOR_CONTAINER_SOL_POS = 2;
 	public static final int ELEVATOR_TOP_LIMIT_SWITCH_POS = -1;
-	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = -1;
+	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 0;
 	public static final double ELEVATOR_LEVEL_0_POS = -1;
 	public static final double ELEVATOR_LEVEL_1_POS = -1;
 	public static final double ELEVATOR_LEVEL_2_POS = -1;

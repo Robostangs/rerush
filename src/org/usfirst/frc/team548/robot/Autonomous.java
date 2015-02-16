@@ -5,14 +5,14 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 1;
+	private static int mode = 2;
 	private static Timer autoTimer;
 	private static boolean step1Done = false, step2Done = false,
 			step3Done = false, step4Done = false, step5Done = false,
 			step6Done = false, step7Done = false, step8Done = false;
 
 	private Autonomous() {
-
+		autoTimer = new Timer();
 	}
 	
 	public static Autonomous getInstance() {
@@ -53,29 +53,57 @@ public class Autonomous {
 	}
 	
 	private static void driveToAutoZone() {
-		if(autoTimer.get() <= 7) {
-			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
+//		if(autoTimer.get() <= 7) {
+//			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
+//		} else {
+//			DriveMotors.stopMotors();
+//		}
+		
+		if(autoTimer.get() <= 3) {
+			DriveMotors.drive(-.5, -.5);
 		} else {
 			DriveMotors.stopMotors();
+			
 		}
 	}
 	
 	private static void driveToAutoZoneWithContainer() {
-		if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3 && !step1Done) {
-			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
-			step1Done = true;
-		} else {
-			DriveMotors.stopMotors();
+//		if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3 && !step1Done) {
+//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+//			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
+//			step1Done = true;
+//		} else {
+//			DriveMotors.stopMotors();
+//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+//			//Elevator.setElevatorUpOneLevel();
+//			//Elevator.setElevatorPosition();
+//			if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4 && !step2Done) {
+//				DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER);
+//				step2Done = true;
+//			} else {
+//				DriveMotors.stopMotors();
+//				//Elevator.setElevatorDownOneLevel();
+//				//Elevator.setElevatorPosition();
+//				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
+//			}
+//		}
+		
+		if(autoTimer.get() < 0.5) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			Elevator.setElevatorUpOneLevel();
-			if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4 && !step2Done) {
-				DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER);
-				step2Done = true;
-			} else {
-				DriveMotors.stopMotors();
-				Elevator.setElevatorDownOneLevel();
-				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-			}
+		} else if (autoTimer.get() > 0.5 && autoTimer.get() < 1.5) {
+			Elevator.moveElevator(-0.2);
+		} else if (autoTimer.get() > 1.5 && autoTimer.get() < 3.5) {
+			Elevator.stopElevator();
+			DriveMotors.drive(0.35, 0.35);
+		} else if(autoTimer.get() > 3.5 && autoTimer.get() < 5) {
+			DriveMotors.stopMotors();
+			DriveMotors.drive(0.7, -0.7);
+		} else if(autoTimer.get() > 5 && autoTimer.get() < 6) {
+			DriveMotors.stopMotors();
+			Elevator.moveElevator(0.2);
+		} else if(autoTimer.get()  > 6 && autoTimer.get() < 6.5) {
+			Elevator.stopElevator();
+			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 		}
 	}
 	

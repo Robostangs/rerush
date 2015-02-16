@@ -8,7 +8,7 @@ public class Arm {
 	private static DoubleSolenoid armSolenoid;
 	
 	private Arm() {
-		armSolenoid = new DoubleSolenoid(6, 7);
+		armSolenoid = new DoubleSolenoid(Constants.ARM_SOL_POS_1, Constants.ARM_SOL_POS_2);
 	}
 	
 	public static Arm getInstance() {

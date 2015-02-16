@@ -45,7 +45,9 @@ public class TeleOperated {
 		} else if(driver.getBButton()) {
 			DriveTrain.setStrafeUp();
 		}
-		 
+		if (driver.getStartButton()) {
+			DriveMotors.resetEncoders();
+		}
 		
 		/*
 		 * Outside x axis human strafe
@@ -99,9 +101,9 @@ public class TeleOperated {
 		  * DPAD BOTTOM HALF: arm backwards
 		  */
 		 if(driver.isDPadTopHalf()) {
-				Arm.setArmForward();
-		 } else if(driver.isDPadBottomHalf()) {
 				Arm.setArmBack();
+		 } else if(driver.isDPadBottomHalf()) {
+				Arm.setArmForward();
 		 }
 		 
 		 
@@ -111,7 +113,11 @@ public class TeleOperated {
 		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD) {
 			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
 		 }
-		 */	 
+		  */
+		 
+		 if(driver.getRightJoystickButton()) {
+			 DriveTrain.driveStraight(0.5, 0.5);
+		 }
 		 
 	}
 	
@@ -145,13 +151,13 @@ public class TeleOperated {
 		 * Manip container grabber controls
 		 * START BUTTON: open grabber
 		 * BACK BUTTON: close grabber 
-		 *
+		 */
 		if(manip.getStartButton()) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 		} else if(manip.getBackButton()) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 		}
-		*/
+		
 		
 		/*
 		 * Manip arm solenoid controls
@@ -186,14 +192,11 @@ public class TeleOperated {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} */
 		if(Math.abs(manip.getRightStickYAxis()) > 0.2) {
-			ElevatorMotors.setPower((manip.getRightStickYAxis())/2);
+			Elevator.moveElevator((manip.getRightStickYAxis())/2);
 		} else {
-			ElevatorMotors.setPower(0);
+			Elevator.moveElevator(0);
 		}
-			
-		if(manip.getStartButton()) {
-			ElevatorMotors.resetEncoders();
-		}
+
 		
 		
 	}

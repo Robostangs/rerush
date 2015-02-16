@@ -23,11 +23,10 @@ public class Robot extends IterativeRobot {
     	DriveMotors.getInstance();
     	DriveTrain.getInstance();
     	Arm.getInstance();
-//    	Elevator.getInstance();
+    	Elevator.getInstance();
 		ElevatorMotors.getInstance();
     	Ingestor.getInstance();
-//    	Ingestor.setIngestorOut();
-//    	DriveTrain.setStrafeDown();
+    	DriveMotors.resetEncoders();
     }
 
     /**
@@ -48,17 +47,21 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
     	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
-    	SmartDashboard.putNumber("Arm Encoder Position", ElevatorMotors.getEncoderAverage());
+    	SmartDashboard.putNumber("Arm Encoder Position", ElevatorMotors.getRightEncoder());
     }
     
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    
+    	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     }
     
     public void autonomousInit() {
     	Autonomous.startTimer();
+    }
+    
+    public void disabledPeriodic() {
+    	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     }
 }

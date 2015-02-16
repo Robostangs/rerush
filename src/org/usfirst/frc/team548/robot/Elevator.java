@@ -11,7 +11,7 @@ public class Elevator {
 	private static int currentElevatorPos;
 	
 	private Elevator() {
-		topLimitSwitch = new DigitalInput(Constants.ELEVATOR_TOP_LIMIT_SWITCH_POS);
+		//topLimitSwitch = new DigitalInput(Constants.ELEVATOR_TOP_LIMIT_SWITCH_POS);
 		botLimitSwitch = new DigitalInput(Constants.ELEVATOR_BOT_LIMIT_SWITCH_POS);
 		containerSolenoid = new Solenoid(Constants.ELEVATOR_CONTAINER_SOL_POS);
 	}
@@ -24,11 +24,20 @@ public class Elevator {
 	}
 	
 	public static void moveElevator(double power) {
-		if(botLimitSwitch.get() && power < 0) {
+		if(getBotElevatorSwitch()) {
+			ElevatorMotors.resetEncoders();
+			if(power > 0) {
+				power = 0;
+			}
+		} if(ElevatorMotors.getRightEncoder() < 0 && power > 0) {
 			power = 0;
-		} else if(topLimitSwitch.get() && power > 0) {
-			power = 0;
+		} if (ElevatorMotors.getRightEncoder() < 1000 && power > 0) {
+			power *=.5;
 		}
+//		} else if(topLimitSwitch.get() && power > 0) {
+//			power = 0;
+//		}
+		
 		ElevatorMotors.setPower(power);
 	}
 	
@@ -44,12 +53,12 @@ public class Elevator {
 		containerSolenoid.set(false);
 	}
 	
-	public static boolean getTopElevatorSwitch() {
-		return topLimitSwitch.get();
-	}
-	
+//	public static boolean getTopElevatorSwitch() {
+//		return topLimitSwitch.get();
+//	}
+//	
 	public static boolean getBotElevatorSwitch() {
-		return botLimitSwitch.get();
+		return !botLimitSwitch.get();
 	}
 	
 	public static void setElevatorPosition(double position) {
@@ -107,7 +116,7 @@ public class Elevator {
 	}
 	
 	public static void calibrateEncoder() {
-		if(!botLimitSwitch.get()) {
+		if(!getBotElevatorSwitch()) {
 			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
 		} else {
 			Elevator.stopElevator();

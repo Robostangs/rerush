@@ -125,9 +125,9 @@ public class DriveTrain {
 		
 		if(!isAtDistance(position)) {		
 			if(position > DriveMotors.getEncoderAverage()) {
-				DriveMotors.drive(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} else if(position < ElevatorMotors.getEncoderAverage()) {
-				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				driveStraight(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} 
 		} else {
 			DriveMotors.stopMotors();
@@ -157,6 +157,18 @@ public class DriveTrain {
 			return true;
 		}
 		
+	}
+	
+	public static void driveStraight(double left, double right) {
+		left = -left;
+		right = -right;
+		if(DriveMotors.getLeftEncoderPosition() > DriveMotors.getRightEncoderPosition()) {
+			DriveMotors.drive((left*Constants.DRIVE_STRAIGHT_SLOW_MOD), (right*Constants.DRIVE_STRAIGHT_FAST_MOD));
+		} else if(DriveMotors.getLeftEncoderPosition() < DriveMotors.getRightEncoderPosition()) {
+			DriveMotors.drive((left*Constants.DRIVE_STRAIGHT_FAST_MOD), (right*Constants.DRIVE_STRAIGHT_SLOW_MOD));
+		} else {
+			DriveMotors.drive(left, right);
+		}
 	}
 
 
