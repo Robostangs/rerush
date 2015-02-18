@@ -11,19 +11,14 @@ public class TalonEncoder {
 		this.resetPos = this.talon.getEncPosition();
 	}
 	
-	public double getRawPosition() {
+	public double getPosition() {
 		return talon.getEncPosition();
 	}
-	
-	public double getPosition() {
-		return (talon.getEncPosition() - resetPos);
-	}
-	
 	public double getVelocity() {
 		return talon.getEncVelocity();
 	}
 	
 	public void reset() {
-		this.resetPos = getRawPosition();
+		talon.setPosition(0);
 	}
 }

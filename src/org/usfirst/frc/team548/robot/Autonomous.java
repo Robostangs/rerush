@@ -65,19 +65,18 @@ public class Autonomous {
 //		if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3 && !step1Done) {
 //			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 //			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
-//			step1Done = true;
 //		} else {
+//			step1Done = true;
 //			DriveMotors.stopMotors();
 //			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-//			//Elevator.setElevatorUpOneLevel();
-//			//Elevator.setElevatorPosition();
+//			Elevator.setElevatorUpOneLevel();
 //			if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4 && !step2Done) {
 //				DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER);
-//				step2Done = true;
 //			} else {
+//				step2Done = true;
 //				DriveMotors.stopMotors();
-//				//Elevator.setElevatorDownOneLevel();
-//				//Elevator.setElevatorPosition();
+//				Elevator.setElevatorDownOneLevel();
+//				Elevator.setElevatorPosition();
 //				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 //			}
 //		}

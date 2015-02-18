@@ -58,15 +58,24 @@ public class Constants {
 	public static final int ELEVATOR_CONTAINER_SOL_POS = 2;
 	public static final int ELEVATOR_TOP_LIMIT_SWITCH_POS = -1;
 	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 0;
-	public static final double ELEVATOR_LEVEL_0_POS = -1;
-	public static final double ELEVATOR_LEVEL_1_POS = -1;
-	public static final double ELEVATOR_LEVEL_2_POS = -1;
-	public static final double ELEVATOR_LEVEL_3_POS = -1;
-	public static final double ELEVATOR_LEVEL_4_POS = -1;
-	public static final double ELEVATOR_LEVEL_5_POS = -1;
+	public static final double ELEVATOR_LEVEL_0_POS = 0;
+	public static final double ELEVATOR_LEVEL_1_POS = 4100;
+	public static final double ELEVATOR_LEVEL_2_POS = 8500;
+	public static final double ELEVATOR_LEVEL_3_POS = 12800;
+	public static final double ELEVATOR_LEVEL_4_POS = 17100;
+	public static final double ELEVATOR_LEVEL_5_POS = 21700;
 	public static final double ELEVATOR_LEVEL_6_POS = -1;
 	public static final double ELEVATOR_SPEED = 0.5;
-	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.5;
+	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.25;
+	public static final double ELEVATOR_DEFAULT_P = 0.12;
+	public static final double ELEVATOR_DEFAULT_I = 0.00015;
+	public static final double ELEVATOR_DEFAULT_D = 0;
+	public static final int ELEVATOR_DEFAULT_IZONE = 1500;
+	public static final double ELEVATOR_INPUT_MIN = 0;
+	public static final double ELEVATOR_INPUT_MAX = 21000;
+	public static final double ELEVATOR_OUTPUT_MIN = -.5;
+	public static final double ELEVATOR_OUTPUT_MAX = .5;
+	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;
 	
 	
 	//Ingestor

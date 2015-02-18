@@ -1,9 +1,13 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.ControlMode;
+import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
 
-public class ElevatorMotors implements PIDOutput {
+public class ElevatorMotors{
 	
 	private static ElevatorMotors instance = null;
 	private static CANTalon leftMotor, rightMotor;
@@ -13,8 +17,7 @@ public class ElevatorMotors implements PIDOutput {
 		leftMotor = new CANTalon(Constants.ELEVATOR_LEFT_TALON_POS);
 		rightMotor = new CANTalon(Constants.ELEVATOR_RIGHT_TALON_POS);
 		leftEncoder = new TalonEncoder(leftMotor);
-		rightEncoder = new TalonEncoder(rightMotor);
-	}
+		rightEncoder = new TalonEncoder(rightMotor);}
 	
 	public static ElevatorMotors getInstance() {
 		if(instance == null) {
@@ -24,12 +27,8 @@ public class ElevatorMotors implements PIDOutput {
 	}
 	
 	public static void setPower(double power) {
-		leftMotor.set(-power);
-		rightMotor.set(power);
-	}
-	
-	public void pidWrite(double power) {
-		setPower(power);
+		leftMotor.set(power);
+		rightMotor.set(-power);
 	}
 
 	public static double getEncoderAverage() {
@@ -52,5 +51,40 @@ public class ElevatorMotors implements PIDOutput {
 	public static double getEncoderError() {
 		return (leftEncoder.getPosition() - rightEncoder.getPosition());
 	}
-
+	
+	public static void setDefaultPID() {
+		leftMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		leftMotor.setPID(Constants.ELEVATOR_DEFAULT_P, Constants.ELEVATOR_DEFAULT_I, Constants.ELEVATOR_DEFAULT_D);
+		leftMotor.setIZone(Constants.ELEVATOR_DEFAULT_IZONE);
+	}
+	
+	public static void setPIDConstants(double p, double i, double d) {
+		leftMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		leftMotor.setPID(p, i, d);
+	}
+	
+	public static CANTalon getCANTalon() {
+		return leftMotor;
+	}
+	
+	public static void enablePID() {
+		leftMotor.changeControlMode(ControlMode.Position);
+		leftMotor.reverseOutput(true);
+		rightMotor.changeControlMode(ControlMode.Follower);
+		rightMotor.reverseOutput(true);
+		rightMotor.set(leftMotor.getDeviceID());
+	}
+	
+	public static void disablePID() {
+		leftMotor.changeControlMode(ControlMode.PercentVbus);
+		rightMotor.changeControlMode(ControlMode.PercentVbus);
+	}
+	
+	public static void runPID(double setpoint) {
+		leftMotor.set(-setpoint);
+	}
+	
+	public static double getPIDError() {
+		return leftMotor.getClosedLoopError();
+	}
 }

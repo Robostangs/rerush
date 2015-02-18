@@ -2,6 +2,7 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -48,7 +49,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
     	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
     	SmartDashboard.putNumber("Arm Avg Encoder Position", ElevatorMotors.getEncoderAverage());
-    	
+    	SmartDashboard.putNumber("Encoder Position", ElevatorMotors.getLeftEncoder());
     }
     
     /**
@@ -56,6 +57,9 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
+    	SmartDashboard.putNumber("Elevator Encoder", ElevatorMotors.getEncoderAverage());
+    	LiveWindow.run();
+    	System.out.println(ElevatorMotors.getEncoderAverage());
     }
     
     public void autonomousInit() {

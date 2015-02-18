@@ -134,6 +134,7 @@ public class TeleOperated {
 			 DriveMotors.resetEncoders();
 		 }
 		 
+		 
 	}
 	
 	public static void runManip() {
@@ -193,32 +194,26 @@ public class TeleOperated {
 		 * X BUTTON: bottom
 		 * Y BUTTON: top 
 		 * LEFT JOYSTICK: manual
-		 *
+		 */
 		if(manip.getAButton()) {
-			Elevator.setElevatorDownOneLevel();
+			ElevatorMotors.setDefaultPID();
+			ElevatorMotors.enablePID();
+			ElevatorMotors.runPID(4100);
+//			Elevator.setElevatorDownOneLevel();
 		} else if (manip.getBButton()) {
-			Elevator.setElevatorUpOneLevel();
-		} else if (manip.g
-		etXButton()) {
-			Elevator.setElevatorToLevel(0);
+			ElevatorMotors.resetEncoders();
+//			Elevator.setElevatorUpOneLevel();
+		} else if (manip.getXButton()) {
+			ElevatorMotors.disablePID();
+//			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
-			Elevator.setElevatorToLevel(6);
-		} else {
+//			Elevator.setElevatorToLevel(6);
+		} else if(Math.abs(manip.getRightStickYAxis()) > 0.2) {
 			Elevator.moveElevator(manip.getRightStickYAxis());
-		} */
-		if(Math.abs(manip.getRightStickYAxis()) > 0.2) {
-			Elevator.moveElevator((manip.getRightStickYAxis())/2);
+		} else if(driver.getBackButton()) {
+			Elevator.calibrateEncoder();
 		} else {
-			Elevator.moveElevator(0);
-		}
-		
-//		if(manip.getAButton()) {
-//			Elevator.setElevatorPositionUp(2000);
-//		} else {
-//			Elevator.moveElevator(0);
-//		}
-
-		
-		
+			Elevator.stopElevator();
+		}		
 	}
 }
