@@ -67,10 +67,13 @@ public class Constants {
 	public static final double ELEVATOR_LEVEL_6_POS = -1;
 	public static final double ELEVATOR_SPEED = 0.5;
 	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.25;
-	public static final double ELEVATOR_DEFAULT_P = 0.12;
-	public static final double ELEVATOR_DEFAULT_I = 0.00015;
-	public static final double ELEVATOR_DEFAULT_D = 0;
-	public static final int ELEVATOR_DEFAULT_IZONE = 1500;
+	public static final double ELEVATOR_DEFAULT_P = 0.3;
+	public static final double ELEVATOR_DEFAULT_I = 0.0005;
+	public static final double ELEVATOR_DEFAULT_D = 100;
+	public static final double ELEVATOR_DEFAULT_F = 0.01;
+	public static final int ELEVATOR_DEFAULT_IZONE = 1000;
+	public static final double ELEVATOR_DEFAULT_RAMP_RATE = 36;
+	public static final int ELEVATOR_DEFAULT_PROFILE = 0;
 	public static final double ELEVATOR_INPUT_MIN = 0;
 	public static final double ELEVATOR_INPUT_MAX = 21000;
 	public static final double ELEVATOR_OUTPUT_MIN = -.5;
