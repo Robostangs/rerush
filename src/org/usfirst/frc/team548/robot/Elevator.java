@@ -95,85 +95,19 @@ public class Elevator {
 	}
 	
 	public static void setElevatorToLevelUp(int level) {
-		if(level == 1) {
-			if(Constants.ELEVATOR_LEVEL_1_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_1_POS);
+		if(Constants.ELEVATOR_LEVELS[level] > ElevatorMotors.getEncoderAverage()) {
+				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_1_POS);
 			} else {
 				moveElevator(0);
 			}
-		} else if(level == 2) {
-			if(Constants.ELEVATOR_LEVEL_2_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_2_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 3) {
-			if(Constants.ELEVATOR_LEVEL_3_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_3_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 4) {
-			if(Constants.ELEVATOR_LEVEL_4_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_4_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 5) {
-			if(Constants.ELEVATOR_LEVEL_5_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_5_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 6) {
-			if(Constants.ELEVATOR_LEVEL_6_POS > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionUp(Constants.ELEVATOR_LEVEL_1_POS);
-			} else {
-				moveElevator(0);
-			}
-		}
-		currentElevatorPos = level;
 	}
 	
 	public static void setElevatorToLevelDown(int level) {
-		if(level == 1) {
-			if(Constants.ELEVATOR_LEVEL_1_POS < ElevatorMotors.getEncoderAverage()) {
+			if(Constants.ELEVATOR_LEVELS[level] < ElevatorMotors.getEncoderAverage()) {
 				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_1_POS);
 			} else {
 				moveElevator(0);
 			}
-		} else if(level == 2) {
-			if(Constants.ELEVATOR_LEVEL_2_POS < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_2_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 3) {
-			if(Constants.ELEVATOR_LEVEL_3_POS < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_3_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 4) {
-			if(Constants.ELEVATOR_LEVEL_4_POS < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_4_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 5) {
-			if(Constants.ELEVATOR_LEVEL_5_POS < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_5_POS);
-			} else {
-				moveElevator(0);
-			}
-		} else if(level == 6) {
-			if(Constants.ELEVATOR_LEVEL_6_POS < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_1_POS);
-			} else {
-				moveElevator(0);
-			}
-		}
-		currentElevatorPos = level;
 	}
 */	
 	public static void setElevatorToLevel(int level) {

@@ -5,18 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 public class Robot extends IterativeRobot {
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
 	
     public void robotInit() {
     	Autonomous.getInstance();
@@ -29,17 +18,16 @@ public class Robot extends IterativeRobot {
     	Ingestor.getInstance();
     	DriveMotors.resetEncoders();
     }
-
-    /**
-     * This function is called periodically during autonomous
-     */
+    
+    public void autonomousInit() {
+    	Autonomous.startTimer();
+    	DriveMotors.resetEncoders();
+    }
+    
     public void autonomousPeriodic() {
     	Autonomous.run();
     }
 
-    /**
-     * This function is called periodically during operator control
-     */
     public void teleopPeriodic() {
     	TeleOperated.runDriver();
     	TeleOperated.runManip();
@@ -52,9 +40,6 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Encoder Position", ElevatorMotors.getLeftEncoder());
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
     public void testPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     	SmartDashboard.putNumber("Elevator Encoder", ElevatorMotors.getEncoderAverage());
@@ -62,11 +47,7 @@ public class Robot extends IterativeRobot {
     	System.out.println(ElevatorMotors.getEncoderAverage());
     }
     
-    public void autonomousInit() {
-    	Autonomous.startTimer();
-    	DriveMotors.resetEncoders();
-    }
-    
+   
     public void disabledPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     }

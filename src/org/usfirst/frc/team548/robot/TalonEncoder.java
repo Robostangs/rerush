@@ -4,11 +4,9 @@ import edu.wpi.first.wpilibj.CANTalon;
 
 public class TalonEncoder {
 	private CANTalon talon;
-	private double resetPos;
 	
 	public TalonEncoder(CANTalon talon) {
 		this.talon = talon;
-		this.resetPos = this.talon.getEncPosition();
 	}
 	
 	public double getPosition() {

@@ -29,7 +29,7 @@ public class Pneumatics {
 	
 	public static void compressorOff() {
 		pressure.setClosedLoopControl(false);
-		pressure.start();
+		pressure.stop();
 	}
 	
 	public static void startTimer() {
