@@ -177,22 +177,7 @@ public class Elevator {
 	}
 */	
 	public static void setElevatorToLevel(int level) {
-		if(level == 0) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_0_POS);
-		} else if(level == 1) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_1_POS);
-		} else if(level == 2) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_2_POS);
-		} else if(level == 3) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_3_POS);
-		} else if(level == 4) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_4_POS);
-		} else if(level == 5) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_5_POS);
-		} else if(level == 6) {
-			setElevatorPosition(Constants.ELEVATOR_LEVEL_6_POS);
-		}
-		currentElevatorPos = level;
+		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]);
 	}
 	
 	public static boolean isAtSetpoint(double setpoint) {
