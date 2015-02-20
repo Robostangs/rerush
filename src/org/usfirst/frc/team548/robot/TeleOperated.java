@@ -4,6 +4,7 @@ public class TeleOperated {
 	
 	private static TeleOperated instance;
 	public static XboxController driver, manip;
+	public static boolean buttonPressed = false;
 	
 	private TeleOperated() {
     	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
@@ -47,62 +48,47 @@ public class TeleOperated {
 		}
 		
 		/*
-		 * Outside x axis human strafe
+		 * Outside x axis human strafe with human drive
 		 * LEFT BUMPER: Super slow human strafe
 		 * RIGHT BUMPER: Slow human strafe
 		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED. OTHERWISE WHEEL GOES UP
 		 */
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-				DriveTrain.setStrafeDown();
+				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getLeftStickXAxis());
 			} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-				DriveTrain.setStrafeDown();
+				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getRightStickXAxis());
 			} else {
-				DriveTrain.setStrafeUp();
+				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 				DriveTrain.humanSuperSlowDriveStrafe(0);
 			}
 		 } else if(driver.getRightBumper()) {
 			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-				 DriveTrain.setStrafeDown();
+					DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanSlowDriveStrafe(-driver.getLeftStickXAxis());
 				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-					DriveTrain.setStrafeDown();
+					DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanSlowDriveStrafe(-driver.getRightStickXAxis());
 				} else {
-					DriveTrain.setStrafeUp();
+					DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanSlowDriveStrafe(0);
 				}
 		 } else {
 			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-				 DriveTrain.setStrafeDown();
+					DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanDriveStrafe(-driver.getLeftStickXAxis());
 				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
-					DriveTrain.setStrafeDown();
+					DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanDriveStrafe(-driver.getRightStickXAxis());
 				} else {
-					DriveTrain.setStrafeUp();
+					DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanDriveStrafe(0);
 				}
 		 }
 		 
-		 
-		 /*
-		  * Human drive
-		  * LEFT BUMPER: Super slow human drive
-		  * RIGHT BUMPER: Slow human drive
-		  */
-		 
-		 if(driver.getLeftBumper()) {
-				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			} else if(driver.getRightBumper()) {
-				DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			} else {
-				DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			}
-		 
-		 /*
+		/*
 		  * Driver arm solenoid controls
 		  * DPAD TOP HALF: arm forward
 		  * DPAD BOTTOM HALF: arm backwards
@@ -196,23 +182,27 @@ public class TeleOperated {
 		 * LEFT JOYSTICK: manual
 		 */
 		if(manip.getAButton()) {
-			ElevatorMotors.setDefaultPID();
-			ElevatorMotors.enablePID();
-			ElevatorMotors.runPID(4100);
-//			Elevator.setElevatorDownOneLevel();
+			if(!buttonPressed) {
+				buttonPressed = true;
+				Elevator.setCurrentLevelSnapshot();
+			}
+			Elevator.setElevatorDown();
 		} else if (manip.getBButton()) {
-			ElevatorMotors.resetEncoders();
-//			Elevator.setElevatorUpOneLevel();
+			if(!buttonPressed) {
+				buttonPressed = true;
+				Elevator.setCurrentLevelSnapshot();
+			}
+			Elevator.setElevatorUp();
 		} else if (manip.getXButton()) {
-			ElevatorMotors.disablePID();
-//			Elevator.setElevatorToLevel(0);
+			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
-//			Elevator.setElevatorToLevel(6);
-		} else if(Math.abs(manip.getRightStickYAxis()) > 0.2) {
+			Elevator.setElevatorToLevel(5);
+		} else if(Math.abs(manip.getRightStickYAxis()) > Constants.XBOX_JOYSTICK_THRESHOLD) {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} else if(driver.getBackButton()) {
 			Elevator.calibrateEncoder();
 		} else {
+			buttonPressed = false;
 			Elevator.stopElevator();
 		}		
 	}

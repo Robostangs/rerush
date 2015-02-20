@@ -8,8 +8,7 @@ public class Elevator {
 	private static Elevator instance = null;
 	private static DigitalInput botLimitSwitch;
 	private static Solenoid containerSolenoid;
-	private static int currentElevatorPos = 0;
-	private static boolean pidConfigured = false;
+	private static int currentLevelSnapshot = 0;
 	
 	private Elevator() {
 		botLimitSwitch = new DigitalInput(Constants.ELEVATOR_BOT_LIMIT_SWITCH_POS);
@@ -26,9 +25,9 @@ public class Elevator {
 	public static void moveElevator(double power) {
 		if(getBotElevatorSwitch()) {
 			ElevatorMotors.resetEncoders();
-		} if(ElevatorMotors.getLeftEncoder() > 0 && power < 0 || ElevatorMotors.getLeftEncoder() < -21000 && power > 0) {
+		} if(ElevatorMotors.getLeftEncoder() < 0 && power < 0 || ElevatorMotors.getLeftEncoder() > 21000 && power > 0) {
 			power = 0;
-		} if (ElevatorMotors.getLeftEncoder() > -1100 && power < 0) {
+		} if (ElevatorMotors.getLeftEncoder() < 1100 && power < 0) {
 			power =-.1;
 		}
 		ElevatorMotors.setPower(power);
@@ -52,16 +51,9 @@ public class Elevator {
 	}
 	
 	public static void setElevatorPosition(double position) {
-		if(!pidConfigured && ElevatorMotors.getPIDError() > Constants.ELEVATOR_PID_ERROR_TRESHOLD) {
-			ElevatorMotors.setDefaultPID();
-			ElevatorMotors.enablePID();
-			pidConfigured = true;
-		} else if(ElevatorMotors.getPIDError() > Constants.ELEVATOR_PID_ERROR_TRESHOLD) {
-			ElevatorMotors.runPID(position);
-		} else {
-			ElevatorMotors.disablePID();
-			pidConfigured = false;
-		}
+		ElevatorMotors.setDefaultPID();
+		ElevatorMotors.enablePID();
+		ElevatorMotors.runPID(position);
 	}
 /*	
 	public static void setElevatorPositionUp(double position) {
@@ -112,10 +104,10 @@ public class Elevator {
 	}
 	
 	public static int getToteZone() {
-		for(int i = 1; i < 7; i++) {
+		for(int i = 1; i < 6; i++) {
 			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) return i-1;
 		}
-		return 0;
+		return 4;
 	}
 	
 	public static boolean isAtSetpoint(double setpoint) {
@@ -125,20 +117,16 @@ public class Elevator {
 		return true;
 	}
 	
-	public static void setElevatorUpOneLevel() {
-		if(currentElevatorPos < 5) {
-			int newLevel = currentElevatorPos++;
-			setElevatorToLevel(newLevel);
-			currentElevatorPos = newLevel;
-		}
+	public static void setElevatorUp() {
+		setElevatorToLevel(currentLevelSnapshot+1);
 	}
 	
-	public static void setElevatorDownOneLevel() {
-		if(currentElevatorPos > 0) {
-			int newLevel = currentElevatorPos--;
-			setElevatorToLevel(newLevel);
-			currentElevatorPos = newLevel;
-		}
+	public static void setElevatorDown() {
+		setElevatorToLevel(currentLevelSnapshot);
+	}
+	
+	public static void setCurrentLevelSnapshot() {
+		currentLevelSnapshot = getToteZone();
 	}
 	
 	public static void calibrateEncoder() {

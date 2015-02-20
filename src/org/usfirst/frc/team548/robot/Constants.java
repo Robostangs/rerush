@@ -4,6 +4,8 @@ public class Constants {
 	//Robot
 	public static final int XBOX_DRIVER_PORT = 0;
 	public static final int XBOX_MANIP_PORT = 1;
+	public static final double XBOX_JOYSTICK_THRESHOLD = 0.2;
+	public static final double XBOX_TRIGGER_THRESHOLD = 0.15;
 	
 	//Autonomouse
 	public static final double AUTON_1_DRIVE_DISTANCE_ROBOT_SET = 7000;
@@ -63,8 +65,7 @@ public class Constants {
 		8500, //level 2
 		12800, //level 3
 		17100, //level 4
-		21700, //level 5
-		25000}; //level 6
+		21000}; //level 5
 	public static final double ELEVATOR_SPEED = 0.5;
 	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.20;
 	public static final double ELEVATOR_DEFAULT_P = 0.4;

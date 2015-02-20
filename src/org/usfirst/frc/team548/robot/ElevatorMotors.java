@@ -38,7 +38,7 @@ public class ElevatorMotors{
 	}
 	
 	public static double getLeftEncoder() {
-		return leftEncoder.getPosition();
+		return -leftEncoder.getPosition();
 	}
 	
 	public static double getRightEncoder() {

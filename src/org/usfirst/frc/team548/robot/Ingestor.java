@@ -22,12 +22,12 @@ public class Ingestor {
 		rightMotor = new CANTalon(Constants.IN_RIGHT_TALON_POS);
 	}
 	
-	public static void setIngestorOut() {
+	public static void setIngestorIn() {
 		leftSolenoid.set(DoubleSolenoid.Value.kForward);
 		rightSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
-	public static void setIngestorIn() {
+	public static void setIngestorOut() {
 		leftSolenoid.set(DoubleSolenoid.Value.kReverse);
 		rightSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}

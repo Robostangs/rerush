@@ -2,11 +2,11 @@ package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.SPI;
 
-public class ADXRS453Z {
+public class Gyro {
 	
 	private SPI spi;
 	
-	public ADXRS453Z(SPI.Port port) {
+	public Gyro(SPI.Port port) {
 		spi = new SPI(port);
 		spi.setClockRate(4000000);
 		spi.setClockActiveHigh();
