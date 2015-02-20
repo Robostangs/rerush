@@ -111,6 +111,13 @@ public class Elevator {
 		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]);
 	}
 	
+	public static int getToteZone() {
+		for(int i = 1; i < 7; i++) {
+			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) return i-1;
+		}
+		return 0;
+	}
+	
 	public static boolean isAtSetpoint(double setpoint) {
 		while(setpoint != ElevatorMotors.getEncoderAverage()) {
 			return false;
