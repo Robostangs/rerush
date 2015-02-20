@@ -66,8 +66,8 @@ public class Constants {
 		21700, //level 5
 		25000}; //level 6
 	public static final double ELEVATOR_SPEED = 0.5;
-	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.25;
-	public static final double ELEVATOR_DEFAULT_P = 0.3;
+	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.20;
+	public static final double ELEVATOR_DEFAULT_P = 0.4;
 	public static final double ELEVATOR_DEFAULT_I = 0.0005;
 	public static final double ELEVATOR_DEFAULT_D = 100;
 	public static final double ELEVATOR_DEFAULT_F = 0.01;

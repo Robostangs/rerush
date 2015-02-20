@@ -26,13 +26,10 @@ public class Elevator {
 	public static void moveElevator(double power) {
 		if(getBotElevatorSwitch()) {
 			ElevatorMotors.resetEncoders();
-			if(power < 0) {
-				power = 0;
-			}
-		} if(ElevatorMotors.getEncoderAverage() < 0 && power < 0 || ElevatorMotors.getEncoderAverage() > 21000 && power > 0) {
+		} if(ElevatorMotors.getLeftEncoder() > 0 && power < 0 || ElevatorMotors.getLeftEncoder() < -21000 && power > 0) {
 			power = 0;
-		} if (ElevatorMotors.getEncoderAverage() < 1000 && power < 0) {
-			power *=.5;
+		} if (ElevatorMotors.getLeftEncoder() > -1100 && power < 0) {
+			power =-.1;
 		}
 		ElevatorMotors.setPower(power);
 	}

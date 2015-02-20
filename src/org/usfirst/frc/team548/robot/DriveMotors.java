@@ -26,8 +26,8 @@ public class DriveMotors {
 	}
 	
 	public static void drive(double left, double right) {
-		rightFront.set(right);
-		rightBack.set(right);
+		rightFront.set(-right);
+		rightBack.set(-right);
 		leftFront.set(-left);
 		leftBack.set(-left);
 	}
