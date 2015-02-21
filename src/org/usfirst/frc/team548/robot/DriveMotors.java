@@ -9,11 +9,11 @@ public class DriveMotors {
 	private static TalonEncoder rightEncoder, leftEncoder;
 	
 	private DriveMotors() {
-    	rightFront = new CANTalon(Constants.DT_RIGHT_FRONT_TALON_POS);
-    	rightBack = new CANTalon(Constants.DT_RIGHT_BACK_TALON_POS);
-    	leftFront = new CANTalon(Constants.DT_LEFT_FRONT_TALON_POS);
-    	leftBack = new CANTalon(Constants.DT_LEFT_BACK_TALON_POS);
-    	centerStrafe = new CANTalon(Constants.DT_CENTER_STRAFE_TALON_POS);
+    	rightFront = new CANTalon(Constants.DRIVE_RIGHT_FRONT_TALON_POS);
+    	rightBack = new CANTalon(Constants.DRIVE_RIGHT_BACK_TALON_POS);
+    	leftFront = new CANTalon(Constants.DRIVE_LEFT_FRONT_TALON_POS);
+    	leftBack = new CANTalon(Constants.DRIVE_LEFT_BACK_TALON_POS);
+    	centerStrafe = new CANTalon(Constants.DRIVE_CENTER_STRAFE_TALON_POS);
     	rightEncoder = new TalonEncoder(rightBack);
     	leftEncoder = new TalonEncoder(leftBack);
 	}

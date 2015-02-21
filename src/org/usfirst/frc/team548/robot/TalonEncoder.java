@@ -17,6 +17,6 @@ public class TalonEncoder {
 	}
 	
 	public void reset() {
-		talon.setPosition(-1100);
+		talon.setPosition(Constants.ELEVATOR_ENCODER_RESET_POINT);
 	}
 }

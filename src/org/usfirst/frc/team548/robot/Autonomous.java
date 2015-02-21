@@ -40,7 +40,7 @@ public class Autonomous {
 			break;
 		// Pick up container and tote do 180 pick up tote drive straight pick up last tote then turn into auto zone
 		case 4:
-			Autonomous.thinkOfAGoodNameForThidMethodForAuto4();
+			Autonomous.thinkOfAGoodNameForThisMethodForAuto4();
 			break;
 		//  Pick up container and tote do 180 pick up tote drive around container pick up last tote then turn into auto zone
 		case 5: 
@@ -135,7 +135,7 @@ public class Autonomous {
 //		
 	}
 //	
-	private static void thinkOfAGoodNameForThidMethodForAuto4() {
+	private static void thinkOfAGoodNameForThisMethodForAuto4() {
 //		if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER) && !step1Done) {
 //			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
 //			DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER);

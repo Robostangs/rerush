@@ -25,10 +25,10 @@ public class Elevator {
 	public static void moveElevator(double power) {
 		if(getBotElevatorSwitch()) {
 			ElevatorMotors.resetEncoders();
-		} if(ElevatorMotors.getLeftEncoder() < 0 && power < 0 || ElevatorMotors.getLeftEncoder() > 21000 && power > 0) {
+		} if(ElevatorMotors.getLeftEncoder() < 0 && power < Constants.ELEVATOR_INPUT_MIN || ElevatorMotors.getLeftEncoder() > Constants.ELEVATOR_INPUT_MAX && power > 0) {
 			power = 0;
-		} if (ElevatorMotors.getLeftEncoder() < 1100 && power < 0) {
-			power =-.1;
+		} if (ElevatorMotors.getLeftEncoder() < Constants.ELEVATOR_SLOW_ZONE && power < 0) {
+			power = Constants.ELEVATOR_SLOW_SPEED;
 		}
 		ElevatorMotors.setPower(power);
 	}
@@ -105,11 +105,14 @@ public class Elevator {
 	
 	public static int getToteZone() {
 		for(int i = 1; i < 6; i++) {
-			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) return i-1;
+			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) {
+				System.out.println(Constants.ELEVATOR_LEVELS[i]-ElevatorMotors.getLeftEncoder());
+				return i-1;
+			}
 		}
 		return 4;
 	}
-	
+		
 	public static boolean isAtSetpoint(double setpoint) {
 		while(setpoint != ElevatorMotors.getEncoderAverage()) {
 			return false;

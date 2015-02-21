@@ -54,10 +54,10 @@ public class TeleOperated {
 		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED. OTHERWISE WHEEL GOES UP
 		 */
 		if(driver.getLeftBumper()) {
-			if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getLeftStickXAxis());
-			} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			} else if(driver.getRightStickXAxis() > Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 				DriveTrain.humanSuperSlowDriveStrafe(-driver.getRightStickXAxis());
 			} else {
@@ -65,10 +65,10 @@ public class TeleOperated {
 				DriveTrain.humanSuperSlowDriveStrafe(0);
 			}
 		 } else if(driver.getRightBumper()) {
-			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			 if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 					DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanSlowDriveStrafe(-driver.getLeftStickXAxis());
-				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				} else if(driver.getRightStickXAxis() > Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 					DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanSlowDriveStrafe(-driver.getRightStickXAxis());
 				} else {
@@ -76,10 +76,10 @@ public class TeleOperated {
 					DriveTrain.humanSlowDriveStrafe(0);
 				}
 		 } else {
-			 if(driver.getLeftStickXAxis() < -Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+			 if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 					DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanDriveStrafe(-driver.getLeftStickXAxis());
-				} else if(driver.getRightStickXAxis() > Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+				} else if(driver.getRightStickXAxis() > Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 					DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
 					DriveTrain.humanDriveStrafe(-driver.getRightStickXAxis());
 				} else {
@@ -103,7 +103,7 @@ public class TeleOperated {
 		 /*
 		  * Driver ingestor controls using triggers
 		  *
-		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DT_HUMAN_STRAFE_THRESHOLD) {
+		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
 			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
 		 }
 		  */

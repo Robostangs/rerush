@@ -15,9 +15,9 @@ public class DriveTrain {
 	private static boolean encodersInit = false;
 
 	private DriveTrain() {
-		gyro = new Gyro(Constants.DT_GYRO_POS);
-		strafeSolenoid = new Solenoid(Constants.DT_STRAFE_SOL_POS);
-		//strafeEncoder = new Encoder(Constants.DT_STRAFE_ENCODER_POS_1, Constants.DT_STRAFE_ENCODER_POS_2);
+		gyro = new Gyro(Constants.DRIVE_GYRO_POS);
+		strafeSolenoid = new Solenoid(Constants.DRIVE_STRAFE_SOL_POS);
+		//strafeEncoder = new Encoder(Constants.DRIVE_STRAFE_ENCODER_POS_1, Constants.DRIVE_STRAFE_ENCODER_POS_2);
 	}
 
 	public static DriveTrain getInstance() {
@@ -28,7 +28,7 @@ public class DriveTrain {
 	}
 
 	public static void humanDrive(double left, double right) {
-		if(Math.abs(left) < Constants.DT_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+		if(Math.abs(left) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 			DriveMotors.drive(0, 0);
 		} else {
 			DriveMotors.drive(left, right);
@@ -36,24 +36,24 @@ public class DriveTrain {
 	}
 
 	public static void humanSlowDrive(double left, double right) {
-		if(Math.abs(left) < Constants.DT_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+		if(Math.abs(left) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 			DriveMotors.drive(0, 0);
 		} else {
-			DriveMotors.drive(left*Constants.DT_SLOW_DRIVE_MULTIPLIER, right*Constants.DT_SLOW_DRIVE_MULTIPLIER);
+			DriveMotors.drive(left*Constants.DRIVE_SLOW_DRIVE_MULTIPLIER, right*Constants.DRIVE_SLOW_DRIVE_MULTIPLIER);
 		}
 	}
 	
 	public static void humanSuperSlowDrive(double left, double right) {
-		if(Math.abs(left) < Constants.DT_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DT_HUMAN_DRIVE_THRESHOLD) {
+		if(Math.abs(left) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD && Math.abs(right) < Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 			DriveMotors.drive(0, 0);
 		} else {
-			DriveMotors.drive(left*Constants.DT_SUPER_SLOW_DRIVE_MULTIPLIER, right*Constants.DT_SUPER_SLOW_DRIVE_MULTIPLIER);
+			DriveMotors.drive(left*Constants.DRIVE_SUPER_SLOW_DRIVE_MULTIPLIER, right*Constants.DRIVE_SUPER_SLOW_DRIVE_MULTIPLIER);
 		}
 	}
 
 	public static void humanDriveStrafe(double power) {
 
-		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
+		if(Math.abs(power) < Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
 			DriveMotors.driveStrafe(power);
@@ -62,19 +62,19 @@ public class DriveTrain {
 	
 	public static void humanSlowDriveStrafe(double power) {
 
-		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
+		if(Math.abs(power) < Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
-			DriveMotors.driveStrafe(power*Constants.DT_SLOW_STRAFE_MULTIPLIER);
+			DriveMotors.driveStrafe(power*Constants.DRIVE_SLOW_STRAFE_MULTIPLIER);
 		}
 	}
 	
 	public static void humanSuperSlowDriveStrafe(double power) {
 
-		if(Math.abs(power) < Constants.DT_HUMAN_STRAFE_THRESHOLD) {
+		if(Math.abs(power) < Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
 			DriveMotors.driveStrafe(0);
 		} else {
-			DriveMotors.driveStrafe(power*Constants.DT_SUPER_SLOW_STRAFE_MULTIPLIER);
+			DriveMotors.driveStrafe(power*Constants.DRIVE_SUPER_SLOW_STRAFE_MULTIPLIER);
 		}
 	}
 
@@ -93,9 +93,9 @@ public class DriveTrain {
 			gyroInt = true;
 		} else {
 			if(gyroInitAngle < getGyroAngle()) {
-				DriveMotors.drive(Constants.DT_STRAFE_MOD*power, -Constants.DT_STRAFE_MOD*power);
+				DriveMotors.drive(Constants.DRIVE_STRAFE_MOD*power, -Constants.DRIVE_STRAFE_MOD*power);
 			}  else if(gyroInitAngle > getGyroAngle()) {
-				DriveMotors.drive(-Constants.DT_STRAFE_MOD*power, Constants.DT_STRAFE_MOD*power);
+				DriveMotors.drive(-Constants.DRIVE_STRAFE_MOD*power, Constants.DRIVE_STRAFE_MOD*power);
 			} else {
 				DriveMotors.drive(0, 0);
 			}
