@@ -35,7 +35,7 @@ public class Elevator {
 	
 	public static void stopElevator() {
 		ElevatorMotors.disablePID();
-		ElevatorMotors.setPower(0);
+		ElevatorMotors.setPower(0); 
 	}
 	
 	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen() {
