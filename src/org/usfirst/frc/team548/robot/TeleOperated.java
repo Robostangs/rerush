@@ -51,8 +51,12 @@ public class TeleOperated {
 		 * Outside x axis human strafe with human drive
 		 * LEFT BUMPER: Super slow human strafe
 		 * RIGHT BUMPER: Slow human strafe
-		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED. OTHERWISE WHEEL GOES UP
+		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED
 		 */
+		if(driver.getLeftStickXAxis() < -Constants.XBOX_TRIGGER_THRESHOLD || driver.getRightStickXAxis() > Constants.XBOX_TRIGGER_THRESHOLD){
+			DriveTrain.setStrafeDown();
+		}
+		
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
@@ -188,6 +192,7 @@ public class TeleOperated {
 			}
 			Elevator.setElevatorDown();
 		} else if (manip.getBButton()) {
+			Ingestor.setIngestorOut();
 			if(!buttonPressed) {
 				buttonPressed = true;
 				Elevator.setCurrentLevelSnapshot();
@@ -196,7 +201,9 @@ public class TeleOperated {
 		} else if (manip.getXButton()) {
 			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
-			Elevator.setElevatorToLevel(5);
+			DriveTrain.setStrafeUp();
+//			Ingestor.setIngestorOut();
+//			Elevator.setElevatorToLevel(5);
 		} else if(Math.abs(manip.getRightStickYAxis()) > Constants.XBOX_JOYSTICK_THRESHOLD) {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} else if(driver.getBackButton()) {

@@ -33,8 +33,8 @@ public class Ingestor {
 	}
 		
 	public static void setIngestorPower(double power) {
-		leftMotor.set(-power);
-		rightMotor.set(power);
+		leftMotor.set(power);
+		rightMotor.set(-power);
 	}
 	
 	public static void setDirection(double power) {

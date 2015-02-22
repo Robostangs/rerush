@@ -18,7 +18,10 @@ public class Constants {
 	public static final double AUTON_3_DISTANCE_TO_TOTE = -1;
 	public static final double AUTON_3_TURN_ANGLE = -1;
 	public static final double AUTON_3_DISTANCE_TO_AUTO_ZONE = -1;
-	//Drive to A
+	public static final double AUTON_3_LEFT_SPEED = 0;
+	public static final double AUTON_3_RIGHT_SPEED = 0.8;
+	public static final double AUTON_3_STRAFE_SPEED = -1;
+	//Drive to Auto Zone with Tote Stack and Container
 	public static final double AUTON_4_DISTANCE_TO_FIRST_CONTAINER = -1;
 	public static final double AUTON_4_DISTANCE_TO_FIRST_TOTE = -1;
 	public static final double AUTON_4_FIRST_TURN_ANGLE = -1;
@@ -27,6 +30,10 @@ public class Constants {
 	public static final double AUTON_4_DISTANCE_BACKING_UP = -1;
 	public static final double AUTON_4_SECOND_TURN_ANGLE = -1;
 	public static final double AUTON_4_DISTANCE_TO_AUTO_ZONE = -1;
+	//Strafe to Auto Zone
+	public static final double AUTON_6_LEFT_SPEED = 0;
+	public static final double AUTON_6_RIGHT_SPEED = 0.5;
+	public static final double AUTON_6_STRAFE_SPEED = -1;
 	
 	//Drive Train
 	//Ports

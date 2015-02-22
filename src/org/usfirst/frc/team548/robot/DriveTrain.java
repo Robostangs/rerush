@@ -123,12 +123,20 @@ public class DriveTrain {
 			DriveMotors.resetEncoders();
 			encodersInit = true;
 		}
-			
-		if(position > DriveMotors.getEncoderAverage()) {
-			driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
-		} else if(position <= DriveMotors.getEncoderAverage()) {
-			DriveMotors.stopMotors();
-		} 
+		
+		if(position > 0) {
+			if(position > DriveMotors.getEncoderAverage()) {
+				driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+			} else if(position <= DriveMotors.getEncoderAverage()) {
+				DriveMotors.stopMotors();
+			} 
+		} else if(position < 0) {
+			if(position < DriveMotors.getEncoderAverage()) {
+				driveStraight(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+			} else if(position >= DriveMotors.getEncoderAverage()) {
+				DriveMotors.stopMotors();
+			} 
+		}
 	}
 	
 	public static void turn(double angle) {
@@ -158,7 +166,7 @@ public class DriveTrain {
 	
 	public static void driveStraight(double left, double right) {
 		left = -left;
-		right = -right;
+		//right = -right;
 		if(Math.abs(DriveMotors.getLeftEncoderPosition()) > Math.abs(DriveMotors.getRightEncoderPosition())) {
 			DriveMotors.drive((left*Constants.DRIVE_STRAIGHT_SLOW_MOD), (right*Constants.DRIVE_STRAIGHT_FAST_MOD));
 			SmartDashboard.putString("IDK", "left");
