@@ -103,6 +103,10 @@ public class Elevator {
 		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]);
 	}
 	
+	public static void setElevatorUpToLevel(int level) {
+		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]+800);
+	}
+	
 	public static int getToteZone() {
 		for(int i = 1; i < 6; i++) {
 			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) {
@@ -121,7 +125,7 @@ public class Elevator {
 	}
 	
 	public static void setElevatorUp() {
-		setElevatorToLevel(currentLevelSnapshot+1);
+		setElevatorUpToLevel(currentLevelSnapshot+1);
 	}
 	
 	public static void setElevatorDown() {
@@ -135,6 +139,7 @@ public class Elevator {
 	public static void calibrateEncoder() {
 		if(!getBotElevatorSwitch()) {
 			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
+			System.out.println("UM");
 		} else {
 			Elevator.stopElevator();
 			ElevatorMotors.resetEncoders();

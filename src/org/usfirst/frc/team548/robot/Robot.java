@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     }
     
     public void autonomousInit() {
+    	Autonomous.setAutoMode((int)sc.getSelected());
     	Autonomous.startTimer();
     	DriveMotors.resetEncoders();
     }
@@ -61,6 +62,7 @@ public class Robot extends IterativeRobot {
    
     public void disabledPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
-    	Autonomous.setAutoMode((int)sc.getSelected());
+    	SmartDashboard.putData("Auto type", sc);
+    	
     }
 }

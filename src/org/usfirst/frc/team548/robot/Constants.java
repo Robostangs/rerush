@@ -82,13 +82,13 @@ public class Constants {
 	public static final double ELEVATOR_INPUT_MIN = 0;
 	public static final double ELEVATOR_INPUT_MAX = 21000;
 	public static final double[] ELEVATOR_LEVELS = { 0, //Level 0
-		4100, //level 1
-		8500, //level 2
-		12800, //level 3
-		17100, //level 4
-		21000}; //level 5
+		2100, //level 1*
+		6400, //level 2*
+		10800, //level 3*
+		15300, //level 4*
+		19600}; //level 5*
 	public static final double ELEVATOR_SLOW_ZONE = 1100;
-	public static final double ELEVATOR_ENCODER_RESET_POINT = -1100;
+	public static final double ELEVATOR_ENCODER_RESET_POINT = 0;
 	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;
 	//PID
 	public static final double ELEVATOR_DEFAULT_P = 0.4;
