@@ -3,9 +3,12 @@ package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
+	
+	private SendableChooser sc;
 	
     public void robotInit() {
     	Autonomous.getInstance();
@@ -17,6 +20,13 @@ public class Robot extends IterativeRobot {
 		ElevatorMotors.getInstance();
     	Ingestor.getInstance();
     	DriveMotors.resetEncoders();
+    	sc = new SendableChooser();
+    	sc.addDefault("Drive to auto zone", 1);
+    	sc.addObject("Drive to auto with container", 2);
+    	sc.addObject("Drive into auto zone with container and tote", 3);
+    	sc.addObject("Strafe into auto zone", 6);
+    	sc.addObject("Get tote and back into auto zone", 7);
+    	SmartDashboard.putData("Auto type", sc);
     }
     
     public void autonomousInit() {
@@ -51,5 +61,6 @@ public class Robot extends IterativeRobot {
    
     public void disabledPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
+    	Autonomous.setAutoMode((int)sc.getSelected());
     }
 }
