@@ -86,7 +86,8 @@ public class Constants {
 		6400, //level 2*
 		10800, //level 3*
 		15300, //level 4*
-		19600}; //level 5*
+		19600, //level 5*
+		20800}; 
 	public static final double ELEVATOR_SLOW_ZONE = 1100;
 	public static final double ELEVATOR_ENCODER_RESET_POINT = 0;
 	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;

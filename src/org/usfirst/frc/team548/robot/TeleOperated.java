@@ -186,13 +186,13 @@ public class TeleOperated {
 		 * LEFT JOYSTICK: manual
 		 */
 		if(manip.getAButton()) {
+			Ingestor.setIngestorOut();
 			if(!buttonPressed) {
 				buttonPressed = true;
 				Elevator.setCurrentLevelSnapshot();
 			}
 			Elevator.setElevatorDown();
 		} else if (manip.getBButton()) {
-			Ingestor.setIngestorOut();
 			if(!buttonPressed) {
 				buttonPressed = true;
 				Elevator.setCurrentLevelSnapshot();

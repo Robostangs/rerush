@@ -104,7 +104,7 @@ public class Elevator {
 	}
 	
 	public static void setElevatorUpToLevel(int level) {
-		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]+800);
+		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]+1000);
 	}
 	
 	public static int getToteZone() {
@@ -114,7 +114,7 @@ public class Elevator {
 				return i-1;
 			}
 		}
-		return 4;
+		return 5;
 	}
 		
 	public static boolean isAtSetpoint(double setpoint) {
