@@ -7,9 +7,9 @@ public class Autonomous {
 	private static Autonomous instance;
 	private static int mode = 2;
 	private static Timer autoTimer;
-	private static boolean step1Done = false, step2Done = false,
-			step3Done = false, step4Done = false, step5Done = false,
-			step6Done = false, step7Done = false, step8Done = false;
+//	private static boolean step1Done = false, step2Done = false,
+//			step3Done = false, step4Done = false, step5Done = false,
+//			step6Done = false, step7Done = false, step8Done = false;
 
 	private Autonomous() {
 		autoTimer = new Timer();
@@ -60,35 +60,17 @@ public class Autonomous {
 		}
 	}
 	
+	
 	private static void driveToAutoZone1() {
 		if(autoTimer.get() <= 7) {
 			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
 		} else {
 			DriveMotors.stopMotors();
 		}
-
 	}
 	
-	private static void driveToAutoZoneWithContainer2() {
-//		if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER) && autoTimer.get() <= 3 && !step1Done) {
-//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-//			DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_TO_CONTAINER);
-//		} else {
-//			step1Done = true;
-//			DriveMotors.stopMotors();
-//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-//			Elevator.setElevatorUpOneLevel();
-//			if(!DriveTrain.isAtDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER) && autoTimer.get() <= 4 && !step2Done) {
-//				DriveTrain.driveDistance(Constants.AUTON_2_DISTANCE_FROM_CONTAINER);
-//			} else {
-//				step2Done = true;
-//				DriveMotors.stopMotors();
-//				Elevator.setElevatorDownOneLevel();
-//				Elevator.setElevatorPosition();
-//				Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-//			}
-//		}
-		
+	
+	private static void driveToAutoZoneWithContainer2() {		
 		if(autoTimer.get() < 0.5) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 		} else if (autoTimer.get() > 0.5 && autoTimer.get() < 1.5) {
@@ -103,6 +85,7 @@ public class Autonomous {
 			DriveMotors.stopMotors();
 		}
 	}
+	
 	
 	private static void driveToAutoZoneWithToteAndContainer3() {
 		Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
@@ -130,6 +113,7 @@ public class Autonomous {
 			DriveMotors.stopMotors();
 		}
 	}
+	
 	
 	private static void thinkOfAGoodNameForThisMethodForAuto4() {
 //		if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER) && !step1Done) {
@@ -197,9 +181,11 @@ public class Autonomous {
 //		}
 	}
 	
+	
 	private static void godTierAuto5() {
 		
 	}
+	
 	
 	private static void strafeIntoAutoZoneWithToteAndContainer6() {
 		DriveTrain.setStrafeDown();
@@ -211,11 +197,12 @@ public class Autonomous {
 		}
 	}
 	
+	
 	private static void getToteAndBackIntoAutoZone7() {
 		if(autoTimer.get() <= 1) {
-			Elevator.setElevatorPosition(1200);
+			Elevator.setElevatorPosition(Constants.AUTON_7_ELEVATOR_LIFT);
 		} else if(autoTimer.get() <= 5) {
-			DriveTrain.driveDistance(-4600);
+			DriveTrain.driveDistance(Constants.AUTON_7_DRIVE_DISTANCE_BACK);
 		} else {
 			DriveMotors.stopMotors();
 		}

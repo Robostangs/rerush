@@ -52,7 +52,6 @@ public class ElevatorMotors{
 	public static void setDefaultPID() {
 		leftMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		leftMotor.setPID(Constants.ELEVATOR_DEFAULT_P, Constants.ELEVATOR_DEFAULT_I, Constants.ELEVATOR_DEFAULT_D, Constants.ELEVATOR_DEFAULT_F, Constants.ELEVATOR_DEFAULT_IZONE, Constants.ELEVATOR_DEFAULT_RAMP_RATE, Constants.ELEVATOR_DEFAULT_PROFILE);
-		//leftMotor.setIZone(Constants.ELEVATOR_DEFAULT_IZONE);
 	}
 	
 	public static void setPIDConstants(double p, double i, double d) {

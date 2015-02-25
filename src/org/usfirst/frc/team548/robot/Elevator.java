@@ -55,50 +55,7 @@ public class Elevator {
 		ElevatorMotors.enablePID();
 		ElevatorMotors.runPID(position);
 	}
-/*	
-	public static void setElevatorPositionUp(double position) {
-			if(position > ElevatorMotors.getEncoderAverage()) {
-				if((position-1000) > ElevatorMotors.getEncoderAverage()) {
-					moveElevator(-Constants.ELEVATOR_SPEED);
-				} else {
-					moveElevator(-Constants.ELEVATOR_SPEED/3);
-				}
-			} else {
-				stopElevator();
-			}
-		}
 	
-	public static void setElevatorPositionDown(double position) {
-		if(position < ElevatorMotors.getEncoderAverage()) {
-			if((position+1000) < ElevatorMotors.getEncoderAverage()) {
-				if(position > ElevatorMotors.getEncoderAverage()) {
-					moveElevator(Constants.ELEVATOR_SPEED);
-				} else {
-					moveElevator(Constants.ELEVATOR_SPEED/3);
-				}
-			} else {
-				stopElevator();
-			}
-		}
-		
-	}
-	
-	public static void setElevatorToLevelUp(int level) {
-		if(Constants.ELEVATOR_LEVELS[level] > ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_1_POS);
-			} else {
-				moveElevator(0);
-			}
-	}
-	
-	public static void setElevatorToLevelDown(int level) {
-			if(Constants.ELEVATOR_LEVELS[level] < ElevatorMotors.getEncoderAverage()) {
-				setElevatorPositionDown(Constants.ELEVATOR_LEVEL_1_POS);
-			} else {
-				moveElevator(0);
-			}
-	}
-*/	
 	public static void setElevatorToLevel(int level) {
 		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]);
 	}

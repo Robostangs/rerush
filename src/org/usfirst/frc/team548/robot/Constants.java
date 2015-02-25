@@ -34,6 +34,9 @@ public class Constants {
 	public static final double AUTON_6_LEFT_SPEED = 0;
 	public static final double AUTON_6_RIGHT_SPEED = 0.5;
 	public static final double AUTON_6_STRAFE_SPEED = -1;
+	//Back into auto zone with tote
+	public static final double AUTON_7_ELEVATOR_LIFT = 1200;
+	public static final double AUTON_7_DRIVE_DISTANCE_BACK = -4600;
 	
 	//Drive Train
 	//Ports

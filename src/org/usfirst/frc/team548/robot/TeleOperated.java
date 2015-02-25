@@ -23,18 +23,18 @@ public class TeleOperated {
 		/*
 		 * Driving controls with trigger strafe
 		 * Includes super slow with left bumper, slow with right bumper
-		 * 
-		if(driver.getLeftBumper()) {
-			DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			DriveTrain.humanSuperSlowDriveStrafe(driver.getBothTriggerAxis());
-		} else if(driver.getRightBumper()) {
-			DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			DriveTrain.humanSlowDriveStrafe(driver.getBothTriggerAxis());
-		} else {
-			DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-			DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
-		}
-		*/
+		 */ 
+//		if(driver.getLeftBumper()) {
+//			DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+//			DriveTrain.humanSuperSlowDriveStrafe(driver.getBothTriggerAxis());
+//		} else if(driver.getRightBumper()) {
+//			DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+//			DriveTrain.humanSlowDriveStrafe(driver.getBothTriggerAxis());
+//		} else {
+//			DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
+//			DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
+//		}
+		
 		
 		
 		/*
@@ -51,7 +51,7 @@ public class TeleOperated {
 		 * Outside x axis human strafe with human drive
 		 * LEFT BUMPER: Super slow human strafe
 		 * RIGHT BUMPER: Slow human strafe
-		 * WHEEL IS ONLY DOWN WHEN STRAFE IS ACTIVATED
+		 * WHEEL IS DOWN WHEN STRAFE IS ACTIVATED
 		 */
 		if(driver.getLeftStickXAxis() < -Constants.XBOX_TRIGGER_THRESHOLD || driver.getRightStickXAxis() > Constants.XBOX_TRIGGER_THRESHOLD){
 			DriveTrain.setStrafeDown();
@@ -92,7 +92,7 @@ public class TeleOperated {
 				}
 		 }
 		 
-		/*
+	   	 /*
 		  * Driver arm solenoid controls
 		  * DPAD TOP HALF: arm forward
 		  * DPAD BOTTOM HALF: arm backwards
@@ -106,23 +106,10 @@ public class TeleOperated {
 		 
 		 /*
 		  * Driver ingestor controls using triggers
-		  *
-		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
-			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
-		 }
 		  */
-		 
-//		 if(driver.getRightJoystickButton()) {
-//			 DriveTrain.driveStraight(0.5, 0.5);
+//		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
+//			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
 //		 }
-//		 
-//		 if(driver.getLeftJoystickButton()) {
-//			 DriveMotors.drive(-0.5, -0.5);
-//		 }
-		 
-		 if(driver.getStartButton()) {
-			 DriveMotors.resetEncoders();
-		 }
 		 
 		 
 	}
@@ -134,7 +121,7 @@ public class TeleOperated {
 		 * LEFT JOYSTICK X AXIS: shift totes side to side
 		 * TRIGGERS: ingest and exgest
 		 */
-		if(Math.abs(manip.getLeftStickXAxis()) > 0.2) {
+		if(Math.abs(manip.getLeftStickXAxis()) > Constants.XBOX_JOYSTICK_THRESHOLD) {
 			Ingestor.setDirection(manip.getLeftStickXAxis());
 		} else {
 			Ingestor.setIngestorPower(manip.getBothTriggerAxis());

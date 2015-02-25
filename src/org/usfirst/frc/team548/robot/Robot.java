@@ -47,7 +47,6 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
     	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
-    	SmartDashboard.putNumber("Arm Avg Encoder Position", ElevatorMotors.getEncoderAverage());
     	SmartDashboard.putNumber("Left Arm Encoder Position", ElevatorMotors.getLeftEncoder());
     	SmartDashboard.putNumber("TOTE LEVEL", Elevator.getToteZone());
     }
