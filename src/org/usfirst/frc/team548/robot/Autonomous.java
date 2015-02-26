@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 2;
+	private static int mode = 1;
 	private static Timer autoTimer;
 //	private static boolean step1Done = false, step2Done = false,
 //			step3Done = false, step4Done = false, step5Done = false,
@@ -60,10 +60,10 @@ public class Autonomous {
 		}
 	}
 	
-	
+	//Works alright
 	private static void driveToAutoZone1() {
-		if(autoTimer.get() <= 7) {
-			DriveTrain.driveDistance(Constants.AUTON_1_DRIVE_DISTANCE_ROBOT_SET);
+		if(autoTimer.get() <= 2.6) {
+			DriveMotors.drive(0.5, -0.5);
 		} else {
 			DriveMotors.stopMotors();
 		}
@@ -73,6 +73,7 @@ public class Autonomous {
 	private static void driveToAutoZoneWithContainer2() {		
 		if(autoTimer.get() < 0.5) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+			DriveTrain.setStrafeUp();
 		} else if (autoTimer.get() > 0.5 && autoTimer.get() < 1.5) {
 			Elevator.moveElevator(0.2);
 		} else if (autoTimer.get() > 1.5 && autoTimer.get() < 5) {
@@ -86,7 +87,7 @@ public class Autonomous {
 		}
 	}
 	
-	
+	//Hasn't been tested
 	private static void driveToAutoZoneWithToteAndContainer3() {
 		Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 		if(autoTimer.get() <= 2.5) {
@@ -186,7 +187,7 @@ public class Autonomous {
 		
 	}
 	
-	
+	//Currently not plausible
 	private static void strafeIntoAutoZoneWithToteAndContainer6() {
 		DriveTrain.setStrafeDown();
 		if(autoTimer.get() <= 7) {
@@ -197,7 +198,7 @@ public class Autonomous {
 		}
 	}
 	
-	
+	//Currently doesn't work with ingestor wheels 
 	private static void getToteAndBackIntoAutoZone7() {
 		if(autoTimer.get() <= 1) {
 			Elevator.setElevatorPosition(Constants.AUTON_7_ELEVATOR_LIFT);
