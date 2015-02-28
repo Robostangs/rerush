@@ -5,8 +5,9 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 1;
+	private static int mode = 8;
 	private static Timer autoTimer;
+	private static boolean timerReset = false;
 //	private static boolean step1Done = false, step2Done = false,
 //			step3Done = false, step4Done = false, step5Done = false,
 //			step6Done = false, step7Done = false, step8Done = false;
@@ -54,6 +55,13 @@ public class Autonomous {
 			Autonomous.getToteAndBackIntoAutoZone7();
 			break;
 		//	Lift tote and back up into auto zone
+		case 8:
+			Autonomous.backIntoAutoZoneWithContainerDistance8();
+			break;
+		//Back into auto zone with container, but based on distance
+		case 9:
+			Autonomous.strafeIntoAutoZoneWithContainer9();
+			break;
 		default: 
 			Autonomous.driveToAutoZone1();
 			break;
@@ -75,14 +83,11 @@ public class Autonomous {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 			DriveTrain.setStrafeUp();
 		} else if (autoTimer.get() > 0.5 && autoTimer.get() < 1.5) {
-			Elevator.moveElevator(0.2);
-		} else if (autoTimer.get() > 1.5 && autoTimer.get() < 5) {
+			Elevator.setElevatorUp();
+		} else if (autoTimer.get() > 1.5 && autoTimer.get() < 3.8) {
 			Elevator.stopElevator();
 			DriveMotors.drive(0.35, -0.35);
-		} else if(autoTimer.get() > 5 && autoTimer.get() < 6.5) {
-			DriveMotors.stopMotors();
-			DriveMotors.drive(0.7, 0.7);
-		} else if(autoTimer.get() > 6.5 && autoTimer.get() < 7.5) {
+		} else if(autoTimer.get() > 7) {
 			DriveMotors.stopMotors();
 		}
 	}
@@ -187,10 +192,12 @@ public class Autonomous {
 		
 	}
 	
-	//Currently not plausible
+	//Works as of Southfield
 	private static void strafeIntoAutoZoneWithToteAndContainer6() {
-		DriveTrain.setStrafeDown();
-		if(autoTimer.get() <= 7) {
+		if(autoTimer.get() <= 1.0) {
+			DriveTrain.setStrafeDown();
+			Arm.setArmBack();
+		} else if(autoTimer.get() <= 7.5) {
 			DriveMotors.drive(Constants.AUTON_6_LEFT_SPEED, Constants.AUTON_6_RIGHT_SPEED);
 			DriveMotors.driveStrafe(Constants.AUTON_6_STRAFE_SPEED);
 		} else {
@@ -204,6 +211,35 @@ public class Autonomous {
 			Elevator.setElevatorPosition(Constants.AUTON_7_ELEVATOR_LIFT);
 		} else if(autoTimer.get() <= 5) {
 			DriveTrain.driveDistance(Constants.AUTON_7_DRIVE_DISTANCE_BACK);
+		} else {
+			DriveMotors.stopMotors();
+		}
+	}
+	
+	private static void backIntoAutoZoneWithContainerDistance8() {
+		if(autoTimer.get() <= 0.5) {
+			DriveMotors.resetEncoders();
+			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
+			DriveTrain.setStrafeUp();
+		} else if (autoTimer.get() <= 1.5) {
+			Elevator.setElevatorUp();
+		} else if(autoTimer.get() <= 7) {
+			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE);
+		} else if(autoTimer.get() <= 8.75){
+			DriveMotors.drive(0.35, 0.35);
+		} else {
+			Ingestor.setIngestorIn();
+			DriveMotors.stopMotors();
+		}
+	}
+	
+	private static void strafeIntoAutoZoneWithContainer9() {
+		if(autoTimer.get() <= 1.0) {
+			DriveTrain.setStrafeDown();
+			Arm.setArmBack();
+		} else if(autoTimer.get() <= 7) {
+			DriveMotors.drive(Constants.AUTON_6_LEFT_SPEED, Constants.AUTON_6_RIGHT_SPEED);
+			DriveMotors.driveStrafe(Constants.AUTON_6_STRAFE_SPEED);
 		} else {
 			DriveMotors.stopMotors();
 		}

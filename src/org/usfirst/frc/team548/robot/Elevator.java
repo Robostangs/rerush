@@ -61,7 +61,7 @@ public class Elevator {
 	}
 	
 	public static void setElevatorUpToLevel(int level) {
-		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]+1200);
+		setElevatorPosition(Constants.ELEVATOR_LEVELS[level]+Constants.ELEVATOR_OVERSHOOT);
 	}
 	
 	public static int getToteZone() {

@@ -21,16 +21,17 @@ public class Robot extends IterativeRobot {
     	Ingestor.getInstance();
     	DriveMotors.resetEncoders();
     	sc = new SendableChooser();
-    	sc.addDefault("Drive to auto zone", 1);
-    	sc.addObject("Drive to auto with container", 2);
+    	sc.addDefault("Back into auto zone", 1);
+    	sc.addObject("Back into auto with container", 2);
     	sc.addObject("Drive into auto zone with container and tote", 3);
     	sc.addObject("Strafe into auto zone", 6);
     	sc.addObject("Get tote and back into auto zone", 7);
+    	sc.addObject("Back into auto zone with container based on distance", 8);
     	SmartDashboard.putData("Auto type", sc);
     }
     
     public void autonomousInit() {
-    	Autonomous.setAutoMode((int)sc.getSelected());
+    	//Autonomous.setAutoMode((int)sc.getSelected());
     	Autonomous.startTimer();
     	DriveMotors.resetEncoders();
     }

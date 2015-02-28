@@ -32,11 +32,13 @@ public class Constants {
 	public static final double AUTON_4_DISTANCE_TO_AUTO_ZONE = -1;
 	//Strafe to Auto Zone
 	public static final double AUTON_6_LEFT_SPEED = 0;
-	public static final double AUTON_6_RIGHT_SPEED = 0.5;
-	public static final double AUTON_6_STRAFE_SPEED = -1;
+	public static final double AUTON_6_RIGHT_SPEED = 0;
+	public static final double AUTON_6_STRAFE_SPEED = 0.75;
 	//Back into auto zone with tote
 	public static final double AUTON_7_ELEVATOR_LIFT = 1200;
 	public static final double AUTON_7_DRIVE_DISTANCE_BACK = -4600;
+	//Back into auto zone with container based on distance
+	public static final double AUTON_8_DRIVE_DISTANCE = -4500;
 	
 	//Drive Train
 	//Ports
@@ -48,8 +50,8 @@ public class Constants {
 	public static final int DRIVE_STRAFE_SOL_POS = 3;
 	public static final int DRIVE_GYRO_POS = 0;
 	//Speeds
-	public static final double DRIVE_DISTANCE_SPEED_LEFT = 0.5;
-	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.5;
+	public static final double DRIVE_DISTANCE_SPEED_LEFT = 0.35;
+	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.35;
 	public static final double DRIVE_TURN_SPEED_LEFT = 0.3;
 	public static final double DRIVE_TURN_SPEED_RIGHT = 0.3;
 	//Thresholds
@@ -91,6 +93,7 @@ public class Constants {
 		15300, //level 4*
 		19600, //level 5*
 		20800}; 
+	public static final double ELEVATOR_OVERSHOOT = 1000;
 	public static final double ELEVATOR_SLOW_ZONE = 1100;
 	public static final double ELEVATOR_ENCODER_RESET_POINT = 0;
 	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;

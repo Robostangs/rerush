@@ -126,13 +126,13 @@ public class DriveTrain {
 		
 		if(position > 0) {
 			if(position > DriveMotors.getEncoderAverage()) {
-				driveStraight(Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} else if(position <= DriveMotors.getEncoderAverage()) {
 				DriveMotors.stopMotors();
 			} 
 		} else if(position < 0) {
 			if(position < DriveMotors.getEncoderAverage()) {
-				driveStraight(-Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
 			} else if(position >= DriveMotors.getEncoderAverage()) {
 				DriveMotors.stopMotors();
 			} 
