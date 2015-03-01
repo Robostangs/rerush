@@ -5,12 +5,8 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 8;
+	private static int mode = 1;
 	private static Timer autoTimer;
-	private static boolean timerReset = false;
-//	private static boolean step1Done = false, step2Done = false,
-//			step3Done = false, step4Done = false, step5Done = false,
-//			step6Done = false, step7Done = false, step8Done = false;
 
 	private Autonomous() {
 		autoTimer = new Timer();
@@ -41,34 +37,32 @@ public class Autonomous {
 			break;
 		// Pick up container and tote do 180 pick up tote drive straight pick up last tote then turn into auto zone
 		case 4:
-			Autonomous.thinkOfAGoodNameForThisMethodForAuto4();
-			break;
-		//  Pick up container and tote do 180 pick up tote drive around container pick up last tote then turn into auto zone
-		case 5: 
-			Autonomous.godTierAuto5();
-			break;
-		case 6:
-			Autonomous.strafeIntoAutoZoneWithToteAndContainer6();
+			Autonomous.strafeIntoAutoZoneWithToteAndContainer4();
 			break;
 		//  Strafe into the auto zone by pushing tote and container
-		case 7:
-			Autonomous.getToteAndBackIntoAutoZone7();
+		case 5: 
+			Autonomous.getToteAndBackIntoAutoZone5();
 			break;
 		//	Lift tote and back up into auto zone
+		case 6:
+			Autonomous.backIntoAutoZoneWithContainerDistance6();
+			break;
+		//  Back into auto zone with container, but based on distance
+		case 7:
+			Autonomous.strafeIntoAutoZoneWithContainer7();
+			break;
+		//	Strafe into auto zone pushing only container
 		case 8:
-			Autonomous.backIntoAutoZoneWithContainerDistance8();
+			Autonomous.dreamAutonForLivonia8();
 			break;
-		//Back into auto zone with container, but based on distance
-		case 9:
-			Autonomous.strafeIntoAutoZoneWithContainer9();
-			break;
+		//  Stack tote set in auton as long as middle container is removed
 		default: 
 			Autonomous.driveToAutoZone1();
 			break;
 		}
 	}
 	
-	//Works alright
+	//Works alright.
 	private static void driveToAutoZone1() {
 		if(autoTimer.get() <= 2.6) {
 			DriveMotors.drive(0.5, -0.5);
@@ -77,7 +71,7 @@ public class Autonomous {
 		}
 	}
 	
-	
+	//Works, but is based on time. Method based on distance is more accurate.
 	private static void driveToAutoZoneWithContainer2() {		
 		if(autoTimer.get() < 0.5) {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
@@ -99,7 +93,7 @@ public class Autonomous {
 			Elevator.setElevatorToLevel(2);
 		} else if(autoTimer.get() <= 3.5) {
 			Elevator.stopElevator();
-			DriveTrain.driveDistance(1000);
+			DriveTrain.driveDistance(1000, 0.5);
 		} else if(autoTimer.get() <= 4.5) {
 			DriveMotors.stopMotors();
 			DriveMotors.drive(Constants.AUTON_3_LEFT_SPEED, Constants.AUTON_3_RIGHT_SPEED);
@@ -120,80 +114,8 @@ public class Autonomous {
 		}
 	}
 	
-	
-	private static void thinkOfAGoodNameForThisMethodForAuto4() {
-//		if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER) && !step1Done) {
-//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-//			DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_CONTAINER);
-//		} else {
-//			step1Done = true;
-//			DriveMotors.stopMotors();
-//			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-//			Elevator.setElevatorUpOneLevel();
-//			if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE) && !step2Done) {
-//				Ingestor.setIngestorIn();
-//				Ingestor.setIngestorPower(1);
-//				DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_FIRST_TOTE);
-//			} else {
-//				step2Done = true;
-//				DriveMotors.stopMotors();
-//				Ingestor.setIngestorPower(0);
-//				Elevator.setElevatorUpOneLevel();
-//				if(!DriveTrain.isAtTurn(Constants.AUTON_4_FIRST_TURN_ANGLE) && !step3Done) {
-//					DriveTrain.turn(Constants.AUTON_4_FIRST_TURN_ANGLE);
-//				} else {
-//					step3Done = true;
-//					if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE) && !step4Done) {
-//						Ingestor.setIngestorIn();
-//						Ingestor.setIngestorPower(1);
-//						DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_SECOND_TOTE);
-//					} else {
-//						step4Done = true;
-//						DriveMotors.stopMotors();
-//						Ingestor.setIngestorPower(0);
-//						Elevator.setElevatorUpOneLevel();
-//						if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE) && !step5Done) {
-//							Ingestor.setIngestorIn();
-//							Ingestor.setIngestorPower(1);
-//							DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_THIRD_TOTE);
-//						} else {
-//							step5Done = true;
-//							DriveMotors.stopMotors();
-//							Ingestor.setIngestorPower(0);
-//							Elevator.setElevatorUpOneLevel();
-//							if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_BACKING_UP) && !step6Done) {
-//								DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_BACKING_UP);
-//							} else {
-//								step6Done = true;
-//								DriveMotors.stopMotors();
-//								if(!DriveTrain.isAtTurn(Constants.AUTON_4_SECOND_TURN_ANGLE) && !step7Done) {
-//									DriveTrain.turn(Constants.AUTON_4_SECOND_TURN_ANGLE);
-//								} else {
-//									step7Done = true;
-//									if(!DriveTrain.isAtDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE) && !step8Done) {
-//										DriveTrain.driveDistance(Constants.AUTON_4_DISTANCE_TO_AUTO_ZONE);
-//									} else {
-//										step8Done = true;
-//										DriveMotors.stopMotors();
-//										Elevator.setElevatorPosition(0);
-//										Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen();
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-	}
-	
-	
-	private static void godTierAuto5() {
-		
-	}
-	
-	//Works as of Southfield
-	private static void strafeIntoAutoZoneWithToteAndContainer6() {
+	//Works, but only with both tote and container. Watch for worn down carpet under strafe wheel.
+	private static void strafeIntoAutoZoneWithToteAndContainer4() {
 		if(autoTimer.get() <= 1.0) {
 			DriveTrain.setStrafeDown();
 			Arm.setArmBack();
@@ -206,17 +128,18 @@ public class Autonomous {
 	}
 	
 	//Currently doesn't work with ingestor wheels 
-	private static void getToteAndBackIntoAutoZone7() {
+	private static void getToteAndBackIntoAutoZone5() {
 		if(autoTimer.get() <= 1) {
 			Elevator.setElevatorPosition(Constants.AUTON_7_ELEVATOR_LIFT);
 		} else if(autoTimer.get() <= 5) {
-			DriveTrain.driveDistance(Constants.AUTON_7_DRIVE_DISTANCE_BACK);
+			DriveTrain.driveDistance(Constants.AUTON_7_DRIVE_DISTANCE_BACK, Constants.AUTON_7_DRIVE_DISTANCE_SPEED);
 		} else {
 			DriveMotors.stopMotors();
 		}
 	}
 	
-	private static void backIntoAutoZoneWithContainerDistance8() {
+	//Same as method 2, but more accurate since based on distance rather than time.
+	private static void backIntoAutoZoneWithContainerDistance6() {
 		if(autoTimer.get() <= 0.5) {
 			DriveMotors.resetEncoders();
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
@@ -224,7 +147,7 @@ public class Autonomous {
 		} else if (autoTimer.get() <= 1.5) {
 			Elevator.setElevatorUp();
 		} else if(autoTimer.get() <= 7) {
-			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE);
+			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
 		} else if(autoTimer.get() <= 8.75){
 			DriveMotors.drive(0.35, 0.35);
 		} else {
@@ -233,7 +156,8 @@ public class Autonomous {
 		}
 	}
 	
-	private static void strafeIntoAutoZoneWithContainer9() {
+	//Works, but only with just container. Watch for worn down carpet under strafe wheel.
+	private static void strafeIntoAutoZoneWithContainer7() {
 		if(autoTimer.get() <= 1.0) {
 			DriveTrain.setStrafeDown();
 			Arm.setArmBack();
@@ -242,6 +166,49 @@ public class Autonomous {
 			DriveMotors.driveStrafe(Constants.AUTON_6_STRAFE_SPEED);
 		} else {
 			DriveMotors.stopMotors();
+		}
+	}
+	
+	//Hasn't been tested
+	private static void dreamAutonForLivonia8() {
+		if(autoTimer.get() <= 0.5) {
+			Elevator.setElevatorUp();
+		} else if(autoTimer.get() <= 1.5) {
+			DriveTrain.driveDistance(Constants.AUTON_10_DRIVE_DISTANCE_TO_TOTE_1, Constants.AUTON_10_DRIVE_DISTANCE_SPEED);
+		} else if(autoTimer.get() <= 2.2) {
+			Ingestor.setIngestorIn();
+			Ingestor.setIngestorPower(Constants.AUTON_10_INGEST_POWER);
+		} else if(autoTimer.get() <= 2.8) {
+			Elevator.setElevatorDown();
+		} else if(autoTimer.get() <= 3.8) {
+			Elevator.setElevatorUp();
+		} else if(autoTimer.get() <= 5) {
+			Ingestor.setIngestorOut();
+			DriveTrain.turnAngle(Constants.AUTON_10_FIRST_TURN_ANGLE, Constants.AUTON_10_TURN_SPEED);
+		} else if(autoTimer.get() <= 6) {
+			DriveTrain.driveDistance(Constants.AUTON_10_DRIVE_DISTANCE_TO_TOTE_2, Constants.AUTON_10_DRIVE_DISTANCE_SPEED);
+		} else if(autoTimer.get() <= 6.5) {
+			Ingestor.setIngestorIn();
+			Ingestor.setIngestorPower(Constants.AUTON_10_INGEST_POWER);
+		} else if(autoTimer.get() <= 7.1) {
+			Elevator.setElevatorDown();
+		} else if(autoTimer.get() <= 7.8) {
+			Elevator.setElevatorUp();
+		} else if(autoTimer.get() <= 9) {
+			Ingestor.setIngestorOut();
+			DriveTrain.driveDistance(Constants.AUTON_10_DRIVE_DISTANCE_TO_TOTE_3, Constants.AUTON_10_DRIVE_DISTANCE_SPEED);
+		} else if(autoTimer.get() <= 9.5) {
+			Ingestor.setIngestorIn();
+			Ingestor.setIngestorPower(Constants.AUTON_10_INGEST_POWER);
+		} else if(autoTimer.get() <= 10) {
+			Elevator.setElevatorDown();
+		} else if(autoTimer.get() <= 10.7) {
+			Elevator.setElevatorUp();
+		} else if(autoTimer.get() <= 13.5) {
+			DriveMotors.driveStrafe(Constants.AUTON_10_STRAFE_POWER);
+		} else if(autoTimer.get() <= 15) {
+			DriveMotors.stopMotors();
+			Elevator.setElevatorToLevel(3);
 		}
 	}
 	

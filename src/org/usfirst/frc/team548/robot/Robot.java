@@ -22,11 +22,13 @@ public class Robot extends IterativeRobot {
     	DriveMotors.resetEncoders();
     	sc = new SendableChooser();
     	sc.addDefault("Back into auto zone", 1);
-    	sc.addObject("Back into auto with container", 2);
+    	sc.addObject("Back into auto with container based on time", 2);
     	sc.addObject("Drive into auto zone with container and tote", 3);
-    	sc.addObject("Strafe into auto zone", 6);
-    	sc.addObject("Get tote and back into auto zone", 7);
-    	sc.addObject("Back into auto zone with container based on distance", 8);
+    	sc.addObject("Strafe into auto zone with tote and container", 4);
+    	sc.addObject("Get tote and back into auto zone", 5);
+    	sc.addObject("Back into auto zone with container based on distance", 6);
+    	sc.addObject("Strafe into auto zone with only container", 7);
+    	sc.addObject("Dream auton for livonia", 8);
     	SmartDashboard.putData("Auto type", sc);
     }
     
@@ -43,7 +45,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	TeleOperated.runDriver();
     	TeleOperated.runManip();
-    	//SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
+    	SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
     	SmartDashboard.putNumber("Left Encoder Position", DriveMotors.getLeftEncoderPosition());
     	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());

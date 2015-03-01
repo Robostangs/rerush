@@ -37,8 +37,20 @@ public class Constants {
 	//Back into auto zone with tote
 	public static final double AUTON_7_ELEVATOR_LIFT = 1200;
 	public static final double AUTON_7_DRIVE_DISTANCE_BACK = -4600;
+	public static final double AUTON_7_DRIVE_DISTANCE_SPEED = 0.5;
 	//Back into auto zone with container based on distance
 	public static final double AUTON_8_DRIVE_DISTANCE = -4500;
+	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.35;
+	//Dream auton for Livonia
+	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_1 = 1000;
+	public static final double AUTON_10_DRIVE_DISTANCE_SPEED = 0.5;
+	public static final double AUTON_10_INGEST_POWER = 1;
+	public static final double AUTON_10_FIRST_TURN_ANGLE = -1;
+	public static final double AUTON_10_TURN_SPEED = 0.5;
+	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_2 = 2000;
+	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_3 = 2500;
+	public static final double AUTON_10_STRAFE_POWER = -1;
+	
 	
 	//Drive Train
 	//Ports
@@ -49,11 +61,6 @@ public class Constants {
 	public static final int DRIVE_CENTER_STRAFE_TALON_POS = 7;
 	public static final int DRIVE_STRAFE_SOL_POS = 3;
 	public static final int DRIVE_GYRO_POS = 0;
-	//Speeds
-	public static final double DRIVE_DISTANCE_SPEED_LEFT = 0.35;
-	public static final double DRIVE_DISTANCE_SPEED_RIGHT = 0.35;
-	public static final double DRIVE_TURN_SPEED_LEFT = 0.3;
-	public static final double DRIVE_TURN_SPEED_RIGHT = 0.3;
 	//Thresholds
 	public static final double DRIVE_HUMAN_DRIVE_THRESHOLD = 0.2;
 	public static final double DRIVE_HUMAN_STRAFE_THRESHOLD = 0.15;

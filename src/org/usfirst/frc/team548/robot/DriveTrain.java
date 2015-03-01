@@ -118,7 +118,7 @@ public class DriveTrain {
 		return true;
 	}
 	
-	public static void driveDistance(double position) {
+	public static void driveDistance(double position, double speed) {
 		if(!encodersInit) {
 			DriveMotors.resetEncoders();
 			encodersInit = true;
@@ -126,35 +126,40 @@ public class DriveTrain {
 		
 		if(position > 0) {
 			if(position > DriveMotors.getEncoderAverage()) {
-				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(-speed, speed);
 			} else if(position <= DriveMotors.getEncoderAverage()) {
 				DriveMotors.stopMotors();
 			} 
 		} else if(position < 0) {
 			if(position < DriveMotors.getEncoderAverage()) {
-				DriveMotors.drive(Constants.DRIVE_DISTANCE_SPEED_LEFT, -Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(speed, -speed);
 			} else if(position >= DriveMotors.getEncoderAverage()) {
 				DriveMotors.stopMotors();
 			} 
 		}
 	}
 	
-	public static void turn(double angle) {
+	public static void turnAngle(double angle, double speed) {
 		if(!gyroInt) {
 			gyroInitAngle = gyro.getAngle();
 			gyroInt = true;
 		}
-		if(!isAtTurn(angle)) {
+		
+		if(angle > gyroInitAngle) {
 			if(angle > gyro.getAngle()) {
-				DriveMotors.drive(Constants.DRIVE_TURN_SPEED_LEFT, -Constants.DRIVE_TURN_SPEED_RIGHT);
-			} else if(angle < gyro.getAngle()) {
-				DriveMotors.drive(-Constants.DRIVE_DISTANCE_SPEED_LEFT, Constants.DRIVE_DISTANCE_SPEED_RIGHT);
+				DriveMotors.drive(speed, speed);
+			} else if(angle <= gyro.getAngle()) {
+				DriveMotors.stopMotors();
 			}
-		} else {
-			DriveMotors.stopMotors();
+		} else if(angle < gyroInitAngle) {
+			if(angle < gyro.getAngle()) {
+				DriveMotors.drive(-speed, -speed);
+			} else if(angle >= gyro.getAngle()) {
+				DriveMotors.stopMotors();
+			}
 		}
 	}
-	
+
 	public static boolean isAtTurn(double angle) {
 		if(angle != gyro.getAngle()) {
 			return false;
