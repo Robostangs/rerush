@@ -8,12 +8,12 @@ public class Constants {
 	public static final double XBOX_TRIGGER_THRESHOLD = 0.15;
 	
 	//Autonomous
-	//Drive to Auto Zone
+	//Drive to Auto Zone (1)
 	public static final double AUTON_1_DRIVE_DISTANCE_ROBOT_SET = 7000;
-	//Drive to Auto Zone with Container
+	//Drive to Auto Zone with Container based on time (2)
 	public static final double AUTON_2_DISTANCE_TO_CONTAINER = -1;
 	public static final double AUTON_2_DISTANCE_FROM_CONTAINER = -1;
-	//Drive to Auto Zone with Container and Tote
+	//Drive to Auto Zone with Container and Tote (3)
 	public static final double AUTON_3_DISTANCE_TO_CONTAINER = -1;
 	public static final double AUTON_3_DISTANCE_TO_TOTE = -1;
 	public static final double AUTON_3_TURN_ANGLE = -1;
@@ -21,35 +21,42 @@ public class Constants {
 	public static final double AUTON_3_LEFT_SPEED = 0;
 	public static final double AUTON_3_RIGHT_SPEED = 0.8;
 	public static final double AUTON_3_STRAFE_SPEED = -1;
-	//Drive to Auto Zone with Tote Stack and Container
-	public static final double AUTON_4_DISTANCE_TO_FIRST_CONTAINER = -1;
-	public static final double AUTON_4_DISTANCE_TO_FIRST_TOTE = -1;
-	public static final double AUTON_4_FIRST_TURN_ANGLE = -1;
-	public static final double AUTON_4_DISTANCE_TO_SECOND_TOTE = -1;
-	public static final double AUTON_4_DISTANCE_TO_THIRD_TOTE = -1;
-	public static final double AUTON_4_DISTANCE_BACKING_UP = -1;
-	public static final double AUTON_4_SECOND_TURN_ANGLE = -1;
-	public static final double AUTON_4_DISTANCE_TO_AUTO_ZONE = -1;
-	//Strafe to Auto Zone
-	public static final double AUTON_6_LEFT_SPEED = 0;
-	public static final double AUTON_6_RIGHT_SPEED = 0;
-	public static final double AUTON_6_STRAFE_SPEED = 0.75;
-	//Back into auto zone with tote
-	public static final double AUTON_7_ELEVATOR_LIFT = 1200;
-	public static final double AUTON_7_DRIVE_DISTANCE_BACK = -4600;
-	public static final double AUTON_7_DRIVE_DISTANCE_SPEED = 0.5;
-	//Back into auto zone with container based on distance
-	public static final double AUTON_8_DRIVE_DISTANCE = -4500;
-	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.35;
-	//Dream auton for Livonia
-	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_1 = 1000;
-	public static final double AUTON_10_DRIVE_DISTANCE_SPEED = 0.5;
-	public static final double AUTON_10_INGEST_POWER = 1;
-	public static final double AUTON_10_FIRST_TURN_ANGLE = -1;
-	public static final double AUTON_10_TURN_SPEED = 0.5;
-	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_2 = 2000;
-	public static final double AUTON_10_DRIVE_DISTANCE_TO_TOTE_3 = 2500;
-	public static final double AUTON_10_STRAFE_POWER = -1;
+	//Strafe to Auto Zone with tote and container (4)
+	public static final double AUTON_4_LEFT_SPEED = 0;
+	public static final double AUTON_4_RIGHT_SPEED = 0;
+	public static final double AUTON_4_STRAFE_SPEED = 0.75;
+	//Back into auto zone with tote (5)
+	public static final double AUTON_5_ELEVATOR_LIFT = 1200;
+	public static final double AUTON_5_DRIVE_DISTANCE_BACK = -4600;
+	public static final double AUTON_5_DRIVE_DISTANCE_SPEED = 0.5;
+	//Back into auto zone with container based on distance (6)
+	public static final double AUTON_6_DRIVE_DISTANCE = -4500;
+	public static final double AUTON_6_DRIVE_DISTANCE_SPEED = 0.35;
+	//Strafe to auto zone with only container (7)
+	public static final double AUTON_7_LEFT_SPEED = 0;
+	public static final double AUTON_7_RIGHT_SPEED = 0;
+	public static final double AUTON_7_STRAFE_SPEED = 0.75;
+	//Gets container, places on tote, turns and gets other two totes if middle container removed (8)
+	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_1 = 1000;
+	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.5;
+	public static final double AUTON_8_INGEST_POWER = 1;
+	public static final double AUTON_8_FIRST_TURN_ANGLE = -1;
+	public static final double AUTON_8_TURN_SPEED = 0.5;
+	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_2 = 2000;
+	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_3 = 2500;
+	public static final double AUTON_8_STRAFE_POWER = -1;
+	//Gets all three totes in a line by pushing aside containers (9)
+	public static final double AUTON_9_INGEST_POWER = 1;
+	public static final double AUTON_9_READJUST_LEFT_SPEED = -0.25;
+	public static final double AUTON_9_READJUST_RIGHT_SPEED = 0;
+	public static final double AUTON_9_READJUST_STRAFE_SPEED = 0.75;
+	public static final double AUTON_9_DISTANCE_TO_TOTE_2 = 5000;
+	public static final double AUTON_9_DRIVE_DISTANCE_SPEED = 0.5;
+	public static final double AUTON_9_DISTANCE_TO_CONTAINER_1 = 2500;
+	public static final double AUTON_9_SET_INGESTOR_DIRECTION = 1;
+	public static final double AUTON_9_DISTANCE_TO_TOTE_3 = 5000;
+	public static final double AUTON_9_DISTANCE_TO_CONTAINER_2 = 2500;
+	public static final double AUTON_9_STRAFE_POWER = 0.75;
 	
 	
 	//Drive Train

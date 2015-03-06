@@ -10,7 +10,7 @@ public class DriveTrain {
 	private static DriveTrain instance = null; 
 	private static Solenoid strafeSolenoid;
 	private static Gyro gyro;
-	private static boolean gyroInt = false;
+	private static boolean gyroInit = false;
 	private static double gyroInitAngle = 0;
 	private static boolean encodersInit = false;
 
@@ -87,10 +87,10 @@ public class DriveTrain {
 	}
 
 	public static void strafeStraight(double power) {
-		if(!gyroInt) {
+		if(!gyroInit) {
 			gyro.reset();
 			gyroInitAngle = getGyroAngle();
-			gyroInt = true;
+			gyroInit = true;
 		} else {
 			if(gyroInitAngle < getGyroAngle()) {
 				DriveMotors.drive(Constants.DRIVE_STRAFE_MOD*power, -Constants.DRIVE_STRAFE_MOD*power);
@@ -108,7 +108,7 @@ public class DriveTrain {
 	
 	public static void resetGyro() {
 		gyro.reset();
-		gyroInt = false;
+		gyroInit = false;
 	}
 	
 	public static boolean isAtDistance(double setpoint) {
@@ -139,10 +139,14 @@ public class DriveTrain {
 		}
 	}
 	
+	public static void resetEncoderInitBoolean() {
+		encodersInit = false;
+	}
+	
 	public static void turnAngle(double angle, double speed) {
-		if(!gyroInt) {
+		if(!gyroInit) {
 			gyroInitAngle = gyro.getAngle();
-			gyroInt = true;
+			gyroInit = true;
 		}
 		
 		if(angle > gyroInitAngle) {
