@@ -67,7 +67,6 @@ public class Elevator {
 	public static int getToteZone() {
 		for(int i = 1; i < 6; i++) {
 			if(Constants.ELEVATOR_LEVELS[i] > ElevatorMotors.getLeftEncoder()) {
-				System.out.println(Constants.ELEVATOR_LEVELS[i]-ElevatorMotors.getLeftEncoder());
 				return i-1;
 			}
 		}
@@ -96,7 +95,6 @@ public class Elevator {
 	public static void calibrateEncoder() {
 		if(!getBotElevatorSwitch()) {
 			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
-			System.out.println("UM");
 		} else {
 			Elevator.stopElevator();
 			ElevatorMotors.resetEncoders();
