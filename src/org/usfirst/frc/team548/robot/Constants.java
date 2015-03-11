@@ -99,15 +99,15 @@ public class Constants {
 	public static final double ELEVATOR_CALIBRATION_DOWN_POWER = -0.20;
 	//Positions
 	public static final double ELEVATOR_INPUT_MIN = 0;
-	public static final double ELEVATOR_INPUT_MAX = 21000;
+	public static final double ELEVATOR_INPUT_MAX = 22000;
 	public static final double[] ELEVATOR_LEVELS = { 0, //Level 0
-		2100, //level 1*
-		6400, //level 2*
-		10800, //level 3*
-		15300, //level 4*
-		19600, //level 5*
-		20800}; 
-	public static final double ELEVATOR_OVERSHOOT = 1000;
+		1600, //level 1*
+		6500, //level 2*
+		11300, //level 3*
+		16100, //level 4*
+		20900, //level 5*
+		21500}; 
+	public static final double ELEVATOR_OVERSHOOT = 500;
 	public static final double ELEVATOR_SLOW_ZONE = 1100;
 	public static final double ELEVATOR_ENCODER_RESET_POINT = 0;
 	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;

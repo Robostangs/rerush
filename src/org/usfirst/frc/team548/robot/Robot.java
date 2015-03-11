@@ -58,7 +58,6 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     	SmartDashboard.putNumber("Elevator Encoder", ElevatorMotors.getEncoderAverage());
     	LiveWindow.run();
-    	System.out.println(ElevatorMotors.getEncoderAverage());
     }
     
    
