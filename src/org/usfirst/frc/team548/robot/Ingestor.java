@@ -31,6 +31,11 @@ public class Ingestor {
 		leftSolenoid.set(DoubleSolenoid.Value.kReverse);
 		rightSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
+	
+	public static void setIngestorNeutral() {
+		leftSolenoid.set(DoubleSolenoid.Value.kOff);
+		rightSolenoid.set(DoubleSolenoid.Value.kOff);
+	}
 		
 	public static void setIngestorPower(double power) {
 		leftMotor.set(power);

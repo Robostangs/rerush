@@ -187,7 +187,7 @@ public class TeleOperated {
 		} else if (manip.getXButton()) {
 			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
-			DriveTrain.setStrafeUp();
+			Elevator.autoGrabUp();
 //			Ingestor.setIngestorOut();
 //			Elevator.setElevatorToLevel(5);
 		} else if(Math.abs(manip.getRightStickYAxis()) > Constants.XBOX_JOYSTICK_THRESHOLD) {
@@ -197,6 +197,7 @@ public class TeleOperated {
 		} else {
 			buttonPressed = false;
 			Elevator.stopElevator();
+			Elevator.resetTimer();
 		}		
 	}
 }
