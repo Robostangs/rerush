@@ -112,6 +112,7 @@ public class Elevator {
 	public static void autoGrabUp() {
 		if(grabTimer.get() == 0) {
 			grabTimer.start();
+			setCurrentLevelSnapshot();
 		}
 		
 		if(grabTimer.get() < 1) {
