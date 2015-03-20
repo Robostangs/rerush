@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 9;
+	private static int mode = 8;
 	private static Timer autoTimer;
 
 	private Autonomous() {
@@ -175,95 +175,105 @@ public class Autonomous {
 	
 	//Hasn't been tested
 	private static void dreamAutonForLivonia8() {
-		if(autoTimer.get() <= 0.5) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 1.5) {
+		if(autoTimer.get() <= 1) {
+			DriveTrain.setStrafeDown();
+			Elevator.setElevatorToLevel(2);
+		} else if(autoTimer.get() <= 2.5) {
 			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_1, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-		} else if(autoTimer.get() <= 2.2) {
-			DriveTrain.resetEncoderInitBoolean();
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-		} else if(autoTimer.get() <= 2.8) {
-			Elevator.setElevatorDown();
-		} else if(autoTimer.get() <= 3.8) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 5) {
-			Ingestor.setIngestorOut();
-			DriveTrain.turnAngle(Constants.AUTON_8_FIRST_TURN_ANGLE, Constants.AUTON_8_TURN_SPEED);
-		} else if(autoTimer.get() <= 6) {
-			DriveTrain.resetGyro();
-			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_2, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-		} else if(autoTimer.get() <= 6.5) {
-			DriveTrain.resetEncoderInitBoolean();
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-		} else if(autoTimer.get() <= 7.1) {
-			Elevator.setElevatorDown();
-		} else if(autoTimer.get() <= 7.8) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 9) {
-			Ingestor.setIngestorOut();
-			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_3, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-		} else if(autoTimer.get() <= 9.5) {
-			DriveTrain.resetEncoderInitBoolean();
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-		} else if(autoTimer.get() <= 10) {
-			Elevator.setElevatorDown();
-		} else if(autoTimer.get() <= 10.7) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 13.5) {
-			DriveMotors.driveStrafe(Constants.AUTON_8_STRAFE_POWER);
-		} else if(autoTimer.get() <= 15) {
+		} else if(autoTimer.get() <= 3) {
+			DriveMotors.drive(0.5, 0.5);
+			Elevator.setCurrentLevelSnapshot();
+		}else if(autoTimer.get() <= 4.5) {
 			DriveMotors.stopMotors();
-			Elevator.setElevatorToLevel(3);
+			DriveTrain.resetEncoderInitBoolean();
+			Ingestor.setIngestorIn();
+			Elevator.autoGrabUp();
+//		} else if(autoTimer.get() <= 13) {
+//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
+//			Elevator.setElevatorDownToLevel(2);
+//		} else if(autoTimer.get() <= 15) {
+//			Elevator.setElevatorUpToLevel(3);
+//		} else if(autoTimer.get() <= 5) {
+//			Ingestor.setIngestorOut();
+//			DriveTrain.turnAngle(Constants.AUTON_8_FIRST_TURN_ANGLE, Constants.AUTON_8_TURN_SPEED);
+//		} else if(autoTimer.get() <= 6) {
+//			DriveTrain.resetGyro();
+//			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_2, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
+//		} else if(autoTimer.get() <= 6.5) {
+//			DriveTrain.resetEncoderInitBoolean();
+//			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
+//		} else if(autoTimer.get() <= 7.1) {
+//			Elevator.setElevatorDown();
+//		} else if(autoTimer.get() <= 7.8) {
+//			Elevator.setElevatorUp();
+//		} else if(autoTimer.get() <= 9) {
+//			Ingestor.setIngestorOut();
+//			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_3, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
+//		} else if(autoTimer.get() <= 9.5) {
+//			DriveTrain.resetEncoderInitBoolean();
+//			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
+//		} else if(autoTimer.get() <= 10) {
+//			Elevator.setElevatorDown();
+//		} else if(autoTimer.get() <= 10.7) {
+//			Elevator.setElevatorUp();
+//		} else if(autoTimer.get() <= 13.5) {
+//			DriveMotors.driveStrafe(Constants.AUTON_8_STRAFE_POWER);
+//		} else if(autoTimer.get() <= 15) {
+//			DriveMotors.stopMotors();
+//			Elevator.setElevatorToLevel(3);
 		}
 	}
 	
 	private static void otherDreamAuton9() {
-		if(autoTimer.get() <= 0.5) {
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
+		if(autoTimer.get() <= 1) {
+			Elevator.setElevatorDownToLevel(1);
 		} else if(autoTimer.get() <= 1.5) {
-			Elevator.setElevatorToLevel(3);
-		} else if(autoTimer.get() <= 3) {
-			DriveMotors.drive(Constants.AUTON_9_READJUST_LEFT_SPEED, Constants.AUTON_9_READJUST_RIGHT_SPEED);
-			DriveMotors.driveStrafe(Constants.AUTON_9_READJUST_STRAFE_SPEED);
-		} else if(autoTimer.get() <= 5.5) {
-			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
-			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_2, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
-			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_1) {
-				Ingestor.setIngestorOut();
-				Elevator.setElevatorToLevel(2);
-			}
-		} else if(autoTimer.get() <= 6.5) {
-			DriveTrain.resetEncoderInitBoolean();
+			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_1, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
+		} else if(autoTimer.get() <= 2.5) {
 			Ingestor.setIngestorIn();
 			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
-		} else if(autoTimer.get() <= 7.5) {
-			Elevator.setElevatorDown();
-		} else if(autoTimer.get() <= 7.7) {
+		} else if(autoTimer.get() <= 3.5) {
 			Elevator.setElevatorToLevel(4);
-		} else if(autoTimer.get() <= 9.2) {
-			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
-			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_3, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
-			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_2) {
-				Ingestor.setIngestorOut();
-				Elevator.setElevatorToLevel(3);
-			}
-		} else if(autoTimer.get() <= 10.2) {
-			DriveTrain.resetEncoderInitBoolean();
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
-		} else if(autoTimer.get() <= 10.5) {
-			Elevator.setElevatorDown();
-		} else if(autoTimer.get() <= 11.5) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 14) {
-			Ingestor.setIngestorOut();
-			DriveMotors.driveStrafe(Constants.AUTON_9_STRAFE_POWER);
-		} else if(autoTimer.get() <= 15) {
-			Elevator.setElevatorToLevel(3);
+		} else if(autoTimer.get() <= 5) {
+//			DriveMotors.drive(Constants.AUTON_9_READJUST_LEFT_SPEED, Constants.AUTON_9_READJUST_RIGHT_SPEED);
+//			DriveMotors.driveStrafe(Constants.AUTON_9_READJUST_STRAFE_SPEED);
+//		} else if(autoTimer.get() <= 5.5) {
+//			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
+//			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_2, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
+//			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_1) {
+//				Ingestor.setIngestorOut();
+//				Elevator.setElevatorToLevel(2);
+//			}
+//		} else if(autoTimer.get() <= 6.5) {
+//			DriveTrain.resetEncoderInitBoolean();
+//			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
+//		} else if(autoTimer.get() <= 7.5) {
+//			Elevator.setElevatorDown();
+//		} else if(autoTimer.get() <= 7.7) {
+//			Elevator.setElevatorToLevel(4);
+//		} else if(autoTimer.get() <= 9.2) {
+//			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
+//			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_3, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
+//			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_2) {
+//				Ingestor.setIngestorOut();
+//				Elevator.setElevatorToLevel(3);
+//			}
+//		} else if(autoTimer.get() <= 10.2) {
+//			DriveTrain.resetEncoderInitBoolean();
+//			Ingestor.setIngestorIn();
+//			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
+//		} else if(autoTimer.get() <= 10.5) {
+//			Elevator.setElevatorDown();
+//		} else if(autoTimer.get() <= 11.5) {
+//			Elevator.setElevatorUp();
+//		} else if(autoTimer.get() <= 14) {
+//			Ingestor.setIngestorOut();
+//			DriveMotors.driveStrafe(Constants.AUTON_9_STRAFE_POWER);
+//		} else if(autoTimer.get() <= 15) {
+//			Elevator.setElevatorToLevel(3);
 		}
 	}
 	

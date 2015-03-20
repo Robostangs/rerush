@@ -103,6 +103,15 @@ public class TeleOperated {
 				Arm.setArmForward();
 		 }
 		 
+		 /*
+		  * Driver wants left trigger to hold strafe wheel up
+		  */
+//		 if(driver.getLeftTriggerButton()) {
+//			 DriveTrain.setStrafeUp();
+//		 } else {
+//			 DriveTrain.setStrafeDown();
+//		 }
+		 
 		 
 		 /*
 		  * Driver ingestor controls using triggers
@@ -187,6 +196,10 @@ public class TeleOperated {
 		} else if (manip.getXButton()) {
 			Elevator.setElevatorToLevel(0);
 		} else if (manip.getYButton()) {
+			if(!buttonPressed) {
+				buttonPressed = true;
+				Elevator.setCurrentLevelSnapshot();
+			}
 			Elevator.autoGrabUp();
 //			Ingestor.setIngestorOut();
 //			Elevator.setElevatorToLevel(5);

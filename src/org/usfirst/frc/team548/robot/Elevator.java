@@ -112,16 +112,15 @@ public class Elevator {
 	public static void autoGrabUp() {
 		if(grabTimer.get() == 0) {
 			grabTimer.start();
-			setCurrentLevelSnapshot();
 		}
 		
-		if(grabTimer.get() < 1) {
+		if(grabTimer.get() < 1.25) {
 			Ingestor.setIngestorPower(1);		
 		}
 		
-		if(grabTimer.get() < .5) {
+		if(grabTimer.get() < .75) {
 			Ingestor.setIngestorIn();
-			setElevatorToLevel(currentLevelSnapshot);
+			setElevatorDownToLevel(currentLevelSnapshot);
 		} else if(grabTimer.get() < 1.5) {
 			setElevatorUpToLevel(currentLevelSnapshot);
 		} else if(grabTimer.get() < 1.55) {

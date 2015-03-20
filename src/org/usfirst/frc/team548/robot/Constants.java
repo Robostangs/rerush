@@ -37,8 +37,8 @@ public class Constants {
 	public static final double AUTON_7_RIGHT_SPEED = 0;
 	public static final double AUTON_7_STRAFE_SPEED = 0.75;
 	//Gets container, places on tote, turns and gets other two totes if middle container removed (8)
-	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_1 = 1000;
-	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.5;
+	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_1 = 800;
+	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.35;
 	public static final double AUTON_8_INGEST_POWER = 1;
 	public static final double AUTON_8_FIRST_TURN_ANGLE = -1;
 	public static final double AUTON_8_TURN_SPEED = 0.5;
@@ -46,12 +46,13 @@ public class Constants {
 	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_3 = 2500;
 	public static final double AUTON_8_STRAFE_POWER = -1;
 	//Gets all three totes in a line by pushing aside containers (9)
+	public static final double AUTON_9_DISTANCE_TO_TOTE_1 = 300;
 	public static final double AUTON_9_INGEST_POWER = 1;
 	public static final double AUTON_9_READJUST_LEFT_SPEED = -0.25;
 	public static final double AUTON_9_READJUST_RIGHT_SPEED = 0;
 	public static final double AUTON_9_READJUST_STRAFE_SPEED = 0.75;
 	public static final double AUTON_9_DISTANCE_TO_TOTE_2 = 5000;
-	public static final double AUTON_9_DRIVE_DISTANCE_SPEED = 0.5;
+	public static final double AUTON_9_DRIVE_DISTANCE_SPEED = 0.25;
 	public static final double AUTON_9_DISTANCE_TO_CONTAINER_1 = 2500;
 	public static final double AUTON_9_SET_INGESTOR_DIRECTION = 1;
 	public static final double AUTON_9_DISTANCE_TO_TOTE_3 = 5000;
@@ -108,7 +109,7 @@ public class Constants {
 		21850, //level 5*
 		22800};
 	public static final double ELEVATOR_OVERSHOOT = 500;
-	public static final double ELEVATOR_UNDERSHOOT = -500;
+	public static final double ELEVATOR_UNDERSHOOT = -700;
 	public static final double ELEVATOR_SLOW_ZONE = 1100;
 	public static final double ELEVATOR_ENCODER_RESET_POINT = 0;
 	public static final double ELEVATOR_PID_ERROR_TRESHOLD = 300;
