@@ -38,7 +38,7 @@ public class Constants {
 	public static final double AUTON_7_STRAFE_SPEED = 0.75;
 	//Gets container, places on tote, turns and gets other two totes if middle container removed (8)
 	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_1 = 800;
-	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.35;
+	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.5;
 	public static final double AUTON_8_INGEST_POWER = 1;
 	public static final double AUTON_8_FIRST_TURN_ANGLE = -1;
 	public static final double AUTON_8_TURN_SPEED = 0.5;

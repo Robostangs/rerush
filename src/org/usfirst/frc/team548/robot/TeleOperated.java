@@ -41,11 +41,11 @@ public class TeleOperated {
 		 * A BUTTON: strafe wheel down
 		 * B BUTTON: strafe wheel up
 		 */
-		if(driver.getAButton()) {
-			DriveTrain.setStrafeDown();
-		} else if(driver.getBButton()) {
-			DriveTrain.setStrafeUp();
-		}
+//		if(driver.getAButton()) {
+//			DriveTrain.setStrafeDown();
+//		} else if(driver.getBButton()) {
+//			DriveTrain.setStrafeUp();
+//		}
 		
 		/*
 		 * Outside x axis human strafe with human drive
@@ -106,11 +106,15 @@ public class TeleOperated {
 		 /*
 		  * Driver wants left trigger to hold strafe wheel up
 		  */
-//		 if(driver.getLeftTriggerButton()) {
-//			 DriveTrain.setStrafeUp();
-//		 } else {
-//			 DriveTrain.setStrafeDown();
-//		 }
+		 if(driver.getLeftTriggerButton()) {
+			 DriveTrain.setStrafeUp();
+		 } else {
+			 DriveTrain.setStrafeDown();
+		 }
+		 
+		 if(driver.getStartButton()) {
+			 DriveMotors.resetEncoders();
+		 }
 		 
 		 
 		 /*

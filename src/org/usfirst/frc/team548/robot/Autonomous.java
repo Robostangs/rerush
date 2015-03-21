@@ -178,15 +178,46 @@ public class Autonomous {
 		if(autoTimer.get() <= 1) {
 			DriveTrain.setStrafeDown();
 			Elevator.setElevatorToLevel(2);
+		} else if(autoTimer.get() <= 2) {
+			DriveTrain.driveDistance(-700, 0.5);
+		} else if(autoTimer.get() <= 2.1) {
+			DriveTrain.resetEncoderInitBoolean();
 		} else if(autoTimer.get() <= 2.5) {
-			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_1, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-		} else if(autoTimer.get() <= 3) {
-			DriveMotors.drive(0.5, 0.5);
+			DriveTrain.turnRightDistance(-1300, 0.9);
 			Elevator.setCurrentLevelSnapshot();
-		}else if(autoTimer.get() <= 4.5) {
+		}else if(autoTimer.get() <= 5.5) {
 			DriveMotors.stopMotors();
 			DriveTrain.resetEncoderInitBoolean();
 			Ingestor.setIngestorIn();
+			Elevator.autoGrabUp();
+		} else if(autoTimer.get() <= 9) {
+			DriveTrain.turnRightDistance(-1500, 0.5);
+		} else if(autoTimer.get() <= 9.4) {
+			DriveTrain.resetEncoderInitBoolean();
+			Ingestor.setIngestorOut();
+		} else if(autoTimer.get() <= 10.8) {
+			DriveTrain.driveDistance(-800, 0.5);
+			Elevator.setCurrentLevelSnapshot();
+			Elevator.resetTimer();
+			Ingestor.setIngestorPower(1);
+			if(autoTimer.get() == 9.5) {
+				Ingestor.setIngestorOut();
+			}
+		} else if(autoTimer.get() <= 12.5) {
+			Elevator.autoGrabUp();
+			DriveTrain.resetEncoderInitBoolean();
+		} else if(autoTimer.get() <= 15) {
+			Ingestor.setIngestorPower(1);
+			if(autoTimer.get() == 12.7) {
+				Ingestor.setIngestorOut();
+			}
+			DriveTrain.driveDistance(-2500, 0.5);
+			if(autoTimer.get() == 14.5) {
+				Ingestor.setIngestorIn();
+			}
+			Elevator.setCurrentLevelSnapshot();
+			Elevator.resetTimer();
+		} else if(autoTimer.get() <= 16) {
 			Elevator.autoGrabUp();
 //		} else if(autoTimer.get() <= 13) {
 //			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);

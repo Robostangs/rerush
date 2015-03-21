@@ -125,15 +125,36 @@ public class DriveTrain {
 		}
 		
 		if(position > 0) {
-			if(position > DriveMotors.getEncoderAverage()) {
-				DriveMotors.drive(-speed, speed);
-			} else if(position <= DriveMotors.getEncoderAverage()) {
+			if(position > DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.drive(speed, -speed);
+			} else if(position <= DriveMotors.getRightEncoderPosition()) {
 				DriveMotors.stopMotors();
 			} 
 		} else if(position < 0) {
-			if(position < DriveMotors.getEncoderAverage()) {
-				DriveMotors.drive(speed, -speed);
-			} else if(position >= DriveMotors.getEncoderAverage()) {
+			if(position < DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.drive(-speed, speed);
+			} else if(position >= DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.stopMotors();
+			} 
+		}
+	}
+	
+	public static void turnRightDistance(double position, double speed) {
+		if(!encodersInit) {
+			DriveMotors.resetEncoders();
+			encodersInit = true;
+		}
+		
+		if(position > 0) {
+			if(position > DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.drive(-speed, -speed);
+			} else if(position <= DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.stopMotors();
+			} 
+		} else if(position < 0) {
+			if(position < DriveMotors.getRightEncoderPosition()) {
+				DriveMotors.drive(speed, speed);
+			} else if(position > DriveMotors.getRightEncoderPosition()) {
 				DriveMotors.stopMotors();
 			} 
 		}
