@@ -173,17 +173,18 @@ public class Autonomous {
 		}
 	}
 	
-	//Hasn't been tested
+	//Is currently being worked on :)
 	private static void dreamAutonForLivonia8() {
 		if(autoTimer.get() <= 1) {
 			DriveTrain.setStrafeDown();
+			DriveTrain.resetEncoderInitBoolean();
 			Elevator.setElevatorToLevel(2);
 		} else if(autoTimer.get() <= 2) {
-			DriveTrain.driveDistance(-700, 0.5);
+			DriveTrain.driveDistance(-600, 0.5);
 		} else if(autoTimer.get() <= 2.1) {
 			DriveTrain.resetEncoderInitBoolean();
 		} else if(autoTimer.get() <= 2.5) {
-			DriveTrain.turnRightDistance(-1300, 0.9);
+			DriveTrain.turnRightDistance(-1200, 0.9);
 			Elevator.setCurrentLevelSnapshot();
 		}else if(autoTimer.get() <= 5.5) {
 			DriveMotors.stopMotors();
@@ -191,18 +192,18 @@ public class Autonomous {
 			Ingestor.setIngestorIn();
 			Elevator.autoGrabUp();
 		} else if(autoTimer.get() <= 9) {
-			DriveTrain.turnRightDistance(-1500, 0.5);
-		} else if(autoTimer.get() <= 9.4) {
-			DriveTrain.resetEncoderInitBoolean();
+			DriveTrain.turnRightDistance(-1600, 0.7);
 			Ingestor.setIngestorOut();
+		} else if(autoTimer.get() <= 9.1) {
+			DriveTrain.resetEncoderInitBoolean();
 		} else if(autoTimer.get() <= 10.8) {
-			DriveTrain.driveDistance(-800, 0.5);
+			if(autoTimer.get() == 9.2) {
+				Ingestor.setIngestorIn();
+			}
+			DriveTrain.driveDistance(-700, 0.5);
 			Elevator.setCurrentLevelSnapshot();
 			Elevator.resetTimer();
 			Ingestor.setIngestorPower(1);
-			if(autoTimer.get() == 9.5) {
-				Ingestor.setIngestorOut();
-			}
 		} else if(autoTimer.get() <= 12.5) {
 			Elevator.autoGrabUp();
 			DriveTrain.resetEncoderInitBoolean();
@@ -211,14 +212,13 @@ public class Autonomous {
 			if(autoTimer.get() == 12.7) {
 				Ingestor.setIngestorOut();
 			}
-			DriveTrain.driveDistance(-2500, 0.5);
+			DriveTrain.driveDistance(-3500, 0.5);
 			if(autoTimer.get() == 14.5) {
 				Ingestor.setIngestorIn();
 			}
 			Elevator.setCurrentLevelSnapshot();
 			Elevator.resetTimer();
-		} else if(autoTimer.get() <= 16) {
-			Elevator.autoGrabUp();
+		
 //		} else if(autoTimer.get() <= 13) {
 //			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
 //			Elevator.setElevatorDownToLevel(2);

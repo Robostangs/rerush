@@ -108,7 +108,7 @@ public class TeleOperated {
 		  */
 		 if(driver.getLeftTriggerButton()) {
 			 DriveTrain.setStrafeUp();
-		 } else {
+		 } else if(!driver.getLeftTriggerButton()){
 			 DriveTrain.setStrafeDown();
 		 }
 		 
