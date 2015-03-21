@@ -53,9 +53,9 @@ public class TeleOperated {
 		 * RIGHT BUMPER: Slow human strafe
 		 * WHEEL IS DOWN WHEN STRAFE IS ACTIVATED
 		 */
-		if(driver.getLeftStickXAxis() < -Constants.XBOX_TRIGGER_THRESHOLD || driver.getRightStickXAxis() > Constants.XBOX_TRIGGER_THRESHOLD){
-			DriveTrain.setStrafeDown();
-		}
+//		if(driver.getLeftStickXAxis() < -Constants.XBOX_TRIGGER_THRESHOLD || driver.getRightStickXAxis() > Constants.XBOX_TRIGGER_THRESHOLD){
+//			DriveTrain.setStrafeDown();
+//		}
 		
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {

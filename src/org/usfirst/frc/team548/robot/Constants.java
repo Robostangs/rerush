@@ -135,4 +135,15 @@ public class Constants {
 	//Pneumatics
 	//Ports
 	public static final int COMPRESSOR_POS = -1;
+	
+	//Canburglars
+	public static final int BURGLARS_LEFT_TALON_POS = -1;
+	public static final int BURGLARS_RIGHT_TALON_POS = -1;
+	public static final double BURGLARS_DOWN_SETPOINT = -1;
+	public static final double BURGLARS_UP_SETPOINT = -1;
+	//PID
+	public static final double BURGLARS_P = 0;
+	public static final double BURGLARS_I = 0;
+	public static final double BURGLARS_D = 0;
+	
 }
