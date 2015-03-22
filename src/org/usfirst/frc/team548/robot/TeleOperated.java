@@ -113,7 +113,7 @@ public class TeleOperated {
 		 }
 		 
 		 if(driver.getStartButton()) {
-			 DriveMotors.resetEncoders();
+			 DriveTrain.resetGyro();
 		 }
 		 
 		 

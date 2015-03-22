@@ -159,7 +159,7 @@ public class DriveTrain {
 		}
 	}
 	
-	public static void turnRightGyro(double angle, double speed) {
+	public static void turnGyro(double angle, double speed) {
 		if(!gyroInit) {
 			gyro.reset();
 			gyroInit = true;
@@ -173,7 +173,11 @@ public class DriveTrain {
 			}
 		} else if (angle < 0) {
 			if(angle < gyro.getAngle()) {
-				DriveMotors.drive(speed, speed);
+				if(Math.abs(angle) - Math.abs(gyro.getAngle()) < 50) {
+					DriveMotors.drive(speed*.5, speed*.5);
+				} else {
+					DriveMotors.drive(speed, speed);
+				}
 			} else if (angle > gyro.getAngle()) {
 				DriveMotors.stopMotors();
 			}

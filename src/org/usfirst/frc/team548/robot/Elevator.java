@@ -114,7 +114,7 @@ public class Elevator {
 			grabTimer.start();
 		}
 		
-		if(grabTimer.get() < 1.25) {
+		if(grabTimer.get() < 1.49) {
 			Ingestor.setIngestorIn();
 			Ingestor.setIngestorPower(1);		
 		}
