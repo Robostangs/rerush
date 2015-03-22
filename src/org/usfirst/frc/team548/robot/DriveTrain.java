@@ -10,9 +10,8 @@ public class DriveTrain {
 	private static DriveTrain instance = null; 
 	private static Solenoid strafeSolenoid;
 	private static Gyro gyro;
-	private static boolean gyroInit = false;
 	private static double gyroInitAngle = 0;
-	private static boolean encodersInit = false;
+	private static boolean encodersInit = false, gyroInit = false;
 
 	private DriveTrain() {
 		gyro = new Gyro(Constants.DRIVE_GYRO_POS);
@@ -158,6 +157,31 @@ public class DriveTrain {
 				DriveMotors.stopMotors();
 			} 
 		}
+	}
+	
+	public static void turnRightGyro(double angle, double speed) {
+		if(!gyroInit) {
+			gyro.reset();
+			gyroInit = true;
+		}
+		
+		if(angle > 0) {
+			if(angle > gyro.getAngle()) {
+				DriveMotors.drive(-speed, -speed);
+			} else if (angle < gyro.getAngle()) {
+				DriveMotors.stopMotors();
+			}
+		} else if (angle < 0) {
+			if(angle < gyro.getAngle()) {
+				DriveMotors.drive(speed, speed);
+			} else if (angle > gyro.getAngle()) {
+				DriveMotors.stopMotors();
+			}
+		}
+	}
+	
+	public static void resetGyroInitBoolean() {
+		gyroInit = false;
 	}
 	
 	public static void resetEncoderInitBoolean() {

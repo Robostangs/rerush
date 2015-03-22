@@ -182,7 +182,7 @@ public class Autonomous {
 		/*
 		 * TODO
 		 * Drive to auto zone
-		 * Use a gyro
+		 * Use a gyro (Try DriveTrain.turnRightGyro(angle, speed);)
 		 * FASTER!
 		 * 
 		 */
