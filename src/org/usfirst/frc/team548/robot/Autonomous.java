@@ -60,6 +60,10 @@ public class Autonomous {
 			Autonomous.otherDreamAuton9();
 			break;
 		//	Goes in a line to get the three totes by pushing containers out of the way with ingestors
+		case 10:
+			Autonomous.canBurglarAuto();
+			break;
+		// Gets cans and backs up
 		default: 
 			Autonomous.driveToAutoZone1();
 			break;
@@ -175,44 +179,51 @@ public class Autonomous {
 	
 	//Is currently being worked on :)
 	private static void dreamAutonForLivonia8() {
-		if(autoTimer.get() <= 1) {
+		/*
+		 * TODO
+		 * Drive to auto zone
+		 * Use a gyro
+		 * FASTER!
+		 * 
+		 */
+		if(autoTimer.get() <= 1) { // Raise can to get next tote
 			DriveTrain.setStrafeDown();
 			DriveTrain.resetEncoderInitBoolean();
 			Elevator.setElevatorToLevel(2);
-		} else if(autoTimer.get() <= 2) {
+		} else if(autoTimer.get() <= 2) { // Drive to first tote
 			DriveTrain.driveDistance(-600, 0.5);
 		} else if(autoTimer.get() <= 2.1) {
 			DriveTrain.resetEncoderInitBoolean();
-		} else if(autoTimer.get() <= 2.5) {
+		} else if(autoTimer.get() <= 2.5) { // Turn to line up to tote, get current level
 			DriveTrain.turnRightDistance(-1200, 0.9);
 			Elevator.setCurrentLevelSnapshot();
-		}else if(autoTimer.get() <= 5.5) {
+		}else if(autoTimer.get() <= 5.5) { // Stop moving, set ingestors in, autograb tote
 			DriveMotors.stopMotors();
 			DriveTrain.resetEncoderInitBoolean();
 			Ingestor.setIngestorIn();
 			Elevator.autoGrabUp();
-		} else if(autoTimer.get() <= 9) {
+		} else if(autoTimer.get() <= 9) { // Do a 180, set ingestors out
 			DriveTrain.turnRightDistance(-1600, 0.7);
 			Ingestor.setIngestorOut();
 		} else if(autoTimer.get() <= 9.1) {
 			DriveTrain.resetEncoderInitBoolean();
-		} else if(autoTimer.get() <= 10.8) {
-			if(autoTimer.get() == 9.2) {
+		} else if(autoTimer.get() <= 10.8) { // Drive to second tote, start ingestors
+			if(autoTimer.get() == 9.2) { 
 				Ingestor.setIngestorIn();
 			}
 			DriveTrain.driveDistance(-700, 0.5);
 			Elevator.setCurrentLevelSnapshot();
 			Elevator.resetTimer();
 			Ingestor.setIngestorPower(1);
-		} else if(autoTimer.get() <= 12.5) {
+		} else if(autoTimer.get() <= 12.5) { // Auto grab second tote
 			Elevator.autoGrabUp();
 			DriveTrain.resetEncoderInitBoolean();
-		} else if(autoTimer.get() <= 15) {
-			Ingestor.setIngestorPower(1);
+		} else if(autoTimer.get() <= 15) { 
+			Ingestor.setIngestorPower(1);// Do you need this?
 			if(autoTimer.get() == 12.7) {
 				Ingestor.setIngestorOut();
 			}
-			DriveTrain.driveDistance(-3500, 0.5);
+			DriveTrain.driveDistance(-3500, 0.5); // Drive to third tote
 			if(autoTimer.get() == 14.5) {
 				Ingestor.setIngestorIn();
 			}
@@ -308,6 +319,18 @@ public class Autonomous {
 		}
 	}
 	
+	private static void canBurglarAuto() {
+		if(autoTimer.get() < 0.2) {
+			DriveMotors.resetEncoders();
+		}
+		if(autoTimer.get() <= 5) {
+			Canburglars.youreGoingToKillSomeoneWithLeft();
+			Canburglars.youreGoingToKillSomeoneWithRight();
+			if(autoTimer.get() >= 1) {
+				DriveTrain.driveDistance(-2000, 0.75);
+			}
+		} 
+	}
 	
 	public static void setAutoMode(int mode) {
 		Autonomous.mode = mode;
