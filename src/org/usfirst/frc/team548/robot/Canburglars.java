@@ -29,21 +29,28 @@ public class Canburglars {
 	}
 	
 	public static void youreGoingToKillSomeoneWithLeft() {
+		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		alex.changeControlMode(ControlMode.Position);
-		alex.set(Constants.BURGLARS_DOWN_SETPOINT);
+		alex.reverseOutput(true);
+		alex.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		alex.set(Constants.LEFT_BURGLARS_DOWN_SETPOINT);
 	}
 	
 	public static void youreGoingToKillSomeoneWithRight() {
 		austin.changeControlMode(ControlMode.Position);
-		austin.set(Constants.BURGLARS_DOWN_SETPOINT);
+		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
+		austin.changeControlMode(ControlMode.Position);
+		austin.reverseOutput(false);
+		austin.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		austin.set(Constants.RIGHT_BURGLARS_DOWN_SETPOINT);
 	}
 	
 	public static void setLeftUp() {
-		alex.set(Constants.BURGLARS_UP_SETPOINT);
+		alex.set(Constants.LEFT_BURGLARS_UP_SETPOINT);
 	}
 	
 	public static void setRightUp()  {
-		austin.set(Constants.BURGLARS_UP_SETPOINT);
+		austin.set(Constants.RIGHT_BURGLARS_UP_SETPOINT);
 	}
 	
 	public static void disablePID() {

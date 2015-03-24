@@ -4,7 +4,7 @@ public class TeleOperated {
 	
 	private static TeleOperated instance;
 	public static XboxController driver, manip;
-	public static boolean buttonPressed = false;
+	public static boolean buttonPressed = false, canBurLeft = false, canBurRight = false, buttenPressedX = false, buttonPressedB = false;
 	
 	private TeleOperated() {
     	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
@@ -114,6 +114,23 @@ public class TeleOperated {
 		 
 		 if(driver.getStartButton()) {
 			 DriveTrain.resetGyro();
+		 }
+		 
+		 if(driver.getXButton() && !buttenPressedX) {
+			 buttenPressedX = true;
+			 if(!canBurLeft) {
+				 canBurLeft = true;
+			 } else {
+				 canBurLeft = false;
+			 }
+		 } else if(!driver.getXButton() && buttenPressedX) {
+			 buttenPressedX = false;
+		 }
+		 
+		 if(canBurLeft) {
+			 Canburglars.youreGoingToKillSomeoneWithLeft();
+		 } else {
+			 Canburglars.setLeftUp();
 		 }
 		 
 		 
