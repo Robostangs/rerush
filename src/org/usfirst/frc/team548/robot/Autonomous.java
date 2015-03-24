@@ -186,29 +186,39 @@ public class Autonomous {
 		 * FASTER!
 		 * 
 		 */
-		if(autoTimer.get() <= 0.8) { // Raise can to get next tote
+		if(autoTimer.get() <= 1) { // Raise can to get next tote
 			DriveTrain.setStrafeDown();
 			DriveTrain.resetEncoderInitBoolean();
 			Elevator.setElevatorToLevel(2);
-		} else if(autoTimer.get() <= 1.8) { // Drive to first tote
+		} else if(autoTimer.get() <= 2) { // Drive to first tote
 			DriveTrain.driveDistance(-600, 0.5);
-		} else if(autoTimer.get() <= 1.9) {
+		} else if(autoTimer.get() <= 2.01) {
 			DriveTrain.resetGyroInitBoolean();
 			DriveTrain.resetEncoderInitBoolean();
 		} else if(autoTimer.get() <= 2.8) { // Turn to line up to tote, get current level
 			DriveTrain.turnGyro(-20, 0.9);
-			Elevator.setCurrentLevelSnapshot();
-		} else if(autoTimer.get() <= 5.3) { // Stop moving, set ingestors in, autograb tote 
-			 DriveTrain.driveDistance(-200, 0.4);
-			Elevator.autoGrabUp();
+			Elevator.setCurrentLevelSnapshotToLevel(2);
+		} else if(autoTimer.get() <= 7.4) { // Stop moving, set ingestors in, autograb tote 
+			if(autoTimer.get() <= 5.19) {
+				DriveTrain.driveDistance(-200, 0.4);
+			}
+			if(autoTimer.get() <= 5.5) {
+				Elevator.autoGrabUp();
+			}
 			DriveTrain.resetGyroInitBoolean();
+			if(autoTimer.get() >= 5.2) {
+				DriveTrain.turnGyro(-160, 0.7);
+			}
+			if(autoTimer.get() >= 5.51) {
+				Ingestor.setIngestorOut();
+			}
 		} else if(autoTimer.get() <= 7.8) { // Do a 180, set ingestors out
 			//DriveTrain.turnRightDistance(-1600, 0.7);
-			DriveTrain.turnGyro(-160, 0.7);
-			Ingestor.setIngestorOut();
+//			DriveTrain.turnGyro(-160, 0.7);
+//			Ingestor.setIngestorOut();
 		} else if(autoTimer.get() <= 7.9) {
 			DriveTrain.resetEncoderInitBoolean();
-			Elevator.setCurrentLevelSnapshot();
+			Elevator.setCurrentLevelSnapshotToLevel(3);
 		} else if(autoTimer.get() <= 9.6) { // Drive to second tote, start ingestors
 			DriveTrain.driveDistance(-1000, 0.5);
 			Elevator.resetTimer();
@@ -228,15 +238,18 @@ public class Autonomous {
 			} else if(autoTimer.get() < 12) {
 				Ingestor.setIngestorOut();
 			}
-			Elevator.setCurrentLevelSnapshot();
+			Elevator.setCurrentLevelSnapshotToLevel(4);
 			Elevator.resetTimer();
 		} else if(autoTimer.get() <= 15.3) {
 			DriveTrain.resetEncoderInitBoolean();
 			Elevator.autoGrabUp();
 		} else if(autoTimer.get() <= 17.5) {
-			//add turn method here once gyro works
+			Ingestor.setIngestorPower(1);
+			DriveTrain.turnGyro(20, 0.7);
 		} else if(autoTimer.get() <= 18.5) {
 			DriveTrain.driveDistance(-2000, 0.5);
+		} else if(autoTimer.get() <= 19) {
+			Elevator.setElevatorToLevel(3);
 		
 //		} else if(autoTimer.get() <= 13) {
 //			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);

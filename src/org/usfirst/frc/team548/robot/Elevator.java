@@ -100,6 +100,10 @@ public class Elevator {
 		currentLevelSnapshot = getToteZone();
 	}
 	
+	public static void setCurrentLevelSnapshotToLevel(int level) {
+		currentLevelSnapshot = level;
+	}
+	
 	public static void calibrateEncoder() {
 		if(!getBotElevatorSwitch()) {
 			ElevatorMotors.setPower(Constants.ELEVATOR_CALIBRATION_DOWN_POWER);
@@ -114,7 +118,7 @@ public class Elevator {
 			grabTimer.start();
 		}
 		
-		if(grabTimer.get() < 1.49) {
+		if(grabTimer.get() < 1.39) {
 			Ingestor.setIngestorIn();
 			Ingestor.setIngestorPower(1);		
 		}
@@ -123,9 +127,10 @@ public class Elevator {
 			Ingestor.setIngestorIn();
 			setElevatorDownToLevel(currentLevelSnapshot);
 		} else if(grabTimer.get() < 1.5) {
+			if(grabTimer.get() == 1.4) {
+				Ingestor.setIngestorOut();
+			}
 			setElevatorUpToLevel(currentLevelSnapshot);
-		} else if(grabTimer.get() < 1.55) {
-			Ingestor.setIngestorOut();
 		} else if(grabTimer.get() < 1.7) {
 			Ingestor.setIngestorNeutral();
 			setElevatorUpToLevel(currentLevelSnapshot+1);
