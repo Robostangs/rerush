@@ -102,11 +102,11 @@ public class Constants {
 	public static final double ELEVATOR_INPUT_MIN = 0;
 	public static final double ELEVATOR_INPUT_MAX = 23200;
 	public static final double[] ELEVATOR_LEVELS = { 0, //Level 0
-		2500, //level 1*
-		7250, //level 2*
-		12100, //level 3* 12300
-		16850, //level 4*
-		21450, //level 5*
+		2750, //level 1*
+		7550, //level 2*
+		12400, //level 3* 12300
+		17150, //level 4*
+		21750, //level 5*
 		22500};
 	public static final double ELEVATOR_OVERSHOOT = 700;
 	public static final double ELEVATOR_UNDERSHOOT = -200;
@@ -137,14 +137,15 @@ public class Constants {
 	public static final int COMPRESSOR_POS = -1;
 	
 	//Canburglars
-	public static final int BURGLARS_LEFT_TALON_POS = 11;
-	public static final int BURGLARS_RIGHT_TALON_POS = 10;
-	public static final double LEFT_BURGLARS_DOWN_SETPOINT = -1;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = -1;
-	public static final double RIGHT_BURGLARS_DOWN_SETPOINT = -1;
-	public static final double RIGHT_BURGLARS_UP_SETPOINT = -1;
+	public static final int BURGLARS_LEFT_TALON_POS = 10;
+	public static final int BURGLARS_RIGHT_TALON_POS = 11;
+	public static final double LEFT_BURGLARS_DOWN_SETPOINT = 600;
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 5;
+	public static final double RIGHT_BURGLARS_DOWN_SETPOINT = 272;
+	public static final double RIGHT_BURGLARS_UP_SETPOINT = 927;
 	//PID
-	public static final double BURGLARS_P = 1;
+	public static final double LEFT_BURGLARS_P = 1.5;
+	public static final double RIGHT_BURGLARS_P = 1.5;
 	public static final double BURGLARS_I = 0;
 	public static final double BURGLARS_D = 0;
 	

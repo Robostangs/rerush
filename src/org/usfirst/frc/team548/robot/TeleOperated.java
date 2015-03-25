@@ -4,7 +4,7 @@ public class TeleOperated {
 	
 	private static TeleOperated instance;
 	public static XboxController driver, manip;
-	public static boolean buttonPressed = false, canBurLeft = false, canBurRight = false, buttenPressedX = false, buttonPressedB = false;
+	public static boolean buttonPressed = false, canBurLeft = false, canBurRight = false, buttonPressedX = false, buttonPressedB = false, buttonPressedA = false;
 	
 	private TeleOperated() {
     	driver = new XboxController(Constants.XBOX_DRIVER_PORT);
@@ -116,23 +116,53 @@ public class TeleOperated {
 			 DriveTrain.resetGyro();
 		 }
 		 
-		 if(driver.getXButton() && !buttenPressedX) {
-			 buttenPressedX = true;
-			 if(!canBurLeft) {
-				 canBurLeft = true;
-			 } else {
-				 canBurLeft = false;
-			 }
-		 } else if(!driver.getXButton() && buttenPressedX) {
-			 buttenPressedX = false;
-		 }
-		 
-		 if(canBurLeft) {
-			 Canburglars.youreGoingToKillSomeoneWithLeft();
-		 } else {
+//		 if(driver.getXButton() && !buttonPressedX) {
+//			 buttonPressedX = true;
+//			 if(!canBurLeft) {
+//				 canBurLeft = true;
+//			 } else {
+//				 canBurLeft = false;
+//			 }
+//		 } else if(!driver.getXButton() && buttonPressedX) {
+//			 buttonPressedX = false;
+//		 }
+//		 
+//		 if(canBurLeft) {
+//			 Canburglars.youreGoingToKillSomeoneWithLeft();
+//		 } else {
 			 Canburglars.setLeftUp();
-		 }
-		 
+//		 }
+//		 
+//		 if(driver.getBButton() && !buttonPressedB) {
+//			 buttonPressedB = true;
+//			 if(!canBurRight) {
+//				 canBurRight = true;
+//			 } else {
+//				 canBurRight = false;
+//			 }
+//		 } else if(!driver.getBButton() && buttonPressedB) {
+//			 buttonPressedB = false;
+//		 }
+//		 
+//		 if(canBurRight) {
+//			 Canburglars.youreGoingToKillSomeoneWithRight();
+//		 } else {
+			 Canburglars.setRightUp();
+//		 }
+//		 
+
+//		 if(driver.getAButton() && !buttonPressedA) {
+//			 buttonPressedA = true;
+//			 if(!canBurRight) {
+//				 canBurLeft = true;
+//				 canBurRight = true;
+//			 } else {
+//				 canBurLeft = false;
+//				 canBurRight = false;
+//			 }
+//		 } else if(!driver.getBButton() && buttonPressedA) {
+//			 buttonPressedA = false;
+//		 }
 		 
 		 /*
 		  * Driver ingestor controls using triggers

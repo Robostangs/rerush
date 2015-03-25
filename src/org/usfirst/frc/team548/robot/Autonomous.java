@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 8;
+	private static int mode = 6;
 	private static Timer autoTimer;
 
 	private Autonomous() {
@@ -341,16 +341,22 @@ public class Autonomous {
 	}
 	
 	private static void canBurglarAuto() {
+		DriveTrain.setStrafeUp();
 		if(autoTimer.get() < 0.2) {
 			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
 		}
-		if(autoTimer.get() <= 5) {
+		if(autoTimer.get() <= 2.5) {
 			Canburglars.youreGoingToKillSomeoneWithLeft();
 			Canburglars.youreGoingToKillSomeoneWithRight();
-			if(autoTimer.get() >= 1) {
-				DriveTrain.driveDistance(-2000, 0.75);
+			if(autoTimer.get() >= 0.4) {
+				DriveTrain.driveDistance(-3000, 1);
 			}
-		} 
+		} else if(autoTimer.get() <= 4.8) {
+			Canburglars.setLeftUp();
+			Canburglars.setRightUp();
+			DriveMotors.drive(0.35, -0.35);
+		}
 	}
 	
 	public static void setAutoMode(int mode) {

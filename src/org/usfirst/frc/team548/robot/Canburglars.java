@@ -18,38 +18,40 @@ public class Canburglars {
 	private Canburglars() {
 		alex = new CANTalon(Constants.BURGLARS_LEFT_TALON_POS);
 		austin = new CANTalon(Constants.BURGLARS_RIGHT_TALON_POS);
-		setPID();
 	}
 	
-	public static void setPID() {
+	public static void setLeftPID() {
 		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
+		alex.reverseOutput(true);
+		alex.changeControlMode(ControlMode.Position);
+		alex.setPID(Constants.LEFT_BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+	}
+	
+	public static void setRightPID() {
+		austin.changeControlMode(ControlMode.Position);
 		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		alex.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
-		austin.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		austin.changeControlMode(ControlMode.Position);
+		austin.reverseOutput(true);
+		austin.setPID(Constants.RIGHT_BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
 	}
 	
 	public static void youreGoingToKillSomeoneWithLeft() {
-		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		alex.changeControlMode(ControlMode.Position);
-		alex.reverseOutput(true);
-		alex.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		setLeftPID();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_SETPOINT);
 	}
 	
 	public static void youreGoingToKillSomeoneWithRight() {
-		austin.changeControlMode(ControlMode.Position);
-		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		austin.changeControlMode(ControlMode.Position);
-		austin.reverseOutput(false);
-		austin.setPID(Constants.BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		setRightPID();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_SETPOINT);
 	}
 	
 	public static void setLeftUp() {
+		setLeftPID();
 		alex.set(Constants.LEFT_BURGLARS_UP_SETPOINT);
 	}
 	
 	public static void setRightUp()  {
+		setRightPID();
 		austin.set(Constants.RIGHT_BURGLARS_UP_SETPOINT);
 	}
 	

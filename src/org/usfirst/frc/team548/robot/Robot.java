@@ -20,6 +20,7 @@ public class Robot extends IterativeRobot {
 		ElevatorMotors.getInstance();
     	Ingestor.getInstance();
     	DriveMotors.resetEncoders();
+    	Canburglars.getInstance();
     	sc = new SendableChooser();
     	sc.addDefault("Back into auto zone", 1);
     	sc.addObject("Back into auto with container based on time", 2);
