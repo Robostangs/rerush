@@ -43,11 +43,11 @@ public class Elevator {
 	}
 	
 	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenOpen() {
-		containerSolenoid.set(true);
+		containerSolenoid.set(false);
 	}
 	
 	public static void setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed() {
-		containerSolenoid.set(false);
+		containerSolenoid.set(true);
 	}
 	
 	public static boolean getBotElevatorSwitch() {

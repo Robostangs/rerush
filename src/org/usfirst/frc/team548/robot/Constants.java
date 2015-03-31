@@ -139,14 +139,23 @@ public class Constants {
 	//Canburglars
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
 	public static final int BURGLARS_RIGHT_TALON_POS = 11;
-	public static final double LEFT_BURGLARS_DOWN_SETPOINT = 600;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 600;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 550;
 	public static final double LEFT_BURGLARS_UP_SETPOINT = 5;
-	public static final double RIGHT_BURGLARS_DOWN_SETPOINT = 272;
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 272;
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 324;
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 927;
+	
+	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
+	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;
 	//PID
-	public static final double LEFT_BURGLARS_P = 1.5;
-	public static final double RIGHT_BURGLARS_P = 1.5;
-	public static final double BURGLARS_I = 0;
-	public static final double BURGLARS_D = 0;
+	public static final double LEFT_BURGLARS_P_NORMAL = 2.5;
+	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5;
+	
+	public static final double LEFT_BURGLARS_P_SLOW = 0.9;
+	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
+	
+	public static final double BURGLARS_I_NORMAL = 0;
+	public static final double BURGLARS_D_NORMAL = 0;
 	
 }

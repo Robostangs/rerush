@@ -18,11 +18,11 @@ public class Arm {
 		return instance;
 	}
 
-	public static void setArmForward() {
+	public static void setArmBack() {
 		armSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
-	public static void setArmBack() {
+	public static void setArmForward() {
 		armSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	

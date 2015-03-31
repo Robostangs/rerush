@@ -3,6 +3,7 @@ package org.usfirst.frc.team548.robot;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Canburglars {
 	private static Canburglars instance;
@@ -20,44 +21,89 @@ public class Canburglars {
 		austin = new CANTalon(Constants.BURGLARS_RIGHT_TALON_POS);
 	}
 	
-	public static void setLeftPID() {
+	public static void setLeftPIDNormalDown() {
 		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		alex.reverseOutput(true);
 		alex.changeControlMode(ControlMode.Position);
-		alex.setPID(Constants.LEFT_BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		alex.setPID(Constants.LEFT_BURGLARS_P_NORMAL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
 	}
 	
-	public static void setRightPID() {
+	public static void setRightPIDNormalDown() {
 		austin.changeControlMode(ControlMode.Position);
 		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		austin.changeControlMode(ControlMode.Position);
 		austin.reverseOutput(true);
-		austin.setPID(Constants.RIGHT_BURGLARS_P, Constants.BURGLARS_I, Constants.BURGLARS_D);
+		austin.setPID(Constants.RIGHT_BURGLARS_P_NORMAL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
 	}
 	
-	public static void youreGoingToKillSomeoneWithLeft() {
-		setLeftPID();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_SETPOINT);
+	//normal
+	//no step
+	public static void setLeftDownNoStep() {
+		setLeftPIDNormalDown();
+		alex.set(Constants.LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 	}
 	
-	public static void youreGoingToKillSomeoneWithRight() {
-		setRightPID();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_SETPOINT);
+	public static void setRightDownNoStep() {
+		setRightPIDNormalDown();
+		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
+	}
+	//step
+	public static void setLeftDownWithStep() {
+		setLeftPIDNormalDown();
+		alex.set(Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
 	}
 	
-	public static void setLeftUp() {
-		setLeftPID();
+	public static void setRightDownWithStep() {
+		setRightPIDNormalDown();
+		austin.set(Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
+	}
+	
+	public static void setLeftDownDown() {
+		setLeftPIDNormalDown();
+		alex.set(Constants.LEFT_BURGLARS_DOWN_DOWN);
+	}
+	
+	public static void setRightDownDown() {
+		setRightPIDNormalDown();
+		austin.set(Constants.RIGHT_BURGLARS_DOWN_DOWN);
+	}
+
+	
+	//up
+	public static void setLeftPIDNormalUp() {
+		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
+		alex.reverseOutput(true);
+		alex.changeControlMode(ControlMode.Position);
+		alex.setPID(Constants.LEFT_BURGLARS_P_SLOW, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
+	}
+	
+	public static void setRightPIDNormalUp() {
+		austin.changeControlMode(ControlMode.Position);
+		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
+		austin.reverseOutput(true);
+		austin.setPID(Constants.RIGHT_BURGLARS_P_SLOW, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
+	}
+	
+	public static void setLeftUpNormal() {
+		setLeftPIDNormalUp();
 		alex.set(Constants.LEFT_BURGLARS_UP_SETPOINT);
 	}
 	
-	public static void setRightUp()  {
-		setRightPID();
+	public static void setRightUpNormal()  {
+		setRightPIDNormalUp();
 		austin.set(Constants.RIGHT_BURGLARS_UP_SETPOINT);
+	}
+	
+	public static double getLeftPosition() {
+		return alex.getAnalogInPosition();
+	}
+	
+	public static double getRightPosition() {
+		return austin.getAnalogInPosition();
 	}
 	
 	public static void disablePID() {
 		alex.changeControlMode(ControlMode.Disabled);
-		alex.changeControlMode(ControlMode.Disabled);
+		austin.changeControlMode(ControlMode.Disabled);
 	}
 	
 }

@@ -57,6 +57,8 @@ public class TeleOperated {
 //			DriveTrain.setStrafeDown();
 //		}
 		
+		System.out.println(DriveMotors.getRightEncoderPosition());
+		
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
 				DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
@@ -98,9 +100,9 @@ public class TeleOperated {
 		  * DPAD BOTTOM HALF: arm backwards
 		  */
 		 if(driver.isDPadTopHalf()) {
-				Arm.setArmBack();
-		 } else if(driver.isDPadBottomHalf()) {
 				Arm.setArmForward();
+		 } else if(driver.isDPadBottomHalf()) {
+				Arm.setArmBack();
 		 }
 		 
 		 /*
@@ -130,7 +132,7 @@ public class TeleOperated {
 //		 if(canBurLeft) {
 //			 Canburglars.youreGoingToKillSomeoneWithLeft();
 //		 } else {
-			 Canburglars.setLeftUp();
+			 Canburglars.setLeftUpNormal();
 //		 }
 //		 
 //		 if(driver.getBButton() && !buttonPressedB) {
@@ -147,7 +149,7 @@ public class TeleOperated {
 //		 if(canBurRight) {
 //			 Canburglars.youreGoingToKillSomeoneWithRight();
 //		 } else {
-			 Canburglars.setRightUp();
+			 Canburglars.setRightUpNormal();
 //		 }
 //		 
 

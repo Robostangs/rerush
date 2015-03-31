@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 6;
+	private static int mode = 12;
 	private static Timer autoTimer;
 
 	private Autonomous() {
@@ -28,22 +28,10 @@ public class Autonomous {
 			Autonomous.driveToAutoZone1();
 			break;
 		// Drive into auto zone with container
-		case 2:
-			Autonomous.driveToAutoZoneWithContainer2();
-			break;
-		// Drive into auto zone with container and tote
-		case 3:
-			Autonomous.driveToAutoZoneWithToteAndContainer3();
-			break;
-		// Pick up container and tote do 180 pick up tote drive straight pick up last tote then turn into auto zone
 		case 4:
 			Autonomous.strafeIntoAutoZoneWithToteAndContainer4();
 			break;
 		//  Strafe into the auto zone by pushing tote and container
-		case 5: 
-			Autonomous.getToteAndBackIntoAutoZone5();
-			break;
-		//	Lift tote and back up into auto zone
 		case 6:
 			Autonomous.backIntoAutoZoneWithContainerDistance6();
 			break;
@@ -56,14 +44,22 @@ public class Autonomous {
 			Autonomous.dreamAutonForLivonia8();
 			break;
 		//  Stack tote set in auton as long as middle container is removed
-		case 9:
-			Autonomous.otherDreamAuton9();
-			break;
-		//	Goes in a line to get the three totes by pushing containers out of the way with ingestors
 		case 10:
-			Autonomous.canBurglarAuto();
+			Autonomous.canBurglarAutoNoStep10();
 			break;
-		// Gets cans and backs up
+		// Gets cans and backs up starting on no step
+		case 11:
+			Autonomous.canBurglarAutoWithStep11();
+			break;
+		// Gets can and backs up starting on step
+		case 12:
+			Autonomous.canBurglarPotAutoNoStep12();
+			break;
+		// Gets cans and backs up starting on no step based on canburg position	
+		case 13:
+			Autonomous.canBurglarPotAutoWithStep13();
+			break;
+			// Grab cans based off of pot values and back up asap
 		default: 
 			Autonomous.driveToAutoZone1();
 			break;
@@ -79,48 +75,7 @@ public class Autonomous {
 		}
 	}
 	
-	//Works, but is based on time. Method based on distance is more accurate.
-	private static void driveToAutoZoneWithContainer2() {		
-		if(autoTimer.get() < 0.5) {
-			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-			DriveTrain.setStrafeUp();
-		} else if (autoTimer.get() > 0.5 && autoTimer.get() < 1.5) {
-			Elevator.setElevatorUp();
-		} else if (autoTimer.get() > 1.5 && autoTimer.get() < 3.8) {
-			Elevator.stopElevator();
-			DriveMotors.drive(0.35, -0.35);
-		} else if(autoTimer.get() > 7) {
-			DriveMotors.stopMotors();
-		}
-	}
 	
-	//Hasn't been tested
-	private static void driveToAutoZoneWithToteAndContainer3() {
-		Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
-		if(autoTimer.get() <= 2.5) {
-			Elevator.setElevatorToLevel(2);
-		} else if(autoTimer.get() <= 3.5) {
-			Elevator.stopElevator();
-			DriveTrain.driveDistance(1000, 0.5);
-		} else if(autoTimer.get() <= 4.5) {
-			DriveMotors.stopMotors();
-			DriveMotors.drive(Constants.AUTON_3_LEFT_SPEED, Constants.AUTON_3_RIGHT_SPEED);
-			DriveMotors.driveStrafe(Constants.AUTON_3_STRAFE_SPEED);
-		} else if(autoTimer.get() <= 8) {
-			DriveMotors.stopMotors();
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(1);
-		} else if(autoTimer.get() <= 9) {
-			Elevator.setElevatorUp();
-		} else if(autoTimer.get() <= 10.5) {
-			DriveTrain.setStrafeDown();
-			ElevatorMotors.setPower(0);
-			DriveMotors.drive(0.5, 0);
-			DriveMotors.driveStrafe(-1);
-		} else if(autoTimer.get() < 13) {
-			DriveMotors.stopMotors();
-		}
-	}
 	
 	//Works, but only with both tote and container. Watch for worn down carpet under strafe wheel.
 	private static void strafeIntoAutoZoneWithToteAndContainer4() {
@@ -130,17 +85,6 @@ public class Autonomous {
 		} else if(autoTimer.get() <= 7.5) {
 			DriveMotors.drive(Constants.AUTON_4_LEFT_SPEED, Constants.AUTON_4_RIGHT_SPEED);
 			DriveMotors.driveStrafe(Constants.AUTON_4_STRAFE_SPEED);
-		} else {
-			DriveMotors.stopMotors();
-		}
-	}
-	
-	//Currently doesn't work with ingestor wheels 
-	private static void getToteAndBackIntoAutoZone5() {
-		if(autoTimer.get() <= 1) {
-			Elevator.setElevatorPosition(Constants.AUTON_5_ELEVATOR_LIFT);
-		} else if(autoTimer.get() <= 5) {
-			DriveTrain.driveDistance(Constants.AUTON_5_DRIVE_DISTANCE_BACK, Constants.AUTON_5_DRIVE_DISTANCE_SPEED);
 		} else {
 			DriveMotors.stopMotors();
 		}
@@ -289,73 +233,104 @@ public class Autonomous {
 		}
 	}
 	
-	private static void otherDreamAuton9() {
-		if(autoTimer.get() <= 1) {
-			Elevator.setElevatorDownToLevel(1);
-		} else if(autoTimer.get() <= 1.5) {
-			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_1, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
-		} else if(autoTimer.get() <= 2.5) {
-			Ingestor.setIngestorIn();
-			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
-		} else if(autoTimer.get() <= 3.5) {
-			Elevator.setElevatorToLevel(4);
-		} else if(autoTimer.get() <= 5) {
-//			DriveMotors.drive(Constants.AUTON_9_READJUST_LEFT_SPEED, Constants.AUTON_9_READJUST_RIGHT_SPEED);
-//			DriveMotors.driveStrafe(Constants.AUTON_9_READJUST_STRAFE_SPEED);
-//		} else if(autoTimer.get() <= 5.5) {
-//			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
-//			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_2, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
-//			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_1) {
-//				Ingestor.setIngestorOut();
-//				Elevator.setElevatorToLevel(2);
-//			}
-//		} else if(autoTimer.get() <= 6.5) {
-//			DriveTrain.resetEncoderInitBoolean();
-//			Ingestor.setIngestorIn();
-//			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
-//		} else if(autoTimer.get() <= 7.5) {
-//			Elevator.setElevatorDown();
-//		} else if(autoTimer.get() <= 7.7) {
-//			Elevator.setElevatorToLevel(4);
-//		} else if(autoTimer.get() <= 9.2) {
-//			Ingestor.setDirection(Constants.AUTON_9_SET_INGESTOR_DIRECTION);
-//			DriveTrain.driveDistance(Constants.AUTON_9_DISTANCE_TO_TOTE_3, Constants.AUTON_9_DRIVE_DISTANCE_SPEED);
-//			if(DriveMotors.getEncoderAverage() > Constants.AUTON_9_DISTANCE_TO_CONTAINER_2) {
-//				Ingestor.setIngestorOut();
-//				Elevator.setElevatorToLevel(3);
-//			}
-//		} else if(autoTimer.get() <= 10.2) {
-//			DriveTrain.resetEncoderInitBoolean();
-//			Ingestor.setIngestorIn();
-//			Ingestor.setIngestorPower(Constants.AUTON_9_INGEST_POWER);
-//		} else if(autoTimer.get() <= 10.5) {
-//			Elevator.setElevatorDown();
-//		} else if(autoTimer.get() <= 11.5) {
-//			Elevator.setElevatorUp();
-//		} else if(autoTimer.get() <= 14) {
-//			Ingestor.setIngestorOut();
-//			DriveMotors.driveStrafe(Constants.AUTON_9_STRAFE_POWER);
-//		} else if(autoTimer.get() <= 15) {
-//			Elevator.setElevatorToLevel(3);
-		}
-	}
-	
-	private static void canBurglarAuto() {
+	private static void canBurglarAutoNoStep10() {
 		DriveTrain.setStrafeUp();
 		if(autoTimer.get() < 0.2) {
 			DriveMotors.resetEncoders();
 			DriveTrain.resetGyro();
 		}
-		if(autoTimer.get() <= 2.5) {
-			Canburglars.youreGoingToKillSomeoneWithLeft();
-			Canburglars.youreGoingToKillSomeoneWithRight();
-			if(autoTimer.get() >= 0.4) {
-				DriveTrain.driveDistance(-3000, 1);
+		if(autoTimer.get() <= 3.5) {
+			Canburglars.setLeftDownNoStep();
+			Canburglars.setRightDownNoStep();
+			if(autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
 			}
-		} else if(autoTimer.get() <= 4.8) {
-			Canburglars.setLeftUp();
-			Canburglars.setRightUp();
-			DriveMotors.drive(0.35, -0.35);
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Elevator.calibrateEncoder();
+			Ingestor.setIngestorIn();
+		}
+	}
+	
+	private static void canBurglarAutoWithStep11() {
+		DriveTrain.setStrafeUp();
+		if(autoTimer.get() < 0.2) {
+			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
+		}
+		if(autoTimer.get() <= 3.5) {
+			Canburglars.setLeftDownWithStep();
+			Canburglars.setRightDownWithStep();
+			if(autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
+			}
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Ingestor.setIngestorIn();
+			Elevator.calibrateEncoder();
+		}
+	}
+	
+	//Fast
+	private static void canBurglarPotAutoNoStep12() {
+		DriveTrain.setStrafeUp();
+		if(autoTimer.get() < 0.05) {
+			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
+		}
+		if(autoTimer.get() <= 3.5) {
+			Canburglars.setLeftDownNoStep();
+			Canburglars.setRightDownNoStep();
+			if((Canburglars.getLeftPosition() > 400 && Canburglars.getRightPosition() < 472) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
+			}
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Ingestor.setIngestorIn();
+			Elevator.calibrateEncoder();
+		}
+	}
+	
+	private static void canBurglarPotAutoWithStep13() {
+		DriveTrain.setStrafeUp();
+		if(autoTimer.get() < 0.2) {
+			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
+		}
+		if(autoTimer.get() <= 3.5) {
+			
+			if((Canburglars.getLeftPosition() > 350 && Canburglars.getRightPosition() < 524) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
+				Canburglars.setLeftDownDown();
+				Canburglars.setRightDownDown();
+			} else {
+				Canburglars.setLeftDownWithStep();
+				Canburglars.setRightDownWithStep();
+			}
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Elevator.calibrateEncoder();
+			Ingestor.setIngestorIn();
 		}
 	}
 	
