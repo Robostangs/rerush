@@ -142,7 +142,8 @@ public class Constants {
 	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 600;
 	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 550;
 	public static final double LEFT_BURGLARS_UP_SETPOINT = 5;
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 272;
+	
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 250;
 	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 324;
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 927;
 	
@@ -152,8 +153,9 @@ public class Constants {
 	public static final double LEFT_BURGLARS_P_NORMAL = 2.5;
 	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5;
 	
-	public static final double LEFT_BURGLARS_P_SLOW = 0.9;
+	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
 	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
+	public static final double SLOW_I = 0.00025;
 	
 	public static final double BURGLARS_I_NORMAL = 0;
 	public static final double BURGLARS_D_NORMAL = 0;

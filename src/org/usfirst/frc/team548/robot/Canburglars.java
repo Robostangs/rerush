@@ -73,14 +73,14 @@ public class Canburglars {
 		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		alex.reverseOutput(true);
 		alex.changeControlMode(ControlMode.Position);
-		alex.setPID(Constants.LEFT_BURGLARS_P_SLOW, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
+		alex.setPID(Constants.LEFT_BURGLARS_P_SLOW, Constants.SLOW_I, Constants.BURGLARS_D_NORMAL);
 	}
 	
 	public static void setRightPIDNormalUp() {
 		austin.changeControlMode(ControlMode.Position);
 		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		austin.reverseOutput(true);
-		austin.setPID(Constants.RIGHT_BURGLARS_P_SLOW, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
+		austin.setPID(Constants.RIGHT_BURGLARS_P_SLOW, Constants.SLOW_I, Constants.BURGLARS_D_NORMAL);
 	}
 	
 	public static void setLeftUpNormal() {

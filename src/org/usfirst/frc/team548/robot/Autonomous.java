@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 12;
+	private static int mode = 10;
 	private static Timer autoTimer;
 
 	private Autonomous() {
