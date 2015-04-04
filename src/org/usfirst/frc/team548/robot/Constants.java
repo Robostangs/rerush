@@ -90,8 +90,7 @@ public class Constants {
 	public static final int ELEVATOR_LEFT_TALON_POS = 3;
 	public static final int ELEVATOR_RIGHT_TALON_POS = 6;
 	public static final int ELEVATOR_CONTAINER_SOL_POS = 2;
-	public static final int ELEVATOR_TOP_LIMIT_SWITCH_POS = -1;
-	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 0;
+	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 1;
 	//Speeds
 	public static final double ELEVATOR_OUTPUT_MIN = -.5;
 	public static final double ELEVATOR_OUTPUT_MAX = .5;

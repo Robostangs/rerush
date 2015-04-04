@@ -53,6 +53,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("Right Encoder Velocity", DriveMotors.getRightEncoderVelocity());
     	SmartDashboard.putNumber("Left Arm Encoder Position", ElevatorMotors.getLeftEncoder());
     	SmartDashboard.putNumber("TOTE LEVEL", Elevator.getToteZone());
+    	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     }
     
     public void testPeriodic() {
