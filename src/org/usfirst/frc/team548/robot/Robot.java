@@ -21,20 +21,23 @@ public class Robot extends IterativeRobot {
     	Ingestor.getInstance();
     	DriveMotors.resetEncoders();
     	Canburglars.getInstance();
-//    	sc = new SendableChooser();
-//    	sc.addDefault("Back into auto zone", 1);
-//    	sc.addObject("Back into auto with container based on time", 2);
-//    	sc.addObject("Drive into auto zone with container and tote", 3);
-//    	sc.addObject("Strafe into auto zone with tote and container", 4);
-//    	sc.addObject("Get tote and back into auto zone", 5);
-//    	sc.addObject("Back into auto zone with container based on distance", 6);
-//    	sc.addObject("Strafe into auto zone with only container", 7);
-//    	sc.addObject("Dream auton for livonia", 8);
-//    	SmartDashboard.putData("Auto type", sc);
+    	sc = new SendableChooser();
+    	sc.addObject("Back into auto zone", 1);
+    	sc.addObject("Strafe to auto zone w tote + container", 4);
+    	sc.addObject("Back to auto zone w container", 6);
+    	sc.addObject("Strafe to auto zone w container", 7);
+    	sc.addObject("CB, NO bump, time", 10);
+    	sc.addObject("CB WITH bump, time", 11);
+    	sc.addDefault("CB NO bump, pot", 12);
+    	sc.addObject("CB WITH bump, pot", 13);
+    	sc.addObject("CB NO bump FAST, pot", 14);
+    	sc.addObject("CB WITH bump FAST, pot", 15);
+    	sc.addObject("Nothing", 16);
+    	SmartDashboard.putData("Auto type", sc);
     }
     
     public void autonomousInit() {
-//    	Autonomous.setAutoMode((int)sc.getSelected());
+    	Autonomous.setAutoMode((int)sc.getSelected());
     	Autonomous.startTimer();
     	DriveMotors.resetEncoders();
     }
@@ -65,7 +68,7 @@ public class Robot extends IterativeRobot {
    
     public void disabledPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
-//    	SmartDashboard.putData("Auto type", sc);
+    	SmartDashboard.putData("Auto type", sc);
     	
     }
 }

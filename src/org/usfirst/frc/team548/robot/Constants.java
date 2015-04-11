@@ -90,7 +90,7 @@ public class Constants {
 	public static final int ELEVATOR_LEFT_TALON_POS = 3;
 	public static final int ELEVATOR_RIGHT_TALON_POS = 6;
 	public static final int ELEVATOR_CONTAINER_SOL_POS = 2;
-	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 1;
+	public static final int ELEVATOR_BOT_LIMIT_SWITCH_POS = 0;
 	//Speeds
 	public static final double ELEVATOR_OUTPUT_MIN = -.5;
 	public static final double ELEVATOR_OUTPUT_MAX = .5;
@@ -138,13 +138,13 @@ public class Constants {
 	//Canburglars
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
 	public static final int BURGLARS_RIGHT_TALON_POS = 11;
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 600;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 550;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 5;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 855;//928;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;//878;
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 234;//307;
 	
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 250;
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 324;
-	public static final double RIGHT_BURGLARS_UP_SETPOINT = 927;
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 127;
+	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
 	
 	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
 	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;

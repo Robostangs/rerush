@@ -45,23 +45,35 @@ public class Autonomous {
 			break;
 		//  Stack tote set in auton as long as middle container is removed
 		case 10:
-			Autonomous.canBurglarAutoNoStep10();
+			Autonomous.canBurglarAutoNoBump10();
 			break;
 		// Gets cans and backs up starting on no step
 		case 11:
-			Autonomous.canBurglarAutoWithStep11();
+			Autonomous.canBurglarAutoWithBump11();
 			break;
 		// Gets can and backs up starting on step
 		case 12:
-			Autonomous.canBurglarPotAutoNoStep12();
+			Autonomous.canBurglarPotAutoNoBump12();
 			break;
 		// Gets cans and backs up starting on no step based on canburg position	
 		case 13:
-			Autonomous.canBurglarPotAutoWithStep13();
+			Autonomous.canBurglarPotAutoWithBump13();
 			break;
 			// Grab cans based off of pot values and back up asap
+		case 14:
+			Autonomous.canBurglarFastPotAutoNoBump14();
+			break;
+			// Quickly grab cans full speed and back up based on pot value no step
+		case 15:
+			Autonomous.canBurglarFastPotAutoWithBump15();
+			break;
+			//Quickly grab cans full speed and back up based on pot value with step
+		case 16:
+			Autonomous.doNothing();
+			break;
+			//LOL NOTHING
 		default: 
-			Autonomous.driveToAutoZone1();
+			Autonomous.canBurglarPotAutoNoBump12();
 			break;
 		}
 	}
@@ -75,7 +87,15 @@ public class Autonomous {
 		}
 	}
 	
-	
+	//Stop, wait 15 seconds
+	private static void doNothing() {
+		Elevator.stopElevator();
+		DriveMotors.stopMotors();
+		Arm.setArmForward();
+		Elevator.calibrateEncoder();
+		Ingestor.setIngestorIn();
+		DriveTrain.setStrafeDown();
+	}
 	
 	//Works, but only with both tote and container. Watch for worn down carpet under strafe wheel.
 	private static void strafeIntoAutoZoneWithToteAndContainer4() {
@@ -233,15 +253,15 @@ public class Autonomous {
 		}
 	}
 	
-	private static void canBurglarAutoNoStep10() {
+	private static void canBurglarAutoNoBump10() {
 		DriveTrain.setStrafeUp();
 		if(autoTimer.get() < 0.2) {
 			DriveMotors.resetEncoders();
 			DriveTrain.resetGyro();
 		}
 		if(autoTimer.get() <= 3.5) {
-			Canburglars.setLeftDownNoStep();
-			Canburglars.setRightDownNoStep();
+			Canburglars.setLeftDownNoBump();
+			Canburglars.setRightDownNoBump();
 			if(autoTimer.get() >= 0.9) {
 				DriveTrain.driveDistance(-3500, 1);
 			}
@@ -257,15 +277,15 @@ public class Autonomous {
 		}
 	}
 	
-	private static void canBurglarAutoWithStep11() {
+	private static void canBurglarAutoWithBump11() {
 		DriveTrain.setStrafeUp();
 		if(autoTimer.get() < 0.2) {
 			DriveMotors.resetEncoders();
 			DriveTrain.resetGyro();
 		}
 		if(autoTimer.get() <= 3.5) {
-			Canburglars.setLeftDownWithStep();
-			Canburglars.setRightDownWithStep();
+			Canburglars.setLeftDownWithBump();
+			Canburglars.setRightDownWithBump();
 			if(autoTimer.get() >= 0.9) {
 				DriveTrain.driveDistance(-3500, 1);
 			}
@@ -282,16 +302,12 @@ public class Autonomous {
 	}
 	
 	//Fast
-	private static void canBurglarPotAutoNoStep12() {
+	private static void canBurglarPotAutoNoBump12() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.05) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
 		if(autoTimer.get() <= 3.5) {
-			Canburglars.setLeftDownNoStep();
-			Canburglars.setRightDownNoStep();
-			if((Canburglars.getLeftPosition() > 400 && Canburglars.getRightPosition() < 472) || autoTimer.get() >= 0.9) {
+			Canburglars.setLeftDownNoBump();
+			Canburglars.setRightDownNoBump();
+			if((Canburglars.getLeftPosition() > 755 && Canburglars.getRightPosition() < 153) || autoTimer.get() >= 0.9) {
 				DriveTrain.driveDistance(-3500, 1);
 			}
 		} else if(autoTimer.get() <= 5) {
@@ -306,7 +322,7 @@ public class Autonomous {
 		}
 	}
 	
-	private static void canBurglarPotAutoWithStep13() {
+	private static void canBurglarPotAutoWithBump13() {
 		DriveTrain.setStrafeUp();
 		if(autoTimer.get() < 0.2) {
 			DriveMotors.resetEncoders();
@@ -314,13 +330,74 @@ public class Autonomous {
 		}
 		if(autoTimer.get() <= 3.5) {
 			
-			if((Canburglars.getLeftPosition() > 350 && Canburglars.getRightPosition() < 524) || autoTimer.get() >= 0.9) {
+			if((Canburglars.getLeftPosition() > 705 && Canburglars.getRightPosition() < 227) || autoTimer.get() >= 0.9) {
 				DriveTrain.driveDistance(-3500, 1);
 				Canburglars.setLeftDownDown();
 				Canburglars.setRightDownDown();
 			} else {
-				Canburglars.setLeftDownWithStep();
-				Canburglars.setRightDownWithStep();
+				Canburglars.setLeftDownWithBump();
+				Canburglars.setRightDownWithBump();
+			}
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Elevator.calibrateEncoder();
+			Ingestor.setIngestorIn();
+		}
+	}
+
+	
+	private static void canBurglarFastPotAutoNoBump14() {
+		DriveTrain.setStrafeUp();
+		if(autoTimer.get() < 0.2) {
+			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
+		}
+		if(autoTimer.get() <= 3.5) {
+			
+			if((Canburglars.getLeftPosition() > 755 && Canburglars.getRightPosition() < 153) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
+				Canburglars.setLeftDownDown();
+				Canburglars.setRightDownDown();
+			} else if(autoTimer.get() < 0.05) {
+				Canburglars.setPower(1);
+			} else {
+				Canburglars.setLeftDownNoBump();
+				Canburglars.setRightDownNoBump();
+			}
+		} else if(autoTimer.get() <= 5) {
+			Canburglars.setLeftUpNormal();
+			Canburglars.setRightUpNormal();
+			DriveMotors.drive(-0.35, -0.35);
+		} else {
+			DriveMotors.stopMotors();
+			Arm.setArmForward();
+			Elevator.calibrateEncoder();
+			Ingestor.setIngestorIn();
+		}
+	}
+	
+	private static void canBurglarFastPotAutoWithBump15() {
+		DriveTrain.setStrafeUp();
+		if(autoTimer.get() < 0.2) {
+			DriveMotors.resetEncoders();
+			DriveTrain.resetGyro();
+		}
+		if(autoTimer.get() <= 3.5) {
+			
+			if((Canburglars.getLeftPosition() > 705 && Canburglars.getRightPosition() < 227) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(-3500, 1);
+				Canburglars.setLeftDownDown();
+				Canburglars.setRightDownDown();
+			} else if(autoTimer.get() < 0.05) {
+				Canburglars.setPower(1);
+			} else {
+				Canburglars.setLeftDownWithBump();
+				Canburglars.setRightDownWithBump();
 			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();

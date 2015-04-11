@@ -35,24 +35,30 @@ public class Canburglars {
 		austin.setPID(Constants.RIGHT_BURGLARS_P_NORMAL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
 	}
 	
+	public static void setPower(double power) {
+		alex.changeControlMode(ControlMode.PercentVbus);
+		austin.changeControlMode(ControlMode.PercentVbus);
+		alex.set(power);
+		austin.set(power);
+	}
 	//normal
 	//no step
-	public static void setLeftDownNoStep() {
+	public static void setLeftDownNoBump() {
 		setLeftPIDNormalDown();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 	}
 	
-	public static void setRightDownNoStep() {
+	public static void setRightDownNoBump() {
 		setRightPIDNormalDown();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 	}
 	//step
-	public static void setLeftDownWithStep() {
+	public static void setLeftDownWithBump() {
 		setLeftPIDNormalDown();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
 	}
 	
-	public static void setRightDownWithStep() {
+	public static void setRightDownWithBump() {
 		setRightPIDNormalDown();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
 	}

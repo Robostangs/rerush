@@ -29,11 +29,11 @@ public class Elevator {
 	public static void moveElevator(double power) {
 		if(getBotElevatorSwitch()) {
 			ElevatorMotors.resetEncoders();
-		} if(ElevatorMotors.getLeftEncoder() < 0 && power < Constants.ELEVATOR_INPUT_MIN || ElevatorMotors.getLeftEncoder() > Constants.ELEVATOR_INPUT_MAX && power > 0) {
+		} /*if(ElevatorMotors.getLeftEncoder() < 0 && power < Constants.ELEVATOR_INPUT_MIN || ElevatorMotors.getLeftEncoder() > Constants.ELEVATOR_INPUT_MAX && power > 0) {
 			power = 0;
 		} if (ElevatorMotors.getLeftEncoder() < Constants.ELEVATOR_SLOW_ZONE && power < 0) {
 			power = Constants.ELEVATOR_SLOW_SPEED;
-		}
+		}*/
 		ElevatorMotors.setPower(power);
 	}
 	
