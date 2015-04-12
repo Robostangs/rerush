@@ -304,12 +304,18 @@ public class Autonomous {
 	//Fast
 	private static void canBurglarPotAutoNoBump12() {
 		DriveTrain.setStrafeUp();
+//		double driveTimer = 0;
 		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
 			if((Canburglars.getLeftPosition() > 755 && Canburglars.getRightPosition() < 153) || autoTimer.get() >= 0.9) {
 				DriveTrain.driveDistance(-3500, 1);
+				//driveTimer = autoTimer.get();
 			}
+//			if(autoTimer.get() - driveTimer >= 0.03) {
+//				Canburglars.setLeftPIDNormalUp();
+//				Canburglars.setRightPIDNormalUp();
+//			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
 			Canburglars.setRightUpNormal();
