@@ -58,6 +58,8 @@ public class Constants {
 	public static final double AUTON_9_DISTANCE_TO_TOTE_3 = 5000;
 	public static final double AUTON_9_DISTANCE_TO_CONTAINER_2 = 2500;
 	public static final double AUTON_9_STRAFE_POWER = 0.75;
+	//Canburglars
+	public static final double AUTON_CAN_BURGLARS_PULLBACK_DISTANCE = -3500;
 	
 	
 	//Drive Train
@@ -138,16 +140,22 @@ public class Constants {
 	//Canburglars
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
 	public static final int BURGLARS_RIGHT_TALON_POS = 11;
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 855;//928;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;//878;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 234;//307;
+	
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 855;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 755;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 705;
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 234;
 	
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 153;
 	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 127;
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 227;
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
 	
-	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
-	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;
+//	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
+//	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;
+	
 	//PID
 	public static final double LEFT_BURGLARS_P_NORMAL = 2.5;
 	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5;

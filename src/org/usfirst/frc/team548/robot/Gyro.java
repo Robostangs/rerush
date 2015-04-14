@@ -1,12 +1,10 @@
 package org.usfirst.frc.team548.robot;
 
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.Timer;
 
 public class Gyro {
 	
 	private SPI spi;
-	private Timer updateTime;
 	
 	public Gyro(SPI.Port port) {
 		spi = new SPI(port);

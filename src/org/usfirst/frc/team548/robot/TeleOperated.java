@@ -18,24 +18,7 @@ public class TeleOperated {
 		return instance;
 	}
 	
-	public static void runDriver() {
-		
-		/*
-		 * Driving controls with trigger strafe
-		 * Includes super slow with left bumper, slow with right bumper
-		 */ 
-//		if(driver.getLeftBumper()) {
-//			DriveTrain.humanSuperSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-//			DriveTrain.humanSuperSlowDriveStrafe(driver.getBothTriggerAxis());
-//		} else if(driver.getRightBumper()) {
-//			DriveTrain.humanSlowDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-//			DriveTrain.humanSlowDriveStrafe(driver.getBothTriggerAxis());
-//		} else {
-//			DriveTrain.humanDrive(driver.getLeftStickYAxis(), driver.getRightStickYAxis());
-//			DriveTrain.humanDriveStrafe(driver.getBothTriggerAxis());
-//		}
-		
-		
+	public static void runDriver() {		
 		
 		/*
 		 * A BUTTON: strafe wheel down
@@ -51,13 +34,7 @@ public class TeleOperated {
 		 * Outside x axis human strafe with human drive
 		 * LEFT BUMPER: Super slow human strafe
 		 * RIGHT BUMPER: Slow human strafe
-		 * WHEEL IS DOWN WHEN STRAFE IS ACTIVATED
 		 */
-//		if(driver.getLeftStickXAxis() < -Constants.XBOX_TRIGGER_THRESHOLD || driver.getRightStickXAxis() > Constants.XBOX_TRIGGER_THRESHOLD){
-//			DriveTrain.setStrafeDown();
-//		}
-		
-		System.out.println(DriveMotors.getRightEncoderPosition());
 		
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
@@ -114,10 +91,6 @@ public class TeleOperated {
 			 DriveTrain.setStrafeDown();
 		 }
 		 
-		 if(driver.getStartButton()) {
-			 DriveTrain.resetGyro();
-		 }
-		 
 //		 if(driver.getXButton() && !buttonPressedX) {
 //			 buttonPressedX = true;
 //			 if(!canBurLeft) {
@@ -164,16 +137,7 @@ public class TeleOperated {
 //			 }
 //		 } else if(!driver.getBButton() && buttonPressedA) {
 //			 buttonPressedA = false;
-//		 }
-		 
-		 /*
-		  * Driver ingestor controls using triggers
-		  */
-//		 if(Math.abs(driver.getLeftTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD || Math.abs(driver.getRightTriggerAxis()) > Constants.DRIVE_HUMAN_STRAFE_THRESHOLD) {
-//			 Ingestor.setIngestorPower(driver.getBothTriggerAxis());
-//		 }
-		 
-		 
+//		 }		 
 	}
 	
 	public static void runManip() {
@@ -254,8 +218,6 @@ public class TeleOperated {
 				Elevator.setCurrentLevelSnapshot();
 			}
 			Elevator.autoGrabUp();
-//			Ingestor.setIngestorOut();
-//			Elevator.setElevatorToLevel(5);
 		} else if(Math.abs(manip.getRightStickYAxis()) > Constants.XBOX_JOYSTICK_THRESHOLD) {
 			Elevator.moveElevator(manip.getRightStickYAxis());
 		} else if(driver.getBackButton()) {

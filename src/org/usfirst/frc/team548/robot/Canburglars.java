@@ -3,7 +3,6 @@ package org.usfirst.frc.team548.robot;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.ControlMode;
 import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
-import edu.wpi.first.wpilibj.Timer;
 
 public class Canburglars {
 	private static Canburglars instance;
@@ -20,7 +19,17 @@ public class Canburglars {
 		alex = new CANTalon(Constants.BURGLARS_LEFT_TALON_POS);
 		austin = new CANTalon(Constants.BURGLARS_RIGHT_TALON_POS);
 	}
+
 	
+	public static void setPower(double power) {
+		alex.changeControlMode(ControlMode.PercentVbus);
+		austin.changeControlMode(ControlMode.PercentVbus);
+		alex.set(power);
+		austin.set(power);
+	}
+	
+	
+	//normal
 	public static void setLeftPIDNormalDown() {
 		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		alex.reverseOutput(true);
@@ -34,15 +43,7 @@ public class Canburglars {
 		austin.reverseOutput(true);
 		austin.setPID(Constants.RIGHT_BURGLARS_P_NORMAL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
 	}
-	
-	public static void setPower(double power) {
-		alex.changeControlMode(ControlMode.PercentVbus);
-		austin.changeControlMode(ControlMode.PercentVbus);
-		alex.set(power);
-		austin.set(power);
-	}
-	//normal
-	//no step
+	//no bump
 	public static void setLeftDownNoBump() {
 		setLeftPIDNormalDown();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT);
@@ -52,7 +53,7 @@ public class Canburglars {
 		setRightPIDNormalDown();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 	}
-	//step
+	//bump
 	public static void setLeftDownWithBump() {
 		setLeftPIDNormalDown();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
@@ -63,15 +64,15 @@ public class Canburglars {
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
 	}
 	
-	public static void setLeftDownDown() {
-		setLeftPIDNormalDown();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_DOWN);
-	}
-	
-	public static void setRightDownDown() {
-		setRightPIDNormalDown();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_DOWN);
-	}
+//	public static void setLeftDownDown() {
+//		setLeftPIDNormalDown();
+//		alex.set(Constants.LEFT_BURGLARS_DOWN_DOWN);
+//	}
+//	
+//	public static void setRightDownDown() {
+//		setRightPIDNormalDown();
+//		austin.set(Constants.RIGHT_BURGLARS_DOWN_DOWN);
+//	}
 
 	
 	//up
@@ -99,6 +100,7 @@ public class Canburglars {
 		austin.set(Constants.RIGHT_BURGLARS_UP_SETPOINT);
 	}
 	
+	
 	public static double getLeftPosition() {
 		return alex.getAnalogInPosition();
 	}
@@ -106,6 +108,7 @@ public class Canburglars {
 	public static double getRightPosition() {
 		return austin.getAnalogInPosition();
 	}
+	
 	
 	public static void disablePID() {
 		alex.changeControlMode(ControlMode.Disabled);

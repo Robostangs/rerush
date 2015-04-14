@@ -47,15 +47,15 @@ public class Autonomous {
 		case 10:
 			Autonomous.canBurglarAutoNoBump10();
 			break;
-		// Gets cans and backs up starting on no step
+		// Gets cans and backs up starting on no bump
 		case 11:
 			Autonomous.canBurglarAutoWithBump11();
 			break;
-		// Gets can and backs up starting on step
+		// Gets can and backs up starting on bump
 		case 12:
 			Autonomous.canBurglarPotAutoNoBump12();
 			break;
-		// Gets cans and backs up starting on no step based on canburg position	
+		// Gets cans and backs up starting on no bump based on canburg position	
 		case 13:
 			Autonomous.canBurglarPotAutoWithBump13();
 			break;
@@ -63,13 +63,13 @@ public class Autonomous {
 		case 14:
 			Autonomous.canBurglarFastPotAutoNoBump14();
 			break;
-			// Quickly grab cans full speed and back up based on pot value no step
+			// Quickly grab cans full speed and back up based on pot value no bump
 		case 15:
 			Autonomous.canBurglarFastPotAutoWithBump15();
 			break;
-			//Quickly grab cans full speed and back up based on pot value with step
+			//Quickly grab cans full speed and back up based on pot value with bump
 		case 16:
-			Autonomous.doNothing();
+			Autonomous.doNothing16();
 			break;
 			//LOL NOTHING
 		default: 
@@ -78,23 +78,28 @@ public class Autonomous {
 		}
 	}
 	
-	//Works alright.
+	public static void setAutoMode(int mode) {
+		Autonomous.mode = mode;
+	}
+	
+	public static void startTimer() {
+		Autonomous.autoTimer.reset();
+		Autonomous.autoTimer.start();
+	}
+	
+	public static int getAutoMode() {
+		return Autonomous.mode;
+	}
+	
+	
+	//RUNS ON TIME
+	//SHOULD BE RE-TUNED BEFORE RUNNING AGAIN
 	private static void driveToAutoZone1() {
 		if(autoTimer.get() <= 2.6) {
 			DriveMotors.drive(0.5, -0.5);
 		} else {
 			DriveMotors.stopMotors();
 		}
-	}
-	
-	//Stop, wait 15 seconds
-	private static void doNothing() {
-		Elevator.stopElevator();
-		DriveMotors.stopMotors();
-		Arm.setArmForward();
-		Elevator.calibrateEncoder();
-		Ingestor.setIngestorIn();
-		DriveTrain.setStrafeDown();
 	}
 	
 	//Works, but only with both tote and container. Watch for worn down carpet under strafe wheel.
@@ -214,56 +219,21 @@ public class Autonomous {
 			DriveTrain.driveDistance(-2000, 0.5);
 		} else if(autoTimer.get() <= 19) {
 			Elevator.setElevatorToLevel(3);
-		
-//		} else if(autoTimer.get() <= 13) {
-//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-//			Elevator.setElevatorDownToLevel(2);
-//		} else if(autoTimer.get() <= 15) {
-//			Elevator.setElevatorUpToLevel(3);
-//		} else if(autoTimer.get() <= 5) {
-//			Ingestor.setIngestorOut();
-//			DriveTrain.turnAngle(Constants.AUTON_8_FIRST_TURN_ANGLE, Constants.AUTON_8_TURN_SPEED);
-//		} else if(autoTimer.get() <= 6) {
-//			DriveTrain.resetGyro();
-//			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_2, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-//		} else if(autoTimer.get() <= 6.5) {
-//			DriveTrain.resetEncoderInitBoolean();
-//			Ingestor.setIngestorIn();
-//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-//		} else if(autoTimer.get() <= 7.1) {
-//			Elevator.setElevatorDown();
-//		} else if(autoTimer.get() <= 7.8) {
-//			Elevator.setElevatorUp();
-//		} else if(autoTimer.get() <= 9) {
-//			Ingestor.setIngestorOut();
-//			DriveTrain.driveDistance(Constants.AUTON_8_DRIVE_DISTANCE_TO_TOTE_3, Constants.AUTON_8_DRIVE_DISTANCE_SPEED);
-//		} else if(autoTimer.get() <= 9.5) {
-//			DriveTrain.resetEncoderInitBoolean();
-//			Ingestor.setIngestorIn();
-//			Ingestor.setIngestorPower(Constants.AUTON_8_INGEST_POWER);
-//		} else if(autoTimer.get() <= 10) {
-//			Elevator.setElevatorDown();
-//		} else if(autoTimer.get() <= 10.7) {
-//			Elevator.setElevatorUp();
-//		} else if(autoTimer.get() <= 13.5) {
-//			DriveMotors.driveStrafe(Constants.AUTON_8_STRAFE_POWER);
-//		} else if(autoTimer.get() <= 15) {
-//			DriveMotors.stopMotors();
-//			Elevator.setElevatorToLevel(3);
 		}
 	}
 	
+	
+//CAN BURGLARS
+	
+	//NO BUMP
+	//Runs PID and triggers driving w time
 	private static void canBurglarAutoNoBump10() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.2) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
 		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
 			if(autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
@@ -277,17 +247,15 @@ public class Autonomous {
 		}
 	}
 	
+	//WITH BUMP
+	//Runs PID and triggers driving w time
 	private static void canBurglarAutoWithBump11() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.2) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
 		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownWithBump();
 			Canburglars.setRightDownWithBump();
 			if(autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
@@ -301,21 +269,16 @@ public class Autonomous {
 		}
 	}
 	
-	//Fast
+	//NO BUMP
+	//Runs PID and triggers driving w pot values
 	private static void canBurglarPotAutoNoBump12() {
 		DriveTrain.setStrafeUp();
-//		double driveTimer = 0;
 		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
-			if((Canburglars.getLeftPosition() > 755 && Canburglars.getRightPosition() < 153) || autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
-				//driveTimer = autoTimer.get();
+			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			}
-//			if(autoTimer.get() - driveTimer >= 0.03) {
-//				Canburglars.setLeftPIDNormalUp();
-//				Canburglars.setRightPIDNormalUp();
-//			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
 			Canburglars.setRightUpNormal();
@@ -328,21 +291,15 @@ public class Autonomous {
 		}
 	}
 	
+	//WITH BUMP
+	//Runs PID and triggers driving w pot values
 	private static void canBurglarPotAutoWithBump13() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.2) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
 		if(autoTimer.get() <= 3.5) {
-			
-			if((Canburglars.getLeftPosition() > 705 && Canburglars.getRightPosition() < 227) || autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
-				Canburglars.setLeftDownDown();
-				Canburglars.setRightDownDown();
-			} else {
-				Canburglars.setLeftDownWithBump();
-				Canburglars.setRightDownWithBump();
+			Canburglars.setLeftDownWithBump();
+			Canburglars.setRightDownWithBump();
+			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
@@ -356,19 +313,14 @@ public class Autonomous {
 		}
 	}
 
-	
+	//NO BUMP
+	//Goes at full speed for 0.05 seconds
+	//Then runs PID and triggers driving w pot values
 	private static void canBurglarFastPotAutoNoBump14() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.2) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
-		if(autoTimer.get() <= 3.5) {
-			
-			if((Canburglars.getLeftPosition() > 755 && Canburglars.getRightPosition() < 153) || autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
-				Canburglars.setLeftDownDown();
-				Canburglars.setRightDownDown();
+		if(autoTimer.get() <= 3.5) {		
+			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			} else if(autoTimer.get() < 0.05) {
 				Canburglars.setPower(1);
 			} else {
@@ -387,18 +339,14 @@ public class Autonomous {
 		}
 	}
 	
+	//WITH BUMP
+	//Goes at full speed for 0.05 seconds
+	//Then runs PID and triggers driving w pot values
 	private static void canBurglarFastPotAutoWithBump15() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() < 0.2) {
-			DriveMotors.resetEncoders();
-			DriveTrain.resetGyro();
-		}
-		if(autoTimer.get() <= 3.5) {
-			
-			if((Canburglars.getLeftPosition() > 705 && Canburglars.getRightPosition() < 227) || autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(-3500, 1);
-				Canburglars.setLeftDownDown();
-				Canburglars.setRightDownDown();
+		if(autoTimer.get() <= 3.5) {			
+			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			} else if(autoTimer.get() < 0.05) {
 				Canburglars.setPower(1);
 			} else {
@@ -417,16 +365,14 @@ public class Autonomous {
 		}
 	}
 	
-	public static void setAutoMode(int mode) {
-		Autonomous.mode = mode;
-	}
-	
-	public static void startTimer() {
-		Autonomous.autoTimer.reset();
-		Autonomous.autoTimer.start();
-	}
-	
-	public static int getAutoMode() {
-		return Autonomous.mode;
+//DO NOTHING
+	//Stop, wait 15 seconds
+	private static void doNothing16() {
+		Elevator.stopElevator();
+		DriveMotors.stopMotors();
+		Arm.setArmForward();
+		Elevator.calibrateEncoder();
+		Ingestor.setIngestorIn();
+		DriveTrain.setStrafeDown();
 	}
 }
