@@ -146,12 +146,16 @@ public class Constants {
 	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;
 	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 705;
 	public static final double LEFT_BURGLARS_UP_SETPOINT = 234;
+	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 766;
+	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 705;
 	
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 153;
 	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 127;
 	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 227;
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
+	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153;
+	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227;
 	
 //	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
 //	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;

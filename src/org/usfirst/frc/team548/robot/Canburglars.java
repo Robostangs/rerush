@@ -53,15 +53,35 @@ public class Canburglars {
 		setRightPIDNormalDown();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 	}
+	
+	public static void setLeftHoverNoBump() {
+		setLeftPIDNormalDown();
+		alex.set(Constants.LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT);
+	}
+	
+	public static void setRightHoverNoBump() {
+		setRightPIDNormalDown();
+		austin.set(Constants.RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT);
+	}
 	//bump
 	public static void setLeftDownWithBump() {
 		setLeftPIDNormalDown();
 		alex.set(Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
 	}
 	
+	public static void setLeftHoverWithBump() {
+		setLeftPIDNormalDown();
+		alex.set(Constants.LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT);
+	}
+	
 	public static void setRightDownWithBump() {
 		setRightPIDNormalDown();
 		austin.set(Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
+	}
+	
+	public static void setRightHoverWithBump() {
+		setRightPIDNormalDown();
+		austin.set(Constants.RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT);
 	}
 	
 //	public static void setLeftDownDown() {
