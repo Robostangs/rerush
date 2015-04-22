@@ -273,7 +273,7 @@ public class Autonomous {
 	//Runs PID and triggers driving w pot values
 	private static void canBurglarPotAutoNoBump12() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() <= 3.5) {
+		if(autoTimer.get() <= 10) {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
 			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {

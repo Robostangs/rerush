@@ -139,13 +139,15 @@ public class Constants {
 	
 	//Canburglars
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
-	public static final int BURGLARS_RIGHT_TALON_POS = 11;
+	public static final int BURGLARS_RIGHT_TALON_POS = 12;
+	public static final int BURGLARS_LEFT_TALON_2_POS = 11;
+	public static final int BURGLARS_RIGHT_TALON_2_POS = 13;
 	
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 855;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 835;//835
 	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 755;
 	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;
 	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 705;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 234;
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 306;
 	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 766;
 	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 705;
 	
@@ -161,10 +163,10 @@ public class Constants {
 //	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;
 	
 	//PID
-	public static final double LEFT_BURGLARS_P_NORMAL = 2.5;
+	public static final double LEFT_BURGLARS_P_NORMAL = 2.5; //2.5;
 	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5;
 	
-	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
+	public static final double LEFT_BURGLARS_P_SLOW = 0.015; //0.5;
 	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
 	public static final double SLOW_I = 0.00025;
 	
