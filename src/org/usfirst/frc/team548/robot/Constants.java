@@ -10,54 +10,10 @@ public class Constants {
 	//Autonomous
 	//Drive to Auto Zone (1)
 	public static final double AUTON_1_DRIVE_DISTANCE_ROBOT_SET = 7000;
-	//Drive to Auto Zone with Container based on time (2)
-	public static final double AUTON_2_DISTANCE_TO_CONTAINER = -1;
-	public static final double AUTON_2_DISTANCE_FROM_CONTAINER = -1;
-	//Drive to Auto Zone with Container and Tote (3)
-	public static final double AUTON_3_DISTANCE_TO_CONTAINER = -1;
-	public static final double AUTON_3_DISTANCE_TO_TOTE = -1;
-	public static final double AUTON_3_TURN_ANGLE = -1;
-	public static final double AUTON_3_DISTANCE_TO_AUTO_ZONE = -1;
-	public static final double AUTON_3_LEFT_SPEED = 0;
-	public static final double AUTON_3_RIGHT_SPEED = 0.8;
-	public static final double AUTON_3_STRAFE_SPEED = -1;
-	//Strafe to Auto Zone with tote and container (4)
-	public static final double AUTON_4_LEFT_SPEED = 0;
-	public static final double AUTON_4_RIGHT_SPEED = 0;
-	public static final double AUTON_4_STRAFE_SPEED = 0.75;
-	//Back into auto zone with tote (5)
-	public static final double AUTON_5_ELEVATOR_LIFT = 1200;
-	public static final double AUTON_5_DRIVE_DISTANCE_BACK = -4600;
-	public static final double AUTON_5_DRIVE_DISTANCE_SPEED = 0.5;
+	
 	//Back into auto zone with container based on distance (6)
 	public static final double AUTON_6_DRIVE_DISTANCE = -4500;
 	public static final double AUTON_6_DRIVE_DISTANCE_SPEED = 0.35;
-	//Strafe to auto zone with only container (7)
-	public static final double AUTON_7_LEFT_SPEED = 0;
-	public static final double AUTON_7_RIGHT_SPEED = 0;
-	public static final double AUTON_7_STRAFE_SPEED = 0.75;
-	//Gets container, places on tote, turns and gets other two totes if middle container removed (8)
-	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_1 = 800;
-	public static final double AUTON_8_DRIVE_DISTANCE_SPEED = 0.5;
-	public static final double AUTON_8_INGEST_POWER = 1;
-	public static final double AUTON_8_FIRST_TURN_ANGLE = -1;
-	public static final double AUTON_8_TURN_SPEED = 0.5;
-	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_2 = 2000;
-	public static final double AUTON_8_DRIVE_DISTANCE_TO_TOTE_3 = 2500;
-	public static final double AUTON_8_STRAFE_POWER = -1;
-	//Gets all three totes in a line by pushing aside containers (9)
-	public static final double AUTON_9_DISTANCE_TO_TOTE_1 = 300;
-	public static final double AUTON_9_INGEST_POWER = 1;
-	public static final double AUTON_9_READJUST_LEFT_SPEED = -0.25;
-	public static final double AUTON_9_READJUST_RIGHT_SPEED = 0;
-	public static final double AUTON_9_READJUST_STRAFE_SPEED = 0.75;
-	public static final double AUTON_9_DISTANCE_TO_TOTE_2 = 5000;
-	public static final double AUTON_9_DRIVE_DISTANCE_SPEED = 0.25;
-	public static final double AUTON_9_DISTANCE_TO_CONTAINER_1 = 2500;
-	public static final double AUTON_9_SET_INGESTOR_DIRECTION = 1;
-	public static final double AUTON_9_DISTANCE_TO_TOTE_3 = 5000;
-	public static final double AUTON_9_DISTANCE_TO_CONTAINER_2 = 2500;
-	public static final double AUTON_9_STRAFE_POWER = 0.75;
 	//Canburglars
 	public static final double AUTON_CAN_BURGLARS_PULLBACK_DISTANCE = -3500;
 	
@@ -70,7 +26,6 @@ public class Constants {
 	public static final int DRIVE_RIGHT_FRONT_TALON_POS = 8;
 	public static final int DRIVE_CENTER_STRAFE_TALON_POS = 7;
 	public static final int DRIVE_STRAFE_SOL_POS = 3;
-	public static final int DRIVE_GYRO_POS = 0;
 	//Thresholds
 	public static final double DRIVE_HUMAN_DRIVE_THRESHOLD = 0.2;
 	public static final double DRIVE_HUMAN_STRAFE_THRESHOLD = 0.15;
@@ -133,40 +88,35 @@ public class Constants {
 	public static final int IN_LEFT_SOL_POS_1 = 5;
 	public static final int IN_LEFT_SOL_POS_2 = 1;
 	
-	//Pneumatics
-	//Ports
-	public static final int COMPRESSOR_POS = -1;
-	
 	//Canburglars
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
 	public static final int BURGLARS_RIGHT_TALON_POS = 12;
-	public static final int BURGLARS_LEFT_TALON_2_POS = 11;
-	public static final int BURGLARS_RIGHT_TALON_2_POS = 13;
 	
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 835;//835
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 755;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 805;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 705;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 306;
-	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 766;
-	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 705;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 815;//775
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 765;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 793; //
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 645;
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 225;
+	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 706;
+	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 645;
 	
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 153;
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 127;
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 103;
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 115; //
 	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 227;
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
 	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153;
 	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227;
 	
-//	public static final double RIGHT_BURGLARS_DOWN_DOWN = 100;
-//	public static final double LEFT_BURGLARS_DOWN_DOWN = 772;
+	//100 bigger angle than setpoints
+	public static final double RIGHT_BURGLARS_DOWN_DOWN = 0; //
+	public static final double LEFT_BURGLARS_DOWN_DOWN = 693; //
 	
 	//PID
 	public static final double LEFT_BURGLARS_P_NORMAL = 2.5; //2.5;
-	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5;
+	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5; //2.5
 	
-	public static final double LEFT_BURGLARS_P_SLOW = 0.015; //0.5;
+	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
 	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
 	public static final double SLOW_I = 0.00025;
 	

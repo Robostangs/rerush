@@ -28,22 +28,6 @@ public class Autonomous {
 			Autonomous.driveToAutoZone1();
 			break;
 		// Drive into auto zone with container
-		case 4:
-			Autonomous.strafeIntoAutoZoneWithToteAndContainer4();
-			break;
-		//  Strafe into the auto zone by pushing tote and container
-		case 6:
-			Autonomous.backIntoAutoZoneWithContainerDistance6();
-			break;
-		//  Back into auto zone with container, but based on distance
-		case 7:
-			Autonomous.strafeIntoAutoZoneWithContainer7();
-			break;
-		//	Strafe into auto zone pushing only container
-		case 8:
-			Autonomous.dreamAutonForLivonia8();
-			break;
-		//  Stack tote set in auton as long as middle container is removed
 		case 10:
 			Autonomous.canBurglarAutoNoBump10();
 			break;
@@ -102,18 +86,6 @@ public class Autonomous {
 		}
 	}
 	
-	//Works, but only with both tote and container. Watch for worn down carpet under strafe wheel.
-	private static void strafeIntoAutoZoneWithToteAndContainer4() {
-		if(autoTimer.get() <= 1.0) {
-			DriveTrain.setStrafeDown();
-			Arm.setArmBack();
-		} else if(autoTimer.get() <= 7.5) {
-			DriveMotors.drive(Constants.AUTON_4_LEFT_SPEED, Constants.AUTON_4_RIGHT_SPEED);
-			DriveMotors.driveStrafe(Constants.AUTON_4_STRAFE_SPEED);
-		} else {
-			DriveMotors.stopMotors();
-		}
-	}
 	
 	//Same as method 2, but more accurate since based on distance rather than time.
 	private static void backIntoAutoZoneWithContainerDistance6() {
@@ -133,94 +105,6 @@ public class Autonomous {
 		}
 	}
 	
-	//Works, but only with just container. Watch for worn down carpet under strafe wheel.
-	private static void strafeIntoAutoZoneWithContainer7() {
-		if(autoTimer.get() <= 1.0) {
-			DriveTrain.setStrafeDown();
-			Arm.setArmBack();
-		} else if(autoTimer.get() <= 7) {
-			DriveMotors.drive(Constants.AUTON_7_LEFT_SPEED, Constants.AUTON_7_RIGHT_SPEED);
-			DriveMotors.driveStrafe(Constants.AUTON_7_STRAFE_SPEED);
-		} else {
-			DriveMotors.stopMotors();
-		}
-	}
-	
-	//Is currently being worked on :)
-	private static void dreamAutonForLivonia8() {
-		/*
-		 * TODO
-		 * Drive to auto zone
-		 * Use a gyro (Try DriveTrain.turnRightGyro(angle, speed);)
-		 * FASTER!
-		 * 
-		 */
-		if(autoTimer.get() <= 1) { // Raise can to get next tote
-			DriveTrain.setStrafeDown();
-			DriveTrain.resetEncoderInitBoolean();
-			Elevator.setElevatorToLevel(2);
-		} else if(autoTimer.get() <= 2) { // Drive to first tote
-			DriveTrain.driveDistance(-600, 0.5);
-		} else if(autoTimer.get() <= 2.01) {
-			DriveTrain.resetGyroInitBoolean();
-			DriveTrain.resetEncoderInitBoolean();
-		} else if(autoTimer.get() <= 2.8) { // Turn to line up to tote, get current level
-			DriveTrain.turnGyro(-20, 0.9);
-			Elevator.setCurrentLevelSnapshotToLevel(2);
-		} else if(autoTimer.get() <= 7.4) { // Stop moving, set ingestors in, autograb tote 
-			if(autoTimer.get() <= 5.19) {
-				DriveTrain.driveDistance(-200, 0.4);
-			}
-			if(autoTimer.get() <= 5.5) {
-				Elevator.autoGrabUp();
-			}
-			DriveTrain.resetGyroInitBoolean();
-			if(autoTimer.get() >= 5.2) {
-				DriveTrain.turnGyro(-160, 0.7);
-			}
-			if(autoTimer.get() >= 5.51) {
-				Ingestor.setIngestorOut();
-			}
-		} else if(autoTimer.get() <= 7.8) { // Do a 180, set ingestors out
-			//DriveTrain.turnRightDistance(-1600, 0.7);
-//			DriveTrain.turnGyro(-160, 0.7);
-//			Ingestor.setIngestorOut();
-		} else if(autoTimer.get() <= 7.9) {
-			DriveTrain.resetEncoderInitBoolean();
-			Elevator.setCurrentLevelSnapshotToLevel(3);
-		} else if(autoTimer.get() <= 9.6) { // Drive to second tote, start ingestors
-			DriveTrain.driveDistance(-1000, 0.5);
-			Elevator.resetTimer();
-			Ingestor.setIngestorPower(1);
-			if(autoTimer.get() > 8.3) {
-				Ingestor.setIngestorIn();
-			}
-			if(autoTimer.get() == 9.2) Ingestor.setIngestorIn();
-		} else if(autoTimer.get() <= 11.8) { // Auto grab second tote
-			Elevator.autoGrabUp();
-			DriveTrain.resetEncoderInitBoolean();
-		} else if(autoTimer.get() <= 13.8) { 
-			Ingestor.setIngestorPower(1);// Do you need this?
-			DriveTrain.driveDistance(-3500, 0.5); // Drive to third tote
-			if(autoTimer.get() == 13.2) {
-				Ingestor.setIngestorIn();
-			} else if(autoTimer.get() < 12) {
-				Ingestor.setIngestorOut();
-			}
-			Elevator.setCurrentLevelSnapshotToLevel(4);
-			Elevator.resetTimer();
-		} else if(autoTimer.get() <= 15.3) {
-			DriveTrain.resetEncoderInitBoolean();
-			Elevator.autoGrabUp();
-		} else if(autoTimer.get() <= 17.5) {
-			Ingestor.setIngestorPower(1);
-			DriveTrain.turnGyro(20, 0.7);
-		} else if(autoTimer.get() <= 18.5) {
-			DriveTrain.driveDistance(-2000, 0.5);
-		} else if(autoTimer.get() <= 19) {
-			Elevator.setElevatorToLevel(3);
-		}
-	}
 	
 	
 //CAN BURGLARS
@@ -271,13 +155,21 @@ public class Autonomous {
 	
 	//NO BUMP
 	//Runs PID and triggers driving w pot values
+	static double v = -1;
 	private static void canBurglarPotAutoNoBump12() {
 		DriveTrain.setStrafeUp();
-		if(autoTimer.get() <= 10) {
+		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
-			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
-				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
+			
+			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) { //
+//				if(v == -1) {
+//					v = autoTimer.get();
+//				}
+				//if(autoTimer.get() - v  >= 0.07 && v != -1) {
+					DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
+				//}
+				
 			}
 		} else if(autoTimer.get() <= 5) {
 			Canburglars.setLeftUpNormal();
@@ -298,7 +190,7 @@ public class Autonomous {
 		if(autoTimer.get() <= 3.5) {
 			Canburglars.setLeftDownWithBump();
 			Canburglars.setRightDownWithBump();
-			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+			if(autoTimer.get() >= 0.5) { //(Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT) || 
 				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
 			}
 		} else if(autoTimer.get() <= 5) {
