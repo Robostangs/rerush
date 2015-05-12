@@ -7,15 +7,6 @@ public class Constants {
 	public static final double XBOX_JOYSTICK_THRESHOLD = 0.2;
 	public static final double XBOX_TRIGGER_THRESHOLD = 0.15;
 	
-	//Autonomous
-	//Drive to Auto Zone (1)
-	public static final double AUTON_1_DRIVE_DISTANCE_ROBOT_SET = 7000;
-	
-	//Back into auto zone with container based on distance (6)
-	public static final double AUTON_6_DRIVE_DISTANCE = -4500;
-	public static final double AUTON_6_DRIVE_DISTANCE_SPEED = 0.35;
-	//Canburglars
-	public static final double AUTON_CAN_BURGLARS_PULLBACK_DISTANCE = -3500;
 	
 	
 	//Drive Train
@@ -88,39 +79,5 @@ public class Constants {
 	public static final int IN_LEFT_SOL_POS_1 = 5;
 	public static final int IN_LEFT_SOL_POS_2 = 1;
 	
-	//Canburglars
-	public static final int BURGLARS_LEFT_TALON_POS = 10;
-	public static final int BURGLARS_RIGHT_TALON_POS = 12;
-	
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 815;//775
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 765;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 793; //
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 645;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 225;
-	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 706;
-	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 645;
-	
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 103;
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 115; //
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 227;
-	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
-	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153;
-	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227;
-	
-	//100 bigger angle than setpoints
-	public static final double RIGHT_BURGLARS_DOWN_DOWN = 0; //
-	public static final double LEFT_BURGLARS_DOWN_DOWN = 693; //
-	
-	//PID
-	public static final double LEFT_BURGLARS_P_NORMAL = 2.5; //2.5;
-	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5; //2.5
-	
-	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
-	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
-	public static final double SLOW_I = 0.00025;
-	
-	public static final double BURGLARS_I_NORMAL = 0;
-	public static final double BURGLARS_D_NORMAL = 0;
-	
+
 }

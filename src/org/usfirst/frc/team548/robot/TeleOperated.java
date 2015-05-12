@@ -18,23 +18,11 @@ public class TeleOperated {
 		return instance;
 	}
 	
+	public static void runCode() {
+		
+	}
+	
 	public static void runDriver() {		
-		
-		/*
-		 * A BUTTON: strafe wheel down
-		 * B BUTTON: strafe wheel up
-		 */
-//		if(driver.getAButton()) {
-//			DriveTrain.setStrafeDown();
-//		} else if(driver.getBButton()) {
-//			DriveTrain.setStrafeUp();
-//		}
-		
-		/*
-		 * Outside x axis human strafe with human drive
-		 * LEFT BUMPER: Super slow human strafe
-		 * RIGHT BUMPER: Slow human strafe
-		 */
 		
 		if(driver.getLeftBumper()) {
 			if(driver.getLeftStickXAxis() < -Constants.DRIVE_HUMAN_DRIVE_THRESHOLD) {
@@ -91,53 +79,7 @@ public class TeleOperated {
 			 DriveTrain.setStrafeDown();
 		 }
 		 
-//		 if(driver.getXButton() && !buttonPressedX) {
-//			 buttonPressedX = true;
-//			 if(!canBurLeft) {
-//				 canBurLeft = true;
-//			 } else {
-//				 canBurLeft = false;
-//			 }
-//		 } else if(!driver.getXButton() && buttonPressedX) {
-//			 buttonPressedX = false;
-//		 }
-//		 
-//		 if(canBurLeft) {
-//			 Canburglars.youreGoingToKillSomeoneWithLeft();
-//		 } else {
-			 Canburglars.setLeftUpNormal();
-//		 }
-//		 
-//		 if(driver.getBButton() && !buttonPressedB) {
-//			 buttonPressedB = true;
-//			 if(!canBurRight) {
-//				 canBurRight = true;
-//			 } else {
-//				 canBurRight = false;
-//			 }
-//		 } else if(!driver.getBButton() && buttonPressedB) {
-//			 buttonPressedB = false;
-//		 }
-//		 
-//		 if(canBurRight) {
-//			 Canburglars.youreGoingToKillSomeoneWithRight();
-//		 } else {
-			 Canburglars.setRightUpNormal();
-//		 }
-//		 
 
-//		 if(driver.getAButton() && !buttonPressedA) {
-//			 buttonPressedA = true;
-//			 if(!canBurRight) {
-//				 canBurLeft = true;
-//				 canBurRight = true;
-//			 } else {
-//				 canBurLeft = false;
-//				 canBurRight = false;
-//			 }
-//		 } else if(!driver.getBButton() && buttonPressedA) {
-//			 buttonPressedA = false;
-//		 }		 
 	}
 	
 	public static void runManip() {
