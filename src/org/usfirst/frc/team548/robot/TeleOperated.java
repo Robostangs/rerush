@@ -19,9 +19,32 @@ public class TeleOperated {
 	}
 	
 	public static void runCode() {
+		Ingestor.setIngestorPower(Robot.anSetIng);
+		if(Robot.anArmSol) {
+			Ingestor.setIngestorIn();
+		} else {
+			Ingestor.setIngestorOut();
+		}
 		
+		Robot.compressor.setClosedLoopControl(Robot.anCompressor);
+		
+		if(Robot.anSetPointBool) {
+			Elevator.setElevatorPosition(Robot.anSetPoint);
+		} else {
+			if(Robot.anSetLevel != -1) {
+				Elevator.setElevatorToLevel((int)Robot.anSetLevel);
+			}
+			Elevator.stopElevator();
+		}
+		
+		Elevator.setCanSol(Robot.anCanSol);
 	}
 	
+	public static void panic() {
+		Ingestor.setIngestorPower(0);
+		Elevator.stopElevator();
+		Robot.compressor.setClosedLoopControl(false);
+	}
 	public static void runDriver() {		
 		
 		if(driver.getLeftBumper()) {

@@ -36,6 +36,14 @@ public class Ingestor {
 		leftSolenoid.set(DoubleSolenoid.Value.kOff);
 		rightSolenoid.set(DoubleSolenoid.Value.kOff);
 	}
+	
+	public static boolean getIngSol() {
+		if(leftSolenoid.get().value == DoubleSolenoid.Value.kForward_val) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 		
 	public static void setIngestorPower(double power) {
 		leftMotor.set(power);

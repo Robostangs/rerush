@@ -143,5 +143,13 @@ public class Elevator {
 	public static void resetTimer() {
 		grabTimer.reset();
 	}
+	
+	public static boolean getCanSol() {
+		return containerSolenoid.get();
+	}
+	
+	public static void setCanSol(boolean bool) {
+		containerSolenoid.set(bool);
+	}
 
 }

@@ -26,4 +26,20 @@ public class Arm {
 		armSolenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
+	public static boolean getArmSol() {
+		if(armSolenoid.get().value == DoubleSolenoid.Value.kReverse.value) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public static void setArm(boolean bool) {
+		if(bool) {
+			setArmForward();
+		} else {
+			setArmBack();
+		}
+	}
 }
