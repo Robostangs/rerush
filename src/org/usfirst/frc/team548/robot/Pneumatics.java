@@ -10,7 +10,6 @@ public class Pneumatics {
 	private static Timer compressorTimer;
 	
 	private Pneumatics() {
-		pressure = new Compressor(Constants.COMPRESSOR_POS);
 		compressorTimer = new Timer();
 	}
 	

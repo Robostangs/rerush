@@ -49,7 +49,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	TeleOperated.runDriver();
     	TeleOperated.runManip();
-    	SmartDashboard.putNumber("gyro", DriveTrain.getGyroAngle());
     	SmartDashboard.putNumber("Left Encoder Position", DriveMotors.getLeftEncoderPosition());
     	SmartDashboard.putNumber("Right Encoder Position", DriveMotors.getRightEncoderPosition());
     	SmartDashboard.putNumber("Left Encoder Velocity", DriveMotors.getLeftEncoderVelocity());
