@@ -94,20 +94,12 @@ public class Constants {
 	
 	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 728;//815
 	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 557;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 500; //wrong
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 645; //wrong
 	public static final double LEFT_BURGLARS_UP_SETPOINT = 157; //225
-	//public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 706;  //wrong
-	//public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 645; //wrong
 	
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 187; //122	232
 	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 282; //103
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 177; //wrong
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 289; //wrong
 	public static final double RIGHT_BURGLARS_UP_SETPOINT = 803; //715	825
-	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153; //wrong
-	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227; //wrong
-	
+
 	//100 bigger angle than setpoints
 	public static final double RIGHT_BURGLARS_DOWN_DOWN = 0; //
 	public static final double LEFT_BURGLARS_DOWN_DOWN = -500; //
@@ -116,8 +108,6 @@ public class Constants {
 	public static final double LEFT_BURGLARS_P_NORMAL = 1; // 2.5
 	public static final double RIGHT_BURGLARS_P_NORMAL = 1; // 2.5
 	
-	public static final double LEFT_BURGLARS_P_JHLEVEL = 0.5;
-	public static final double RIGHT_BURGLARS_P_JHLEVEL = 0.5;
 	
 	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
 	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;

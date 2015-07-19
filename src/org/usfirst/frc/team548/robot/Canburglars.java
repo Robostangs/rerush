@@ -39,86 +39,17 @@ public class Canburglars {
 	}
 	
 	public static void setRightPIDNormalDown() {
+		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
 		austin.changeControlMode(ControlMode.Position);
 		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
 		austin.reverseOutput(true);
 		austin.setPID(Constants.RIGHT_BURGLARS_P_NORMAL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
 	}
-	
-	public static void setLeftPIDJHLevelDown() {
-		alex.changeControlMode(ControlMode.Position);
-		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		alex.reverseOutput(true); //true
-		alex.setPID(Constants.LEFT_BURGLARS_P_JHLEVEL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
-	}
-	
-	public static void setRightPIDJHLevelDown() {
-		austin.changeControlMode(ControlMode.Position);
-		austin.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		austin.reverseOutput(true);
-		austin.setPID(Constants.RIGHT_BURGLARS_P_JHLEVEL, Constants.BURGLARS_I_NORMAL, Constants.BURGLARS_D_NORMAL);
-	}
-	
-	//no bump
-	public static void setLeftDownNoBump() {
-		setLeftPIDNormalDown();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT);
-	}
-	
-	public static void setLeftDownNoBumpJHLevel() {
-		setLeftPIDJHLevelDown();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT);
-	}
-	
-	public static void setRightDownNoBump() { //This
-		setRightPIDNormalDown();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
-	}
-	
-	public static void setRightDownNoBumpJHLevel() {
-		setRightPIDJHLevelDown();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT);
-	}
-	//bump
-	public static void setLeftDownWithBump() {
-		setLeftPIDNormalDown();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
-	}
-	
-//	public static void setLeftHoverWithBump() {
-//		setLeftPIDNormalDown();
-//		alex.set(Constants.LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT);
-//	}
-//	
-	public static void setRightDownWithBump() {
-		setRightPIDNormalDown();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT);
-	}
-	
-	public static void setRightHoverWithBump() {
-		setRightPIDNormalDown();
-		austin.set(Constants.RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT);
-	}
-	
-	public static void setLeftDownDown() {
-		setLeftPIDNormalDown();
-		alex.set(Constants.LEFT_BURGLARS_DOWN_DOWN);
-	}
-	
-	public static void setRightDownDown() {
-		setRightPIDNormalDown();
-		austin.set(Constants.RIGHT_BURGLARS_DOWN_DOWN);
-	}
 
 	
-	//up
-	public static void setLeftPIDNormalUp() {
-		
-	}
+
 	
-	public static void setRightPIDNormalUp() {
-		
-	}
+
 	
 	public static void setLeftUpNormal() {
 		alex.changeControlMode(ControlMode.Position);
@@ -145,13 +76,6 @@ public class Canburglars {
 		return austin.getAnalogInPosition();
 	}
 	
-	public static void doThing() {
-		alex.changeControlMode(ControlMode.Position);
-		alex.setFeedbackDevice(FeedbackDevice.AnalogPot);
-		alex.reverseOutput(true); //true
-	alex.setPID(1, 0, 0);
-		alex.set(500); //120
-	}
 	
 	
 	public static void disablePID() {
