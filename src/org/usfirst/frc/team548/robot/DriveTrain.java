@@ -9,7 +9,6 @@ public class DriveTrain {
 
 	private static DriveTrain instance = null; 
 	private static Solenoid strafeSolenoid;
-	private static double gyroInitAngle = 0;
 	private static boolean encodersInit = false, gyroInit = false;
 
 	private DriveTrain() {
