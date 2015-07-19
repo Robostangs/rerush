@@ -9,7 +9,7 @@ public class DriveTrain {
 
 	private static DriveTrain instance = null; 
 	private static Solenoid strafeSolenoid;
-	private static boolean encodersInit = false, gyroInit = false;
+	private static boolean encodersInit = false;
 
 	private DriveTrain() {
 		strafeSolenoid = new Solenoid(Constants.DRIVE_STRAFE_SOL_POS);
