@@ -105,7 +105,7 @@ public class TeleOperated {
 //		 if(canBurLeft) {
 //			 Canburglars.youreGoingToKillSomeoneWithLeft();
 //		 } else {
-			 Canburglars.setLeftUpNormal();
+			 
 //		 }
 //		 
 //		 if(driver.getBButton() && !buttonPressedB) {
@@ -122,7 +122,7 @@ public class TeleOperated {
 //		 if(canBurRight) {
 //			 Canburglars.youreGoingToKillSomeoneWithRight();
 //		 } else {
-			 Canburglars.setRightUpNormal();
+			 
 //		 }
 //		 
 
@@ -139,7 +139,6 @@ public class TeleOperated {
 //			 buttonPressedA = false;
 //		 }		 
 	}
-	
 	public static void runManip() {
 		
 		/*
@@ -177,6 +176,8 @@ public class TeleOperated {
 			Elevator.setContainerGrabberThingThatPicksUpContainerThingsThatAreRoundAndGreenClosed();
 		}
 		
+			Canburglars.setRightUpNormal();
+			Canburglars.setLeftUpNormal();
 		
 		/*
 		 * Manip arm solenoid controls
@@ -199,11 +200,9 @@ public class TeleOperated {
 		 * LEFT JOYSTICK: manual
 		 */
 		if(manip.getAButton()) {
-			if(!buttonPressed) {
-				buttonPressed = true;
-				Elevator.setCurrentLevelSnapshot();
-			}
-			Elevator.setElevatorDown();
+			
+			
+			
 		} else if (manip.getBButton()) {
 			if(!buttonPressed) {
 				buttonPressed = true;

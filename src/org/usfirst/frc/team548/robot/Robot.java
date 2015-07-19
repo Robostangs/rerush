@@ -22,22 +22,22 @@ public class Robot extends IterativeRobot {
     	DriveMotors.resetEncoders();
     	Canburglars.getInstance();
     	sc = new SendableChooser();
-    	sc.addObject("Back into auto zone", 1);
-    	sc.addObject("Strafe to auto zone w tote + container", 4);
-    	sc.addObject("Back to auto zone w container", 6);
-    	sc.addObject("Strafe to auto zone w container", 7);
-    	sc.addObject("CB, NO bump, time", 10);
-    	sc.addObject("CB WITH bump, time", 11);
-    	sc.addDefault("CB NO bump, pot", 12);
-    	sc.addObject("CB WITH bump, pot", 13);
-    	sc.addObject("CB NO bump FAST, pot", 14);
-    	sc.addObject("CB WITH bump FAST, pot", 15);
-    	sc.addObject("Nothing", 16);
-    	SmartDashboard.putData("Auto type", sc);
+//    	sc.addObject("Back into auto zone", 1);
+//    	sc.addObject("Strafe to auto zone w tote + container", 4);
+//    	sc.addObject("Back to auto zone w container", 6);
+//    	sc.addObject("Strafe to auto zone w container", 7);
+//    	sc.addObject("CB, NO bump, time", 10);
+//    	sc.addObject("CB WITH bump, time", 11);
+//    	sc.addDefault("CB NO bump, pot", 12);
+//    	sc.addObject("CB WITH bump, pot", 13);
+//    	sc.addObject("CB NO bump FAST, pot", 14);
+//    	sc.addObject("CB WITH bump FAST, pot", 15);
+//    	sc.addObject("Nothing", 16);
+//    	SmartDashboard.putData("Auto type", sc);
     }
     
     public void autonomousInit() {
-    	Autonomous.setAutoMode((int)sc.getSelected());
+//    	Autonomous.setAutoMode((int)sc.getSelected());
     	Autonomous.startTimer();
     	DriveMotors.resetEncoders();
     }
@@ -62,12 +62,13 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
     	SmartDashboard.putNumber("Elevator Encoder", ElevatorMotors.getEncoderAverage());
     	LiveWindow.run();
+    	Canburglars.setLeftPIDNormalDown();
     }
     
    
     public void disabledPeriodic() {
     	SmartDashboard.putBoolean("BOT", Elevator.getBotElevatorSwitch());
-    	SmartDashboard.putData("Auto type", sc);
+//    	SmartDashboard.putData("Auto type", sc);
     	
     }
 }

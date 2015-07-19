@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class Autonomous {
 	
 	private static Autonomous instance;
-	private static int mode = 12;
+	private static int mode = 21;
 	private static Timer autoTimer;
 
 	private Autonomous() {
@@ -28,6 +28,9 @@ public class Autonomous {
 			Autonomous.driveToAutoZone1();
 			break;
 		// Drive into auto zone with container
+		case 6:
+			Autonomous.backIntoAutoZoneWithContainerDistance6();
+			break;
 		case 10:
 			Autonomous.canBurglarAutoNoBump10();
 			break;
@@ -56,6 +59,16 @@ public class Autonomous {
 			Autonomous.doNothing16();
 			break;
 			//LOL NOTHING
+		case 17:
+			Autonomous.canBurglarJHLevelPotAutoNoBump17();
+			break;
+			//Slow for Jake and Haley line up (:
+		case 18:
+			Autonomous.canBurglarTugOfWar18();
+			break;
+		case 21:
+			Autonomous.canBurglarAutoNoBumpWingle21();
+			break;
 		default: 
 			Autonomous.canBurglarPotAutoNoBump12();
 			break;
@@ -162,24 +175,18 @@ public class Autonomous {
 			Canburglars.setLeftDownNoBump();
 			Canburglars.setRightDownNoBump();
 			
-			if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) { //
-//				if(v == -1) {
-//					v = autoTimer.get();
-//				}
-				//if(autoTimer.get() - v  >= 0.07 && v != -1) {
-					DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
-				//}
-				
+			if(autoTimer.get() >= 2) {
+					DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);				
 			}
-		} else if(autoTimer.get() <= 5) {
+		} else if(autoTimer.get() <= 7) {
 			Canburglars.setLeftUpNormal();
 			Canburglars.setRightUpNormal();
+		} else if(autoTimer.get() <= 8.5) {
 			DriveMotors.drive(-0.35, -0.35);
 		} else {
 			DriveMotors.stopMotors();
 			Arm.setArmForward();
 			Ingestor.setIngestorIn();
-			Elevator.calibrateEncoder();
 		}
 	}
 	
@@ -260,11 +267,80 @@ public class Autonomous {
 //DO NOTHING
 	//Stop, wait 15 seconds
 	private static void doNothing16() {
-		Elevator.stopElevator();
+		//Elevator.stopElevator();
 		DriveMotors.stopMotors();
 		Arm.setArmForward();
-		Elevator.calibrateEncoder();
+		//Elevator.calibrateEncoder();
 		Ingestor.setIngestorIn();
 		DriveTrain.setStrafeDown();
 	}
+	
+	//NO BUMP
+		//R
+		private static void canBurglarJHLevelPotAutoNoBump17() {
+			DriveTrain.setStrafeUp();
+			if(autoTimer.get() <= 3.5) {
+				Canburglars.setLeftDownNoBumpJHLevel();
+				Canburglars.setRightDownNoBumpJHLevel();
+				
+				if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+						DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
+				}
+			} else if(autoTimer.get() <= 5) {
+				Canburglars.setLeftUpNormal();
+				Canburglars.setRightUpNormal();
+				DriveMotors.drive(-0.35, -0.35);
+			} else {
+				DriveMotors.stopMotors();
+				Arm.setArmForward();
+				Ingestor.setIngestorIn();
+				Elevator.calibrateEncoder();
+			}
+		}
+		
+		private static void canBurglarTugOfWar18() {
+			DriveTrain.setStrafeUp();
+			if(autoTimer.get() <= 3.5) {
+				Canburglars.setLeftDownNoBumpJHLevel();
+				Canburglars.setRightDownNoBumpJHLevel();
+				
+				if((Canburglars.getLeftPosition() > Constants.LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER && Canburglars.getRightPosition() < Constants.RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER) || autoTimer.get() >= 0.9) {
+						DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
+				}
+			}
+			Arm.setArmForward();
+			Ingestor.setIngestorIn();
+		}
+		
+		static int eo = 0;
+		private static void canBurglarAutoNoBumpWingle21() {
+			DriveTrain.setStrafeUp();
+			if(autoTimer.get() <= 5) {
+				Canburglars.setLeftDownNoBump();
+				Canburglars.setRightDownNoBump();
+				if (autoTimer.get() <= 3 && autoTimer.get() > 1) { 
+					System.out.println(eo);
+					if((eo/10)%2 == 0) {
+						DriveMotors.drive(0.2, 0.2);
+					} else {
+						DriveMotors.drive(-0.2, -0.2);
+					}
+				} else {
+					DriveMotors.stopMotors();
+				}
+			} else if(autoTimer.get() < 7) {
+				DriveTrain.driveDistance(Constants.AUTON_CAN_BURGLARS_PULLBACK_DISTANCE, 1);
+			} else if(autoTimer.get() <= 10.5) {
+				Canburglars.setLeftUpNormal();
+				Canburglars.setRightUpNormal();
+			} else if(autoTimer.get() <= 12){
+				DriveMotors.drive(-0.35, -0.35);
+			} else {
+				DriveMotors.stopMotors();
+				Arm.setArmForward();
+//				//Elevator.calibrateEncoder();
+				Ingestor.setIngestorIn();
+			}
+			eo++;
+		}
 }

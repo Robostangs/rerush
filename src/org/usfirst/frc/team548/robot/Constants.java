@@ -15,7 +15,7 @@ public class Constants {
 	public static final double AUTON_6_DRIVE_DISTANCE = -4500;
 	public static final double AUTON_6_DRIVE_DISTANCE_SPEED = 0.35;
 	//Canburglars
-	public static final double AUTON_CAN_BURGLARS_PULLBACK_DISTANCE = -3500;
+	public static final double AUTON_CAN_BURGLARS_PULLBACK_DISTANCE = -3300;
 	
 	
 	//Drive Train
@@ -92,29 +92,32 @@ public class Constants {
 	public static final int BURGLARS_LEFT_TALON_POS = 10;
 	public static final int BURGLARS_RIGHT_TALON_POS = 12;
 	
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 815;//775
-	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 765;
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 793; //
-	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 645;
-	public static final double LEFT_BURGLARS_UP_SETPOINT = 225;
-	public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 706;
-	public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 645;
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_SETPOINT = 728;//815
+	public static final double LEFT_BURGLARS_DOWN_NO_STEP_TRIGGER = 557;
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 500; //wrong
+	public static final double LEFT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 645; //wrong
+	public static final double LEFT_BURGLARS_UP_SETPOINT = 157; //225
+	//public static final double LEFT_BURGLARS_HOVER_NO_STEP_SETPOINT = 706;  //wrong
+	//public static final double LEFT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 645; //wrong
 	
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 53;
-	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 103;
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 115; //
-	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 227;
-	public static final double RIGHT_BURGLARS_UP_SETPOINT = 671;
-	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153;
-	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227;
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_SETPOINT = 187; //122	232
+	public static final double RIGHT_BURGLARS_DOWN_NO_STEP_TRIGGER = 282; //103
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_SETPOINT = 177; //wrong
+	public static final double RIGHT_BURGLARS_DOWN_WITH_STEP_TRIGGER = 289; //wrong
+	public static final double RIGHT_BURGLARS_UP_SETPOINT = 803; //715	825
+	public static final double RIGHT_BURGLARS_HOVER_NO_STEP_SETPOINT = 153; //wrong
+	public static final double RIGHT_BURGLARS_HOVER_WITH_STEP_SETPOINT = 227; //wrong
 	
 	//100 bigger angle than setpoints
 	public static final double RIGHT_BURGLARS_DOWN_DOWN = 0; //
-	public static final double LEFT_BURGLARS_DOWN_DOWN = 693; //
+	public static final double LEFT_BURGLARS_DOWN_DOWN = -500; //
 	
 	//PID
-	public static final double LEFT_BURGLARS_P_NORMAL = 2.5; //2.5;
-	public static final double RIGHT_BURGLARS_P_NORMAL = 2.5; //2.5
+	public static final double LEFT_BURGLARS_P_NORMAL = 1; // 2.5
+	public static final double RIGHT_BURGLARS_P_NORMAL = 1; // 2.5
+	
+	public static final double LEFT_BURGLARS_P_JHLEVEL = 0.5;
+	public static final double RIGHT_BURGLARS_P_JHLEVEL = 0.5;
 	
 	public static final double LEFT_BURGLARS_P_SLOW = 0.5;
 	public static final double RIGHT_BURGLARS_P_SLOW = 0.5;
